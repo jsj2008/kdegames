@@ -1,0 +1,246 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>StatusWidget</class>
+ <widget class="QFrame" name="StatusWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>305</width>
+    <height>147</height>
+   </rect>
+  </property>
+  <property name="frameShape" >
+   <enum>QFrame::Box</enum>
+  </property>
+  <property name="frameShadow" >
+   <enum>QFrame::Raised</enum>
+  </property>
+  <property name="midLineWidth" >
+   <number>4</number>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="4" column="5" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>41</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>90</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLabel" name="wins" >
+     <property name="text" >
+      <string>W</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" >
+    <widget class="QLabel" name="draws" >
+     <property name="text" >
+      <string>D</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3" >
+    <widget class="QLabel" name="loses" >
+     <property name="text" >
+      <string>L</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4" >
+    <widget class="QLabel" name="num" >
+     <property name="text" >
+      <string>No</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5" >
+    <widget class="QLabel" name="bk" >
+     <property name="text" >
+      <string>Bk</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="p1_name" >
+     <property name="text" >
+      <string>Player 1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QLCDNumber" name="p1_w" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QLCDNumber" name="p1_d" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3" >
+    <widget class="QLCDNumber" name="p1_l" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="4" >
+    <widget class="QLCDNumber" name="p1_n" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="5" >
+    <widget class="QLCDNumber" name="p1_b" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" >
+    <widget class="QLCDNumber" name="p2_d" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="5" >
+    <widget class="QLCDNumber" name="p2_b" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3" >
+    <widget class="QLCDNumber" name="p2_l" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4" >
+    <widget class="QLCDNumber" name="p2_n" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" >
+    <widget class="QLCDNumber" name="p2_w" >
+     <property name="lineWidth" >
+      <number>0</number>
+     </property>
+     <property name="numDigits" >
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLabel" name="p2_name" >
+     <property name="text" >
+      <string>Player 2</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="6" >
+    <widget class="Line" name="line1" >
+     <property name="frameShape" >
+      <enum>QFrame::HLine</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <resources/>
+ <connections/>
+</ui>

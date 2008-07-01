@@ -1,0 +1,104 @@
+<ui version="4.0" >
+ <class>prefs_display</class>
+ <widget class="QWidget" name="prefs_display" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>245</width>
+    <height>214</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Display Settings</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <widget class="QGroupBox" name="groupBox_2" >
+     <property name="whatsThis" >
+      <string>Settings for colors</string>
+     </property>
+     <property name="title" >
+      <string>Colors</string>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="whatsThis" >
+         <string>Color of the drawn lines</string>
+        </property>
+        <property name="text" >
+         <string>Standard line color:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>kcfg_LineColor</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="KColorButton" name="kcfg_LineColor" />
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_2" >
+        <property name="whatsThis" >
+         <string>Color of the indicator lines</string>
+        </property>
+        <property name="text" >
+         <string>Indicator line color:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>kcfg_IndicatorLineColor</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="KColorButton" name="kcfg_IndicatorLineColor" />
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_3" >
+        <property name="whatsThis" >
+         <string>Color of the indicator lines</string>
+        </property>
+        <property name="text" >
+         <string>Highlight color:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>kcfg_IndicatorLineColor</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="KColorButton" name="kcfg_HighlightColor" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>232</width>
+       <height>71</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KColorButton</class>
+   <extends>QPushButton</extends>
+   <header>kcolorbutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>kcfg_LineColor</tabstop>
+  <tabstop>kcfg_IndicatorLineColor</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

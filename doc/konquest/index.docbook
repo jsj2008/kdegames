@@ -1,0 +1,472 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY kappname "&konquest;">
+  <!ENTITY package "kdegames">	
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+]>
+
+<book lang="&language;">
+
+<bookinfo>
+<title>The &konquest; Handbook</title>
+
+<authorgroup>
+<author>
+<firstname>Nicholas</firstname>
+<surname>Robbins</surname>
+<affiliation>
+<address>&Nicholas.Robbins.mail;</address>
+</affiliation>
+</author>
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+</authorgroup>
+
+<othercredit role="developer">
+<firstname>Russ</firstname>
+<surname>Steffen</surname>
+<affiliation>
+<address>&Russ.Steffen.mail;</address></affiliation>
+<contrib>Developer</contrib>
+</othercredit>
+
+<othercredit role="reviewer">
+<firstname>Lauri</firstname>
+<surname>Watts</surname>
+<affiliation>
+<address>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib>Reviewer</contrib>
+</othercredit>
+
+<copyright>
+<year>2000</year>
+<holder>Nicholas Robbins</holder>
+</copyright>
+
+<author>
+<firstname>Anton</firstname>
+<surname>Brondz</surname>
+<affiliation>
+<address><email>dinolinux@gmail.com</email></address>
+</affiliation>
+</author>
+
+<legalnotice>&FDLNotice;</legalnotice>
+
+<date>2007-11-13</date>
+<releaseinfo>2.0</releaseinfo>
+
+<abstract>
+<para>
+&konquest; is a game of galactic conquest for &kde;
+</para>
+</abstract>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>Konquest</keyword>
+<keyword>kdegames</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction">
+<title>Introduction</title>
+<note><title>Game type:</title><para>Strategy, Board</para></note>
+<note><title>Number of players:</title><para>Multiplayer</para></note>
+
+<para>
+&konquest; is the &kde; version of Gnu-Lactic. Players conquer other planets by sending
+ships to them. The goal is to build an interstellar empire and ultimately conqueror all 
+other player's planets. &konquest; can be played against other people or a computer.
+</para>
+
+</chapter>
+
+<chapter id="playing">
+<title>How to Play</title>
+
+<para>
+When you start &konquest;, press <guibutton>New</guibutton> to start a new game
+you will see a dialog in which you need to enter player names, decide the number of
+planets, and how many turns are allowed. You can also use the reject button to get a
+new map. When you're done, click <guibutton>OK</guibutton> to start the game.
+</para>
+
+<para>
+Once the game starts, you will be presented with the game board. Blank squares
+are empty space. At first, each player owns one planet. The planet's background
+is the player colour. If you move your mouse over a planet, you can see additional
+information. On planets which have not yet been conquered by anyone, you will only
+see the planet's name. The information includes:
+</para>
+
+<itemizedlist>
+<listitem><para>Planet name</para></listitem>
+<listitem><para>Owner</para></listitem>
+<listitem><para>Ships</para></listitem>
+<listitem><para>Production</para></listitem>
+<listitem><para>Kill percent</para></listitem>
+</itemizedlist>
+
+<para>
+The planet name is how the planet is referred to in the game. Planets are named
+alphabetically with uppercase letters. Owner is who owns the planet. If the planet
+is conquered by another player, this will change. Ships is the current number of
+ships on the planet. Production is the number of ships the planet will produce each turn.
+The production varies from planet to planet, but always remains the same. Kill percent
+is a measure of the effectiveness of the ships produced at that planet. Attack fleets take
+the kill percentage of their planet of departure, and defense fleets use the kill
+percentage of the planet they are defending.
+You can get easily see the planet name, the owner and the current number of ships
+on a planet in the square in which the planet lies. The owner is represented by the
+background color of the planet, the name is in the upper left corner and the number of
+ships is in the lower right corner.
+</para>
+
+<para>
+To send ships from a planet to another, select the planet you want to send ships from, enter
+the number of ships in the green box in the upper right corner and press enter. Repeat
+this procedure until you have sent out all the ships you want. When you're done, press 
+<guibutton>End Turn</guibutton>. When all players have played one turn, dialog boxes
+will appear and give you the latest news. The game will proceed like this until one of the
+players owns the entire galaxy.
+</para>
+</chapter>
+
+<chapter id="rulestips">
+<title>Game Rules, Strategies and Tips</title>
+<sect1 id="rules">
+<title>Rules</title>
+<itemizedlist>
+<listitem><para>Ships cannot be stopped once they leave a planet.</para></listitem>
+<listitem><para>Ships cannot attack other ships in mid-air.</para></listitem>
+<listitem><para>Ships can be stored at planets for later use.</para></listitem>
+<listitem><para>A planet cannot be given away.</para></listitem>
+<listitem><para>A player can skip a turn by pressing <guibutton>End Turn</guibutton> without lauching any
+ships.</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="strattips">
+<title>Strategies and Tips</title>
+<itemizedlist>
+<listitem><para>Don't attack a planet with less than 10 ships.</para></listitem>
+<listitem><para>Attack neutral planets before other players' planets.</para></listitem>
+<listitem><para>Split your ship storages across several planets.</para></listitem>
+<listitem><para>Plan your attacks in advance.</para></listitem>
+<listitem><para>Use the ruler to find out the distance between planets.</para></listitem>
+<listitem><para>Use the information window to get information on planets before an attack.</para></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="menus">
+<title>Menus</title>
+
+<sect1 id="game-menu">
+<title>The <guimenu>Game</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>New</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Starts a new game.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>End</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>End Game</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>End the current game, without closing</action> &konquest;</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Measure Distance</guimenuitem>
+</menuchoice></term>
+<listitem><para>Click with the &LMB; on two planets to see their distance.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Show Standings</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens</action> a window to display the detailed current 
+standings for all players</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Fleet Overview</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens</action> a window to display detailed informations 
+for all fleets</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Quits the game.</action></para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Toolbar</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Toggle</action> the toolbar display on and off.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Toggles on and off the display of the statusbar.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Shortcuts...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Opens</action> a standard &kde; shortcut configuration dialog to
+change the keyboard shortcuts used by &konquest;.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Toolbars...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>Brings up the standard &kde; toolbar configuration dialog to customize the &konquest; toolbar icons.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="help-menu">
+<title>The <guimenu>Help</guimenu> Menu</title>
+
+&help.menu.documentation;
+
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title>Frequently Asked Questions</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para>
+How do I start a new game?
+</para>
+</question>
+<answer>
+<para>
+Press the <guibutton>New</guibutton> button, select <menuchoice><guimenu>Game</guimenu>
+<guimenuitem>New</guimenuitem></menuchoice> from the menubar or press 
+<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+Can I redirect ships once they have left a planet?
+</para>
+</question>
+<answer>
+<para>
+No, once ships leave a planet, they cannot be stopped or redirected.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+Do the different colors and shapes of planets mean anything?
+</para>
+</question>
+<answer>
+<para>
+No, they are random.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+How can I know where my ships are?
+</para>
+</question>
+<answer>
+<para>
+Click <guibutton>Show Standings</guibutton>. It will give you information about fleets currently in flight.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+I have lost all my planets, but I am still in the game, why?
+</para>
+</question>
+<answer>
+<para>
+You have not lost the game until you have lost all your ships.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+I am running out of turns, what can I do?
+</para>
+</question>
+<answer>
+<para>
+You can continue playing. When you are at the last turn, you will be prompted to add more.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+Can I store ships on a planet for later use?
+</para>
+</question>
+<answer>
+<para>
+Yes, you should however store them on multiple planets to be able to send them to nearby planets.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+I have sent out all the ships on a planet, but when I move my mouse over the planet, it shows the ships still in place, why?
+</para>
+</question>
+<answer>
+<para>
+The number of ships on a planet is updated when a turn is ended.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+Is it possible to change the theme?
+</para>
+</question>
+<answer>
+<para>
+No, that is not possible at the moment.
+</para>
+</answer>
+</qandaentry>
+
+
+</qandaset>
+</chapter>
+
+
+<chapter id="credits">
+
+
+<title>Credits and License</title>
+
+<para>&konquest;</para>
+
+<para>&GNU;-Lactic Conquest Project, &kde; version by &Russ.Steffen;,
+&Russ.Steffen.mail;.</para>
+
+<para>Copyright &copy; 1998 by the &GNU;-Lactic Conquest Project </para>
+
+<para>Documentation copyright 2000 Nicholas Robbins
+&Nicholas.Robbins.mail;</para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
+&underFDL;               <!-- FDL: do not remove -->
+
+&underGPL;        	 <!-- GPL License -->
+
+</chapter>
+
+<appendix id="installation">
+<title>Installation</title>
+
+<sect1 id="getting-konquest">
+<title>How to obtain &konquest;</title>
+
+&install.intro.documentation;
+
+</sect1>
+
+<sect1 id="compilation">
+<title>Compilation and Installation</title>
+
+&install.compile.documentation;
+
+</sect1>
+
+</appendix>
+
+&documentation.index;
+
+</book>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

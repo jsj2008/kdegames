@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<gui name="kbattleship" version="3">
+
+<MenuBar>
+  <Menu name="game">
+    <Action name="game_server" />
+    <Action name="game_client" />
+    <Action name="game_local" />
+    <Action name="game_create_server" />
+    <Action name="game_create_client" />
+  </Menu>
+  <Menu name="settings">
+    <Action name="options_nickname" />
+    <Action name="options_sounds" />
+    <Action name="options_show_endgame_message" />
+    <Action name="options_showleftgrid" />
+    <Action name="options_showrightgrid" />
+  </Menu>
+</MenuBar>
+
+<ToolBar name="gameToolbar" >
+    <text>Game Toolbar</text>
+    <Action name="game_new" />
+    <Action name="game_restart" />
+    <Action name="game_local" />
+    <Action name="game_create_server" />
+    <Action name="game_create_client" />
+ </ToolBar>
+
+<State name="playing">
+    <enable>
+        <Action name="game_restart"/>
+    </enable>
+</State>
+
+</gui>

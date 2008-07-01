@@ -1,0 +1,36 @@
+		 Overview over the files in konquest
+		 ===================================
+
+Game classes
+------------
+gamecore.h	gamecore.cc	Some general code  		FIXME: remove
+gamelogic.h	gamelogic.cc	The game itself. No gui.
+map.h		map.cc		The playing field - the universe
+sector.h	sector.cc	One square on the Map
+player.h	player.cc	Generic player
+planet.h	planet.cc	Info about a Planet
+fleet.h		fleet.cc	Info about a Fleet.
+
+
+Widgets & Views
+---------------
+mainwin.h	mainwin.cc	The main window
+gameview.h	gameview.cc	The main view of the game
+mapview.h	mapview.cc	The main view of the universe
+minimapview.h	minimapview.cc	A smaller view for setting up new games
+mapscene.h	mapscene.cc	The scene where the map is drawn
+mapitems.h	mapitems.cc	Some items that are on the map, e.g. planets
+
+Dialogs
+-------
+fleetdlg.h	fleetdlg.cc	The summary dialog of the fleets
+newgamedlg.h	newgamedlg.cc	The dialog for creating new games
+scoredlg.h	scoredlg.cc	The summary dialog at the end of the game.
+
+
+Misc
+----
+Konquest.cc			The main program.
+version.h			FIXME: Use global KDE version?
+images.h			Declaration of all the images.
+

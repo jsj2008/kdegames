@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+
+<gui name="klines" version="7">
+  <MenuBar>
+    <Menu name="settings">
+      <Action name="show_next" />
+    </Menu>
+    <Menu name="navigation">
+      <text>Navigation</text>
+      <Action name="navi_left" />
+      <Action name="navi_right" />
+      <Action name="navi_up" />
+      <Action name="navi_down" />
+      <Action name="navi_select" />
+    </Menu>
+  </MenuBar>
+
+  <ToolBar name="mainToolBar">
+    <Action name="game_new" />
+    <Separator />
+    <Action name="move_undo" />
+    <Action name="move_end_turn" />
+  </ToolBar>
+
+  <State name="init">
+    <disable>
+      <Action name="move_undo" />
+    </disable>
+  </State>
+
+  <State name="not_undoable">
+    <disable>
+      <Action name="move_undo" />
+    </disable>
+  </State>
+
+  <State name="undoable">
+    <enable>
+      <Action name="move_undo" />
+    </enable>
+  </State>
+</gui>

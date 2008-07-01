@@ -1,0 +1,241 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>Statistics</class>
+ <widget class="QDialog" name="Statistics" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>439</width>
+    <height>201</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Statistics</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="0" colspan="6" >
+    <widget class="Line" name="line1" >
+     <property name="frameShape" >
+      <enum>QFrame::HLine</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="3" >
+    <widget class="QLCDNumber" name="p2_lost" />
+   </item>
+   <item rowspan="2" row="2" column="0" >
+    <widget class="QLabel" name="p1_name" >
+     <property name="text" >
+      <string>Player 1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="Name" >
+     <property name="text" >
+      <string>Name</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLabel" name="won" >
+     <property name="text" >
+      <string>Won</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" >
+    <widget class="QLCDNumber" name="p2_drawn" />
+   </item>
+   <item row="0" column="3" >
+    <widget class="QLabel" name="lost" >
+     <property name="text" >
+      <string>Lost</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4" >
+    <widget class="QLCDNumber" name="p2_aborted" />
+   </item>
+   <item row="4" column="5" >
+    <widget class="QLCDNumber" name="p2_sum" />
+   </item>
+   <item row="0" column="5" >
+    <widget class="QLabel" name="sum" >
+     <property name="text" >
+      <string>Sum</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4" >
+    <widget class="QLabel" name="aborted" >
+     <property name="text" >
+      <string>Aborted</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="6" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="pushButton1" >
+       <property name="text" >
+        <string>Clear All Statistics</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>51</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton2" >
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="1" >
+    <widget class="QLCDNumber" name="p1_won" />
+   </item>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="p2_name" >
+     <property name="text" >
+      <string>Player 2</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" >
+    <widget class="QLCDNumber" name="p2_won" />
+   </item>
+   <item row="0" column="2" >
+    <widget class="QLabel" name="drawn" >
+     <property name="text" >
+      <string>Drawn</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" >
+    <widget class="QLCDNumber" name="p1_drawn" />
+   </item>
+   <item row="3" column="3" >
+    <widget class="QLCDNumber" name="p1_lost" />
+   </item>
+   <item row="3" column="4" >
+    <widget class="QLCDNumber" name="p1_aborted" />
+   </item>
+   <item row="3" column="5" >
+    <widget class="QLCDNumber" name="p1_sum" />
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <tabstops>
+  <tabstop>pushButton2</tabstop>
+  <tabstop>pushButton1</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton1</sender>
+   <signal>clicked()</signal>
+   <receiver>Statistics</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton2</sender>
+   <signal>clicked()</signal>
+   <receiver>Statistics</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

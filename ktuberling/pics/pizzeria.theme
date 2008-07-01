@@ -1,0 +1,40 @@
+ <playground gameboard="pizzeria.svgz" desktop="pizzeria.desktop" bgcolor="#e8a560">
+
+	<object name="pepper1" sound="pizzeria_pepper" />
+	<object name="pepper2" sound="pizzeria_pepper" />
+	<object name="pepper3" sound="pizzeria_pepper" />
+
+	<object name="pineapple" sound="pizzeria_pineapple" />
+
+	<object name="olive1" sound="pizzeria_olive" />
+	<object name="olive2" sound="pizzeria_olive" />
+	<object name="olive3" sound="pizzeria_olive" />
+	<object name="olive4" sound="pizzeria_olive" />
+
+	<object name="tomato" sound="pizzeria_tomato" />
+
+	<object name="cucumber" sound="pizzeria_cucumber" />
+
+	<object name="salami" sound="pizzeria_salami" />
+
+	<object name="mushroom" sound="pizzeria_mushroom" />
+
+	<object name="pepperoni1" sound="pizzeria_pepperoni" />
+	<object name="pepperoni2" sound="pizzeria_pepperoni" />
+
+	<object name="oregano1" sound="pizzeria_oregano" />
+	<object name="oregano2" sound="pizzeria_oregano" />
+
+	<object name="cheese1" sound="pizzeria_cheese" />
+	<object name="cheese2" sound="pizzeria_cheese" />
+
+	<object name="onion1" sound="pizzeria_onion" />
+	<object name="onion2" sound="pizzeria_onion" />
+
+	<object name="brocolli" sound="pizzeria_brocolli" />
+
+	<object name="anchois" sound="pizzeria_anchovy" />
+
+	<object name="bacon" sound="pizzeria_bacon" />
+
+</playground>

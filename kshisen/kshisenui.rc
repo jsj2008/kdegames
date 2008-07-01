@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<gui name="kshisen" version="11">
+<MenuBar>
+  <Menu name="move"><!--
+    <Action name="move_solvable"/>
+    <Action name="move_finish"/>-->
+  </Menu>
+</MenuBar>
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
+  <Action name="game_new"/>
+  <Seperator/>
+  <Action name="move_undo"/>
+  <Action name="move_redo"/>
+  <Separator/>
+  <Action name="game_pause"/>
+</ToolBar>
+<StatusBar/>
+</gui>

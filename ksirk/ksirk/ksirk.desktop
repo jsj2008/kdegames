@@ -1,0 +1,34 @@
+# KDE Config File
+[Desktop Entry]
+Type=Application
+Exec=ksirk -caption "%c" %i
+Icon=ksirk
+X-DocPath=ksirk/index.html
+Terminal=false
+Name=KsirK
+Name[sv]=Ksirk
+Name[x-test]=xxKsirKxx
+GenericName=World Domination Strategy Game
+GenericName[ca]=Joc d'estratègia de dominació mundial
+GenericName[da]=Strategisk spil om verdensherredømmet
+GenericName[de]=Strategiespiel zur Eroberung der Welt
+GenericName[el]=Παιχνίδι στρατηγικής παγκόσμιας κυριαρχίας
+GenericName[es]=Juego de estrategia para dominar el mundo
+GenericName[et]=Maailma vallutamise strateegiamäng
+GenericName[fr]=Jeu de stratégie pour la domination du monde
+GenericName[ga]=Cluiche Fhorlámhas an Domhain
+GenericName[gl]=Xogo de estratexia para dominar o mundo
+GenericName[ja]=世界制覇ゲーム
+GenericName[km]=ល្បែង​យុទ្ធសាស្ត្រ​គ្រប់គ្រង​ពិភពលោក​​
+GenericName[lv]=Pasaules pārvaldīšanas stratēģiskā spēle
+GenericName[nds]=Weltherrschop-Strategiespeel
+GenericName[pt]=Jogo Estratégico de Conquista do Mundo
+GenericName[pt_BR]=Jogo Estratégico de Conquista do Mundo
+GenericName[sv]=Strategispel för världsdominans
+GenericName[uk]=Стратегічна гра у світове панування
+GenericName[x-test]=xxWorld Domination Strategy Gamexx
+GenericName[zh_CN]=世界支配战略游戏
+GenericName[zh_TW]=征服世界戰略遊戲
+Categories=Qt;KDE;Game;StrategyGame;
+X-KDE-StartupNotify=true
+X-DBUS-StartupType=Multi

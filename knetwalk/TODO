@@ -1,0 +1,38 @@
+BUGS:
+=====
+
+* sometimes it seems to go in infinite loop when starting a new game... check it!! 
+  (maybe it's fixed: didn't happen for a long time)
+* when a new game starts there are unneeded repaints
+
+
+TODO:
+=====
+
+== short term ==
+* check if forground and background cache makes sense in cell.cpp
+* if it isn't to hard use a menu to change the theme
+* show the solution
+* fix globals.h, include.h, etc. (use one unified header for that stuff)
+* better default size
+
+== medium term ==
+* fix highscores (lot of problems)
+* allow games with different aspect ratios
+* allow customized game (perhaps giving it a custom name)
+* make the difficulty change less when playing the same difficulty level
+
+== long term ==
+* change Directions (not sure)
+* profiling
+* look if it's possibly to optionally use openGl (to have smooth rotations)
+* whatsthis isn't show easily add an help icon or questionmark or something... (in the game field maybe..)
+* initial window size depending one the screen size (possible with kde? also usefull in other games!)
+* next move hint
+* demo mode
+
+
+KDEGAMES: (things that might apply to the whole kdegames)
+=========
+
+* add a handbook button to the toolbar

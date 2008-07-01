@@ -1,0 +1,22 @@
+Program: KBlackBox 
+
+Authors: 
+	Robert Cimrman, e-mail: cimrman3@students.zcu.cz
+	Nicolas Roffet, e-mail: nicolas-kde@roffet.com
+
+A simple logical game for the KDE project.
+
+FEATURES:
+	-stunning gfx :-)
+	-high logical requirements
+USING:
+	-see help
+KNOWN BUGS:
+	-none
+UNKNOWN BUGS:
+	-still unknown
+	->report any "bogus features" to the author, please
+TODO:
+	-any wishes?
+HISTORY:
+	-see file "CHANGES"

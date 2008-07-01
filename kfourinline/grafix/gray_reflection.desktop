@@ -1,0 +1,33 @@
+[Theme]
+Name=True Reflection
+Name[ca]=Reflex Real
+Name[da]=Sand reflektion
+Name[de]=Echte Reflexion
+Name[el]=Πραγματική αντανάκλαση
+Name[es]=Reflexión real
+Name[et]=Tõeline peegel
+Name[fa]=انعکاس صحیح
+Name[fi]=Aito heijastus
+Name[fr]=Réflexion réelle
+Name[gl]=Reflexión auténtica
+Name[hu]=Valós fényvisszaverődés
+Name[it]=Veri riflessi
+Name[ja]=黒と赤の反射
+Name[km]=ការ​ឆ្លុះ​ពិត
+Name[ko]=진짜 반사
+Name[lv]=Patiess atspulgs
+Name[nds]=Rejell Torüchstrahlen
+Name[nl]=Echte weerspiegeling
+Name[nn]=Ekte refleksjonar
+Name[pl]=Prawdziwe odbicie
+Name[pt]=Reflexão Verdadeira
+Name[pt_BR]=Reflexão real
+Name[sl]=Pravi odsev
+Name[sv]=Sann reflektion
+Name[tr]=Gerçek Yansıma
+Name[uk]=Справжнє відбиття
+Name[x-test]=xxTrue Reflectionxx
+Name[zh_CN]=真反射
+Name[zh_TW]=真實反射
+File=gray_reflection.rc
+

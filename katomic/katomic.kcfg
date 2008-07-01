@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="katomicrc"/>
+  <group name="Game">
+    <entry name="AnimationSpeed" type="Enum">
+      <label>The speed of the animations.</label>
+      <choices>
+          <choice name="Slow" />
+          <choice name="Normal" />
+          <choice name="Fast" />
+      </choices>
+      <default>Normal</default>
+    </entry>
+    <entry name="LastPlayedLevel" type="Int">
+        <label>Last Played Level</label>
+        <default>1</default>
+    </entry>
+    <entry name="MaxAccessibleLevel" type="Int">
+        <label>Maximum level number that player allowed to play on</label>
+        <default>1</default>
+    </entry>
+  </group>
+  <group name="General">
+    <entry name="SavedBackgroundWidth" type="Int">
+      <label>Width of saved background</label>
+      <default>-1</default>
+    </entry>
+    <entry name="SavedBackgroundHeight" type="Int">
+      <label>Height of saved background</label>
+      <default>-1</default>
+    </entry>
+  </group>
+</kcfg>

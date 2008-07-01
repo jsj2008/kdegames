@@ -1,0 +1,34 @@
+[Theme]
+Name=Yellow and Red Reflection
+Name[ca]=Groc i Vermell amb reflex
+Name[da]=Gul og rød reflektion
+Name[de]=Gelb und Rot Reflexion
+Name[el]=Κίτρινη και κόκκινη αντανάκλαση
+Name[es]=Reflexión amarilla y roja
+Name[et]=Kollane ja punane peegel
+Name[fa]=انعکاس زرد و قرمز
+Name[fi]=Keltainen ja punainen heijastus
+Name[fr]=Jaune avec réflexion
+Name[ga]=Frithchaitheamh Buí agus Dearg
+Name[gl]=Reflexión amarelo e vermella
+Name[hu]=Sárga-vörös visszaverődés
+Name[it]=Riflessi gialli e rossi
+Name[ja]=黄色と赤の反射
+Name[km]=ការ​ឆ្លុះ​ពណ៌​លឿង និង​ក្រហម
+Name[ko]=노란색과 빨간색 반사
+Name[lv]=Dzeltens un sarkans atspīdums
+Name[nds]=Geel un root Torüchstrahlen
+Name[nl]=Geel- en rood-weerspiegeling
+Name[nn]=Gul og raud med refleksjonar
+Name[pl]=Żółty i czerwone refleksy
+Name[pt]=Reflexão a Amarelo e Vermelho
+Name[pt_BR]=Reflexão amarela e vermelha
+Name[sl]=Rumeno in rdeče z odsevom
+Name[sv]=Gul och röd reflektion
+Name[tr]=Sarı ve Kırmızı Yansıma
+Name[uk]=Відбиття Жовтого і Червоного
+Name[x-test]=xxYellow and Red Reflectionxx
+Name[zh_CN]=黄红反射
+Name[zh_TW]=黃與紅反射
+File=yellow_reflection.rc
+

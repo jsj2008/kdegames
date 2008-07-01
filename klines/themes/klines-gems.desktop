@@ -1,0 +1,51 @@
+[KGameTheme]
+VersionFormat=1
+Name=Gems for Kolor Lines
+Name[ca]=Gemes per Kolor Lines
+Name[da]=Juveler til Kolor Lines
+Name[de]=Edelsteine für Kolor Lines
+Name[el]=Διαμάντια για το Kolor Lines
+Name[es]=Gemas para Kolor Lines
+Name[et]=Kolor Linesi kalliskivid
+Name[fa]=گوهر‌ها برای خطوط رنگی
+Name[fr]=Pierres pour Kolor Lines
+Name[ga]=Seoda le haghaidh Kolor Lines
+Name[gl]=Xoias para as liñas de cor
+Name[ja]=宝石
+Name[km]=ត្បូង​សម្រាប់​​បន្ទាត់ Kolor
+Name[lv]=Kolor Lines bumbiņas
+Name[nds]=Eddelstenen för Kolor Lines
+Name[pt]=Jóias para as Linhas Coloridas
+Name[pt_BR]=Gems para Linhas Koloridas
+Name[sv]=Juveler för Färglinjer
+Name[uk]=Коштовне каміння для рядків Kolor
+Name[x-test]=xxGems for Kolor Linesxx
+Name[zh_CN]=Kolor Lines 珠宝
+Name[zh_TW]=Kolor Lines 彩色線條
+FileName=klines-gems.svg
+Author=Eugene Trounev
+AuthorEmail=eugene.trounev@gmail.com
+Preview=klines-gems.png
+
+# number of "born" animation frames in svg
+NumBornFrames=4
+
+# number of "selected" animation frames in svg
+NumSelectedFrames=4
+
+# number of "die" animation frames in svg
+NumDieFrames=4
+
+# Timing settings:
+
+# amount of milliseconds to play one cycle of "born"-animation
+BornAnimDuration=200
+
+# amount of milliseconds to play one cycle of "selected"-animation
+SelectedAnimDuration=500
+
+# amount of milliseconds to play one cycle "die"-animation
+DieAnimDuration=200
+
+# amount of milliseconds to move the ball through one cell
+MoveAnimDuration=100

@@ -1,0 +1,42 @@
+Short term stuff
+================
+
+
+Game play and usability
+-----------------------
+
+* Create a small widget for summary of orders. Should be of the size
+  of the previous planetinfo widget and at the same place to the
+  right.
+
+* Let the user create orders by dragging the mouse from one planet	Pinaraf
+  to another
+
+
+
+Structure and other code issues
+-------------------------------
+
+* Remove gamecore.h
+
+* Refactor the GameView
+   - Remove AI players from it						done
+   - More signals/slots from gamelogic
+
+Features
+--------
+
+* A widget that shows the orders that the user has given this turn.
+
+* Drag move orders from one planet to another.
+
+* Make it possible to play with only the keyboard			DONE
+   - Let the ?A combination give info about planet A			done
+
+
+Long term stuff
+===============
+
+* Multiplayer via the internet
+
+

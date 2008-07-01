@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="kjumpingcuberc"/>
+  <group name="Game">
+    <entry name="Color0" type="Color">
+      <label>Color of neutral cubes.</label>
+      <default>#debc85</default>
+    </entry>
+    <entry name="Color1" type="Color">
+      <label>Color of player 1.</label>
+      <default>#77b753</default>
+    </entry>
+    <entry name="Color2" type="Color">
+      <label>Color of player 2.</label>
+      <default>#6193cf</default>
+    </entry>
+    <entry name="CubeDim" type="Int" min="5" max="10">
+      <label>Size of the playing field.</label>
+      <default>6</default>
+    </entry>
+    <entry name="Skill" type="Enum">
+      <choices>
+        <choice name="Beginner"/>
+        <choice name="Average"/>
+        <choice name="Expert"/>
+      </choices>
+      <label>Skill of the computer player.</label>
+      <default>Average</default>
+    </entry>
+    <entry name="ComputerPlayer1" type="Bool" key="Computer_Pl_1">
+      <label>Whether player 1 is played by the computer.</label>
+      <default>false</default>
+    </entry>
+    <entry name="ComputerPlayer2" type="Bool" key="Computer_Pl_2">
+      <label>Whether player 2 is played by the computer.</label>
+      <default>true</default>
+    </entry>
+  </group>
+</kcfg>

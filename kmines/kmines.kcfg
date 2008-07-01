@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="kminesrc"/>
+  <group name="General">
+    <entry name="Theme" type="String" key="Theme">
+      <label>The graphical theme to be used.</label>
+    </entry>
+  </group>
+  <group name="Options">
+    <entry name="CustomWidth" type="Int" key="custom width">
+      <label>The width of the playing field.</label>
+      <min>5</min>
+      <max>50</max>
+      <default>10</default>
+    </entry>
+    <entry name="CustomHeight" type="Int" key="custom height">
+      <label>The height of the playing field.</label>
+      <min>5</min>
+      <max>50</max>
+      <default>10</default>
+    </entry>
+    <entry name="CustomMines" type="Int" key="custom mines">
+      <label>The number of mines in the playing field.</label>
+      <default>20</default>
+    </entry>
+    <entry name="UncertainMark" type="Bool" key="uncertain mark">
+      <label>Whether the "uncertain" marker may be used.</label>
+      <default>true</default>
+    </entry>
+    <entry name="level" type="Enum">
+      <label>The difficulty level.</label>
+      <default>Easy</default>
+      <choices>
+        <choice name="Easy"/>
+        <choice name="Normal"/>
+        <choice name="Expert"/>
+        <choice name="Custom"/>
+      </choices>
+    </entry>
+  </group>
+</kcfg>

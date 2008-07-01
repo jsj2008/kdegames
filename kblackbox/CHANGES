@@ -1,0 +1,206 @@
+2007-08-16 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Moved the elements of the left (score and balls) in the view itself.
+	* Added "What's this?" texts.
+	* Changed the way the score is calculated.
+	* Added highscores.
+
+2007-07-27 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Added a clock in the status bar.
+
+2007-07-24 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Added a setting dialog to set up the size and the number of balls of the custom game.
+
+2007-07-18 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Added support of drag-and-drop: it's now possible to move balls and markers over the black box.
+
+2007-07-16 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Revived the action "Check positions". (It was called "Done" in the KDE 3 version). Now, "Solve" is for giving up and "Check positions" is for normal game end. Added a KPushButton for this action in the left part of the game area. Motivation for this change was the feedback of different players.
+
+2007-07-06 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Defined difficulty levels and used KGameDifficulty to manage them.
+
+2007-07-01 Nicolas Roffet <nicolas-kde@roffet.com>
+	* GUI: Sandbox mode is now not a configuration option anymore, it is a game mode.
+
+2007-06-24 Nicolas Roffet <nicolas-kde@roffet.com>
+	* The ending score message is now a KGamePopupItem.
+
+2007-05-12 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Added a "real" tutorial.
+
+2007-05-08 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Renamed the "tutorial" mode in "sandbox mode" in the code and in the settings menu as this denomination better fits.
+
+2007-04-01 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Code refactoring to merge keyboard and mouse control.
+
+2007-03-27 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Basic support of the keyboard reintroduced. (it has been removed on 2007-01-31.) Added a new (temporary) SVG item for the "cursor".
+	* Used i18np for the GUI texts to better support plural forms.
+
+2007-03-25 Nicolas Roffet <nicolas-kde@roffet.com>
+	* GUI: Added a new widget that displays the number of balls to place and the score. Position: now on the left part of the main window.
+
+2007-03-24 Nicolas Roffet <nicolas-kde@roffet.com>
+	* GUI: Created a new widget to display in the status bar how many balls remain to be placed on the black box.
+
+2007-03-23 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Preparation for Oxygenation: the element IDs in the SVG file have now better names.
+
+2007-03-21 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Code refactoring to better manage themes.
+	* The black box grid can now be custumized within the theme file (like the laser rays) with the XML node id="blackbox_grid".
+
+2007-03-11 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Preparation for Oxygenation: the laser ray attributes (color, width and style) are now customizable. The rays are not SVG elements but their attributes are defined in the SVG file and parsed.
+	* Correction of a (new) bug in the "solve" methode: Balls marked as "unsure" were not considered as placed balls.
+
+2007-03-10 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Added posibility to play with a non square grid: 18x12. First: this is fun, because the grid is really big! It's also useful to see how the graphic items are displayed in such a configuration and it helped me to find and fix a bug in the black box class. :)
+
+2007-03-09 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Preparation for Oxygenation: There are now 4 different SVG items for the lasers (one for each direction) instead of just one (with intern rotations), the graphic widget has now a SVG background and the black box is now a full SVG item (not a QGraphicsRectItem with a SVG question mark anymore).
+
+2007-03-03 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Removed the files of the old widget with QPixmap items. (Not used anymore)
+
+2007-02-24 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Small "goody": New SVG items in the GraphicsView displaying the interactions of laser rays with every ball the player is moving the mouse over.
+
+2007-02-18 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Clean-up in the class "KMainWindow".
+	* Tutorial starts immediately after switching to tutorial mode (and no anymore only with the start of the next game).
+
+2007-02-17 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Replaced the texts "H" and "R" by new symbols (SVG items).
+	* Widget Background has now the standard WindowBackground user defined color.
+
+2007-02-17 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Code optimisation and clean-up.
+	* The GraphicsItem "ray result" is now a SVG picture.
+
+2007-02-13 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Code optimisation and clean-up.
+
+2007-02-10 Nicolas Roffet <nicolas-kde@roffet.com>
+	* GUI: New GraphicsView item: laser ray. Now the player can see laser rays on the board to check if he placed the balls correctly on the board and to understand better how the interactions in the black box do work. At the end of the game, he can also see the laser rays of the solution.
+	* Separation of the class KBBBoard in 2 with the creation of the class KBBBallsOnBoard. The 1st one manages the game, the second one the boards.
+	* Interaction result "HIT" is now diplayed on the board like every other interaction result.
+	* Introduced contants to better manage the superposition order of the different graphic elements of the widget.
+	* And some clean-up...
+
+2007-02-09 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Right mouse button can now be used to place markers on the black box: position "unsure" and marker "nothing".
+	* The opposite border position of a laser ray is now highlighted, when the mouse is moving over one of the border position.
+	* Menu item (and action) "resize" removed. (It was unnecessary).
+
+2007-02-08 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Code clean-up to solve the issues found by the English Breakfast Network (on  http://www.englishbreakfastnetwork.org/krazy/reports/kde-4.0/kdegames/kblackbox/ ).
+
+2007-02-07 Nicolas Roffet <nicolas-kde@roffet.com>
+	* More SVG: The black box disposes now of a question mark. Lasers intend to try to look like lasers.
+
+2007-02-03 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Changed the way preferences are managed. It's not anymore with KSharedConfigPtr but with "KConfig XT". Good consequence: the following crash by closing the application disappeared: "Fatal Error: Accessed global static 'KGlobalPrivate *globalData()' after destruction." :)
+	* Substituted the macro "RESTORE" by the template "kRestoreMainWindows" for session management in "main.cpp".
+
+2007-02-03 Nicolas Roffet <nicolas-kde@roffet.com>
+	* New: Grid over the black box in the widget KBBScalableGraphicWidget.
+	* Updates the KBBScalableGraphicWidget after starting a new game. (Small bug corrected)
+	* Doesn't resize the widget automatically anymore after a change of the board size. It just bothered the player.
+
+2007-02-02 Nicolas Roffet <nicolas-kde@roffet.com>
+	* GUI: Removed the "Give up" and "Done" actions in the menu and toolbar and used the standard game action "Solve" instead of both. Depending on how many balls the player placed on the board, the game will be normaly finished or given up (after confirmation).
+
+2007-01-31 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Full rewrite of the central graphic widget with QGraphicsView to improve the user experience and to provide cool effects in the future ,)
+	* Full scalable central graphic widget (with some SVG elements: the balls and the cross): KBBScalableGraphicWidget.
+	* Old central widget KBBGraphic is still there and can be activated by changing 2 lines in the code.
+	* Set the version number to "0.4.0-SVN" as the changes are now big and visible.
+	* Bug correction: Number of placed balls is now immediately updated.
+	* Small temporary regressions: It's not possible to play with the keyboard anymore. User documentation is now out-dated.
+
+2007-01-21 Nicolas Roffet <nicolas-kde@roffet.com>
+	* In KBBGraphic: Fusion of the methodes "setSize" and "clear" in a new one "newGame". (Code optimisation)
+
+2007-01-20 Nicolas Roffet <nicolas-kde@roffet.com>
+	* Big clean-up (2nd part) to have a clean API between the logical game and the graphic widget (to be able to substitute it with a new one in the future).
+	* User input is now managed by the graphic widget.
+	* Full rewrite of the methode that calculates the trajectory of the laser ray.
+	* Object "gameBoard" removed.
+	* Documentation of the code of the class KBBBoard.
+
+2007-01-18 Nicolas Roffet <nicolas-kde@roffet.com>
+	* New private methode "KBBGame::comfirmGameEndIfNeeded()" to avoid duplication of code.
+	* New member variable "m_gameReallyStarted" to avoid to annoy the user with the confirmation of the end of the game when the player didn't really start to play.
+	* Removed several redundant tests "if (running)".
+	* small clean up in "KBBGame::giveUp()".
+	* Clean up: division of the class (and file) KBBGame in 2 classes (and 2 files) to remove a lot of dependencies to the graphic widget (KBBGraphic) in the main window:
+	    - KBBGame: main window of the game
+	    - KBBBoard: logical board of the game
+
+1999-06-07  Petter Reinholdtsen <pere@td.org.uit.no>
+	* kbbgame.cpp: Changed text Quit to Exit to match KDE style guide.
+
+0.3.0 from 0.2.6 (17.1.1999)
+	- KBBGraphic derived only from QWidget, not QTableView
+	  -> a complete rewrite of gfx stuff
+	  -> massive changes almost everywhere
+	- minimal size fixed
+	- new icons (I am just learning the povray :-)
+
+0.2.6 from 0.2.5 (25.8.1998)
+	- the game is active after starting
+	- fixed bad drawing after setting the board size
+	- config. scripts from new kexample (KDE 1.0)
+	- moc dependencies in Makefile.am done by automoc to
+	  avoid problems on Solaris (bug report by David Faure)
+	- some string fixes for better translation
+
+0.2.5 from 0.2.4 (19.3.1998)
+	- es language support added
+	- sk language support added
+
+0.2.4 from 0.2.3 (6.3.1998)
+	- pt language support added
+	- it language support added
+
+0.2.3 from 0.2.2 (10.2.1998)
+	- new icon for fired laser
+	- new icon for "give up"
+	- "done" added to menu and toolbar (new icon)
+	- help file updated
+
+0.2.2 from 0.2.1 (2.2.1998)
+	- "done" button removed - middle mouse button instead
+	- kde toolbar
+	- kde status bar
+	- new icons
+	- help file updated
+
+0.2.1 from 0.2.0:
+	- KBlackBox.kdelnk
+	- icon kblackbox.xpm
+	- double updating during resize fixed
+	- saves the application size
+	- doesn't autoresize after changing a board size
+
+0.2.0 from 0.1.1 (29.7.1997)
+	- kblackbox is now a KDE application -> help, configuration, ...
+	- autoconf usage (by kexample-0.4.0)
+	- remembers last used options
+	- pixmaps on fields in the box
+
+0.1.1 from 0.1.0 (29.4.1997)
+	- you are warned if you try to change # of balls when a game is running
+	- game->resize works properly, even if you moved scrollbars now
+	- mouseMoveEvent reimplemented, so that you can "draw" when a button
+	  is pressed
+	- marking with the right mouse button
+	- displaying more game statistics
+	- possibility to give up the game (shows you where the balls were)
+
+0.1.0 (28.4.1997)
+
+23.4.1997:
+	- start

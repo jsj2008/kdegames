@@ -1,0 +1,36 @@
+TODO LIST - as at 17 June 2008
+------------------------------
+
+Features Ready for KDE 4.1
+
+- Implement "Go To Standard View" from an arbitrary rotation of the whole cube.
+- Integrate keyboard moves and move-memory with rotations of the whole cube.
+- Implement Singmaster's move notation for keyboard moves (e.g. LRUDFB for
+  Left, Right, Up, Down, Front and Back), probably in a text-entry box, to
+  allow for combined strings of moves to be entered and executed.
+- Implement anti-aliasing, but with minimal performance loss.
+
+Fixed Ready for KDE 4.1
+
+- Sudden jumps during right-button cube-rotation - smoothed out or avoided.
+- Toolbar default set to IconsOnly.
+- Blinking on keyboard moves - timing fixed.
+- Singmaster moves, Singmaster display, Realign Cube, XYZ moves, Undo and Redo
+  synchronised correctly.
+- Singmaster moves synchronised with GUI actions Save/Load, Quit, etc.
+- Set the correct View action button as "checked" when Kubrick starts.
+
+Fixing Bugs and Blemishes
+
+- Icons needed for Kubrick application and the three new View actions.
+- Alternate keyboard shortcuts disappeared since KDE 4.0 release. Revive them.
+- Implementation of Settings to be made more consistent between demos and play.
+- Streamlined left-button slice-move sometimes goes in an unexpected direction.
+- Compound Singmaster moves not fully implemented.
+
+Adding New Features
+
+- Remove the status-bar. Put all in-game messages into the OpenGl canvas.
+- Add a move-counter.
+- Do something special when the cube has been solved.
+- Synchronise the Singmaster display with solution moves and pretty patterns.

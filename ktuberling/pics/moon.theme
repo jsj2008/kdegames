@@ -1,0 +1,33 @@
+ <playground gameboard="moon.svg" desktop="moon.desktop" bgcolor="#00275f">
+
+	<object name="astro1" sound="moon_earth" />
+	<object name="astro2" sound="moon_planet" />
+	<object name="astro3" sound="moon_star" />
+	<object name="astro4" sound="moon_star" />
+	<object name="astro5" sound="moon_fallingstar" />
+	<object name="astro6" sound="moon_fallingstar" />
+
+	<object name="build1" sound="moon_hotel" />
+	<object name="build2" sound="moon_sign" />
+	<object name="build3" sound="moon_radar" />
+	<object name="build4" sound="moon_radar" />
+
+	<object name="live1" sound="moon_monster" />
+	<object name="live2" sound="moon_monster" />
+	<object name="live3" sound="moon_astronaut" />
+	<object name="live4" sound="moon_astronaut" />
+	<object name="live5" sound="moon_alien" />
+	<object name="live6" sound="moon_alien" />
+	<object name="live7" sound="moon_alien" />
+	<object name="live8" sound="moon_alien" />
+
+	<object name="ship1" sound="moon_moonwalker" />
+	<object name="ship2" sound="moon_moonwalker" />
+	<object name="ship3" sound="moon_satellite" />
+	<object name="ship4" sound="moon_satellite" />
+	<object name="ship5" sound="moon_ufo" />
+	<object name="ship6" sound="moon_rocket" />
+	<object name="ship7" sound="moon_rocket" />
+	<object name="ship8" sound="moon_rocket" />
+
+</playground>

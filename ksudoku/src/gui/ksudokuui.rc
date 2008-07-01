@@ -1,0 +1,57 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="ksudoku" version="4">
+<MenuBar>
+	<Menu noMerge="1" name="game" ><text>&amp;Game</text>
+		<Action group="game_merge" name="game_new"  />
+		<Action group="game_merge" name="game_load" />
+		<Separator group="game_merge" />
+		<Action group="save_merge" name="game_save" />
+		<Action group="save_merge" name="game_save_as" />
+		<Separator group="save_merge" />
+		<Action group="print_merge" name="game_print" />
+		<Action group="print_merge" name="game_export" />
+		<Separator group="print_merge" />
+		<Action group="game_merge" name="game_quit" />
+	</Menu>
+
+	<Menu noMerge="1" name="move"><text>&amp;Move</text>
+		<Action name="move_undo" group="move_undo_merge" />
+		<Action name="move_redo" group="move_undo_merge" />
+		<Action name="move_add_group" group="move_undo_merge"/>
+		<Action name="move_undo_group" group="move_undo_merge"/>
+		<Separator group="move_undo_merge" />
+		<Action name="move_hint" />
+		<Action name="move_solve" />
+		<Action name="move_dub_puzzle" />
+	</Menu>
+
+	<Menu name="help"><text>&amp;Help</text>
+		<Action name="Home_page" />
+		<Action name="support" />
+		<Action name="sendComment" />
+	</Menu>
+</MenuBar>
+
+<ToolBar name="mainToolBar">
+	<text>Main Toolbar</text>
+	<Action name="game_new" />
+</ToolBar>
+
+<ToolBar noMerge="1" name="actionsToolbar" position="Top">
+	<text>Actions Toolbar</text>
+	<Action name="move_hint" />
+	<Action name="move_solve" />
+	<Action name="move_dub_puzzle" />
+</ToolBar>
+
+<State name="dubbing">
+	<enable>
+		<Action name="move_dub_puzzle" />
+	</enable>
+	<disable>
+		<Action name="move_hint"/>
+		<Action name="move_solve"/>
+	</disable>
+</State>
+
+</kpartgui>

@@ -1,0 +1,11 @@
+/* -------------------------------------------------------------
+   KDE Tuberling
+ ------------------------------------------------------------- */
+
+i18nc("NOTE TO THE TRANSLATORS",
+"The translators have the opportunity to translate the\n"
+"sounds spoken in the game.\n"
+"See the technical reference section in ktuberling's\n"
+"documentation for more information on how to do that.\n"
+"(translate this message as \"DONE\" when you have translated\n"
+"the sounds; otherwise leave it untranslated as a reminder)");

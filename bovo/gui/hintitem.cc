@@ -1,0 +1,131 @@
+/*******************************************************************
+*
+* This file is part of the KDE project "Bovo"
+*
+* Bovo is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2, or (at your option)
+* any later version.
+*
+* Bovo is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Bovo; see the file COPYING.  If not, write to
+* the Free Software Foundation, 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301, USA.
+*
+********************************************************************/
+
+#include "hintitem.h"
+
+#include <QtCore/QTimer>
+#include <QtGui/QColor>
+#include <QtGui/QPainter>
+#include <QtSvg/QSvgRenderer>
+
+#include "common.h"
+#include "coord.h"
+#include "move.h"
+#include "scene.h"
+
+using namespace bovo;
+
+namespace gui {
+
+HintItem::HintItem(Scene* scene, const Move& hint, bool animate, qreal fill)
+  : QGraphicsSvgItem(), m_scene(scene), m_row(hint.y()),
+  m_col(hint.x()), m_fill(fill) {
+    m_sizeShrink = 1.0/(qrand()%5+7.0);
+    setElementId(QString(hint.player() == X ? "x%1" : "o%1")
+            .arg(QString::number(qrand() % 5 + 1)));
+    m_tick = 16;
+    m_tickUp = true;
+    m_ticker = 0;
+    if (animate) {
+        m_ticker = new QTimer(this);
+        m_opacity = 0.0;
+        connect(m_ticker, SIGNAL(timeout()), this, SLOT(tick()));
+        m_ticker->start(30);
+    } else {
+        m_opacity = 0.4;
+    }
+}
+
+HintItem::~HintItem() {
+    if (m_ticker) {
+        disconnect(m_ticker, 0, this, 0);
+        m_ticker->stop();
+        m_ticker->deleteLater();
+    }
+}
+
+void HintItem::killAnimation() {
+    if (m_ticker) {
+        m_ticker->stop();
+        disconnect(m_ticker, 0, this, 0);
+        m_opacity = 0.4;
+        m_scene->demandRepaint();
+    }
+}
+
+void HintItem::kill() {
+    connect(m_ticker, SIGNAL(timeout()), this, SLOT(killTick()));
+    m_ticker->start();
+}
+
+void HintItem::killTick() {
+    m_opacity -= 0.05;
+    m_scene->demandRepaint();
+    if (m_opacity <= 0.05) {
+        m_ticker->stop();
+        emit killed();
+    }
+}
+
+void HintItem::tick() {
+    --m_tick;
+    if (m_tick == 0) {
+        killAnimation();
+    } else {
+        if (m_tickUp && m_tick > 5) {
+            m_opacity += 0.1;
+        } else if (m_tickUp) {
+            m_opacity -= 0.1;
+            m_tickUp = false;
+        } else {
+            m_opacity -= 0.1;
+        }
+        m_scene->demandRepaint();
+    }
+}
+
+// HintItem::setEnabled(enabled) {
+//     m_enabled = enabled;
+// }
+
+QRectF HintItem::glyphRectF() const {
+    qreal width = m_scene->width() / (NUMCOLS+2);
+    qreal height = width;
+    qreal margin = (1.0-m_fill) * width / 2.0;
+    //    qreal margin = m_sizeShrink * width;
+    return QRectF( (1+m_col) * width  + margin,
+                    (1+m_row) * height + margin,
+                    width  - 2.0*margin,
+                    height - 2.0*margin);
+}
+
+void HintItem::paint(QPainter *p, const QStyleOptionGraphicsItem*, QWidget*) {
+    p->setOpacity(m_opacity);
+    renderer()->render(p, elementId(), glyphRectF());
+}
+
+void HintItem::setFill(qreal fill) {
+    m_fill = fill;
+}
+
+} /* namespace gui */
+
+#include "hintitem.moc"

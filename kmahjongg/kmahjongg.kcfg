@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="kmahjonggrc"/>
+  <group name="General">
+    <entry name="TileSet" type="String" key="Tileset_file">
+      <label>The tile-set to use.</label>
+    </entry>
+    <entry name="Background" type="String" key="Background_file">
+      <label>The background to use.</label>
+    </entry>
+    <entry name="Layout" type="String" key="Layout_file">
+      <label>The layout of the tiles.</label>
+    </entry>
+    <entry name="SolvableGames" type="Bool" key="Solvable_game">
+      <label>Whether all games should be solvable.</label>
+      <default>true</default>
+    </entry>
+    <entry name="ShowMatchingTiles" type="Bool">
+      <label>Whether matching tiles are shown.</label>
+      <default>false</default>
+    </entry>
+  </group>
+</kcfg>

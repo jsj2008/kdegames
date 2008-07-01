@@ -1,0 +1,526 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY kappname "&lskat;"> 
+  <!ENTITY kappversion "1.4.0"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2008-02-26"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"> 
+  <!ENTITY % English "INCLUDE" >
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<book lang="&language;">
+<bookinfo>
+<title>Lieutnant Skat</title>
+<authorgroup>
+<author>
+<firstname>Martin</firstname>
+<surname>Heni</surname>
+<affiliation><address><email>kde@heni-online.de</email></address></affiliation>
+</author>
+<author>
+<firstname>Eugene</firstname><surname>Trounev</surname>
+<affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
+</author>
+<othercredit role="reviewer">
+<firstname>Mike</firstname><surname>McBride</surname>
+<contrib>Reviewer</contrib>
+<affiliation>
+<address>&Mike.McBride.mail;</address></affiliation>
+</othercredit>
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+</authorgroup>
+
+<date>&docupdate;</date>
+<releaseinfo>&kappversion;</releaseinfo>
+
+<legalnotice>&FDLNotice;</legalnotice>
+
+<abstract>
+<para>This documentation describes the game of ""&kappname;"" version &kappversion;</para>
+</abstract>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>kdegames</keyword>
+<keyword>game</keyword>
+<keyword>playing cards</keyword>
+<keyword>card game</keyword>
+<keyword>arcade</keyword>
+<keyword>card</keyword>
+<keyword>skat</keyword>
+<keyword>lieutenant</keyword>
+<keyword>lskat</keyword>
+<keyword>two players</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title>Introduction</title>
+<note><title>Gametype:</title><para>Card, Arcade</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+<para>
+Lieutnant Skat (from German <foreignphrase lang="de">Offiziersskat</foreignphrase>) is a fun and engaging card game for two players, where the second player is either live opponent, or built in artificial intelligence.
+</para>
+<para>
+The game is played using a single deck of cards. Cards are shuffled and distributed amongst the players in such a way that half of them are face down and half of them are open. Each participant plays one of the open cards per turn. As soon as all the cards are played the round ends and points are calculated and awarded.
+</para>
+</chapter>
+
+<chapter id="howto">
+<title>How to Play</title>
+<note><title>Objective:</title><para>Score more then 60 points in a single game.</para></note>
+<para>
+Once dealing is finished each player ends up with 16 cards each. Cards are
+displayed in two vertical rows - four cards per row. Half of the cards are face
+down and half are face up. As a player you can see the cards of your opponent
+as well as your own. You can make a move then by clicking on any of your cards
+which are currently face up. The opponent has to reply by choosing a
+corresponding card form his/her own stack.
+<note><title>Note</title><para>If your opponent is artificial intelligence, its
+cards will be chosen automatically.</para></note>
+Once the exchange is finished values of the played cards are evaluated and
+either you or your opponent is awarded points. The game is complete in 16
+rounds (when all of your and your opponent's cards have been played). After the
+game ends your score is be compared to that of your opponent and the player
+with the higher score wins the round.
+</para>
+</chapter>
+
+<chapter id="rules_and_tips">
+<title>Game Rules, Strategies and Tips</title>
+
+<sect1 id="screen">
+<title>Game Screen</title>
+
+<screenshot>
+<screeninfo>&lskat; default game screen.</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="lskat_screen_01.png" format="PNG" />
+</imageobject>
+<textobject>
+<phrase>&lskat; default game reference screen.</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<segmentedlist>
+<segtitle>1</segtitle>
+<segtitle>2, 3</segtitle>
+<segtitle>4</segtitle>
+<segtitle>5</segtitle>
+<segtitle>6</segtitle>
+<segtitle>7</segtitle>
+<segtitle>8</segtitle>
+<seglistitem>
+<seg>Active player indicator</seg>
+<seg>Card stacks for player one and player two</seg>
+<seg>Stack of won cards (if any)</seg>
+<seg>Gameplay area</seg>
+<seg>Score board with player's name, points in the current game, the overall score of the player, and the amount of wins per game</seg>
+<seg>Player's controller (Human/PC)</seg>
+<seg>The 'trump' in the current game</seg>
+</seglistitem>
+</segmentedlist>
+
+</sect1>
+
+<sect1 id="rules">
+<title>Rules</title>
+<itemizedlist>
+<listitem><para>Every player owns 16 cards. 8 of them are face down 8 of them are face up.</para></listitem>
+<listitem><para>A face down card can only be opened after a face up card covering it has been played.</para></listitem>
+<listitem><para>Each game has a randomly chosen 'trump' card [8].</para></listitem>
+<listitem><para>All four Jacks are counted as trumps and do not belong to their suits.</para></listitem>
+<listitem><para>If a color (&eg; heart) is selected as 'trump' all seven hearts as well as all four Jacks count as trumps, making 11 trump cards.</para></listitem>
+<listitem><para>Jacks beat each other in order (greatest to least): Club->Spade->Heart->Diamond.</para></listitem>
+<listitem><para>The sequence of cards for a trump color: Jack of clubs, Jack of spades, Jack of hearts, Jack of diamonds, Ace, Ten, King, Queen, Nine, Eight, Seven.</para></listitem>
+<listitem><para>The sequence of cards for a non-trump color: Ace, Ten, King, Queen, Nine, Eight, Seven.</para></listitem>
+<listitem><para>The values of the cards (highest to lowest):</para></listitem>
+</itemizedlist>
+
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row><entry>Card</entry><entry>Value</entry></row>
+<row><entry>Ace</entry><entry>11</entry></row>
+<row><entry>Ten</entry><entry>10</entry></row>
+<row><entry>King</entry><entry>4</entry></row>
+<row><entry>Queen</entry><entry>3</entry></row>
+<row><entry>Jack</entry><entry>2</entry></row>
+<row><entry>Nine</entry><entry>0</entry></row>
+<row><entry>Eight</entry><entry>0</entry></row>
+<row><entry>Seven</entry><entry>0</entry></row>
+</tbody>
+</tgroup>
+</informaltable>
+
+<itemizedlist>
+<listitem><para>A special 'trump' game is called the Grand. In this game no suit is trump and only the four Jacks count as trump. This game type is indicated by the symbol of a Jack's head [8] on the score board [6].</para></listitem>
+<listitem><para>If player starts the round he/she has a choice of cards to play with.</para></listitem>
+<listitem><para>Only the face up cards from the player's own stack can be used to play the round.</para></listitem>
+<listitem><para>Player who wins the round starts the next one.</para></listitem>
+<listitem><para>The player who wins the round adds values of the cards played in that round to his/her score.</para></listitem>
+<listitem><para>Player with more then 60 points wins the game.</para></listitem>
+<listitem><para>If both players finish with 60 points each the game ends in a draw.</para></listitem>
+<listitem><para>For each game a certain amount of victory points is awarded and added to the overall score.</para></listitem>
+</itemizedlist>
+
+<informaltable>
+<tgroup cols="2">
+<tbody>
+<row><entry>Points</entry><entry>Score</entry></row>
+<row><entry>60</entry><entry>1</entry></row>
+<row><entry>61 to 90</entry><entry>2</entry></row>
+<row><entry>91 to 119</entry><entry>3</entry></row>
+<row><entry>120</entry><entry>4</entry></row>
+</tbody>
+</tgroup>
+</informaltable>
+
+</sect1>
+
+<sect1 id="strategies">
+<title>Strategies and Tips</title>
+<para>
+When the game starts, the starting player should play any of the face up cards from own stack.
+If the second player currently has face up cards that are of the same suit as the card played, he/she has to reply with one of those cards. If, however, the second player does not have a card of the same suit, he/she can play with any other card.
+The player with the higher card value* wins both cards.
+<note><title>Note</title><para>If the replying player plays 'trump' card he/she wins both cards.</para></note>
+<note><title>Note</title><para>If the leading player plays 'trump' card he/she wins both cards.</para></note>
+The player who wins the round leads the next one.
+</para>
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title>Frequently asked questions</title>
+
+<qandaset>
+<qandaentry>
+<question><para>Who made this game?</para></question>
+ <answer><para>The kdegames team. You can find their website <ulink url="http://games.kde.org">here</ulink>.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where can I get cheatcodes? </para></question>
+ <answer><para>You cannot get cheatcodes for &kde; games.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I start a new game? </para></question>
+   <answer><para>You can start a new game using the <guibutton>New</guibutton> button on the toolbar, the <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> menu entry on the menubar or using the default shortcut <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I pause the game? </para></question>
+ <answer><para>This game does not have a 'Pause' feature as it does not require one.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the way this game looks. Can I? </para></question>
+ <answer><para>Yes you can. Refer to <link linkend="theme_change">this</link> section of 'Interface Overview' for details.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Can play with a different deck of cards?</para></question>
+ <answer><para>Yes. Refer to <link linkend="deck_change">this</link> section of 'Interface Overview' for details.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have made a mistake. Can I undo? </para></question>
+ <answer><para>No. This game does not have an 'Undo' feature.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Can I use keyboard? </para></question>
+ <answer><para>No. This game cannot be played using keyboard.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I cannot figure out what to do here! Are there hints? </para></question>
+ <answer><para>No. This game does not have a 'Hint' feature.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
+  <answer><para>No. This game does not have a 'Save State' feature.</para></answer>
+</qandaentry>
+<!-- lskat has no way to show the statistics=high scores so far, uncomment this, when it is implementented, and write an appropriate answer>
+<qandaentry>
+ <question><para>Where are the high scores?</para></question>
+ <answer><para></para></answer>
+</qandaentry>
+<-->
+<qandaentry>
+ <question><para>I want to change the game configuration. Where do I go? </para></question>
+ <answer><para>Refer to <link linkend="settings-menu">this</link> section of 'Interface Overview' for details.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the toolbar layout. What do I do?</para></question>
+ <answer><para>There a few ways to change the toolbar layout.  Refer to <link linkend="toolbar_change">this</link> section of 'Interface Overview' for details.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Can I change player's names?</para></question>
+ <answer><para>Yes. To change the names displayed on the right hand side of the game screen refer to <link linkend="name_change">this</link> section of 'Interface Overview' for details.</para></answer>
+</qandaentry>
+</qandaset>
+</chapter>
+
+<chapter id="interface">
+<title>Interface Overview</title>
+
+<sect1 id="file-menu">
+<title>The <guimenu>Game</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap><anchor id="new_game"/>N</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>New</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+<action>Starts a new game.</action> 
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>End</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>End Game</guimenuitem>
+</menuchoice></term>
+<listitem><para>
+<action>Aborts a running game.</action>
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Clear Statistics</guimenuitem>
+</menuchoice></term>
+<listitem><para>
+<action>Clears the all time game memory.</action> This statistic is
+saved when the game ended and shows the overall score and the amount of
+played and won games per player. This is cleared with this menu
+option.
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>
+Quits the program.</action>
+</para></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Toolbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>
+Shows or hides the toolbar.
+</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>
+Shows or hides the statusbar.
+</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guisubmenu>Starting Player</guisubmenu></menuchoice></term>
+<listitem><para>
+Selects whether player 1 (top) or player two (bottom)
+begins the next game.
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guisubmenu>Player 1 Played By</guisubmenu>
+</menuchoice></term>
+<listitem>
+<para>
+Chooses who should play for player 1 (top). The player can
+be either controlled by the local player with the mouse or
+the computer will control it.
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guisubmenu>Player 2 Played By</guisubmenu>
+</menuchoice></term>
+<listitem>
+<para>
+Chooses who should play for player 2 (bottom). The player can
+be either controlled by the local player with the mouse or
+the computer will control it.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="theme_change">
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guisubmenu>Theme</guisubmenu>
+</menuchoice></term>
+<listitem>
+<para>
+Chooses a visual theme. This changes the appearance of the game but not
+of the cards. Card decks are selected with their own menu option.
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="deck_change">
+<term><menuchoice>
+<shortcut>
+<keycap>F10</keycap>
+</shortcut>
+<guimenu>Settings</guimenu>
+<guimenuitem>Select Card Deck...</guimenuitem></menuchoice></term>
+<listitem><para>
+<action>
+Choose the face and back of the carddeck used for playing.</action> You
+can select these in a preview dialog showing all carddecks installed for
+&kde;.
+</para>
+<note>
+<para>
+Some carddecks or cardsets are marked as scalable graphics (SVG) in the dialog.
+Choosing them will display better quality of the graphics when the game is
+scaled or enlarged. Fixed size graphics will loose quality when resized different
+then their original size.
+</para>
+</note>
+</listitem>
+</varlistentry>
+
+<varlistentry id="name_change">
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Change Player Names...</guimenuitem>
+</menuchoice></term>
+<listitem><para>
+<action>Change the names of the players.</action>
+</para></listitem>
+</varlistentry>
+
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Shortcuts...</guimenuitem>
+</menuchoice></term>
+<listitem><para>
+<action>Open a dialog which lets you redefine all the keyboard shortcuts.</action>
+</para></listitem>
+</varlistentry>
+
+<varlistentry id="toolbar_change">
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Toolbars...</guimenuitem>
+</menuchoice></term>
+<listitem><para>
+<action>Open a dialog which lets you redefine the toolbar.</action>
+</para></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="help">
+<title>The <guimenu>Help</guimenu> Menu</title>
+
+
+&help.menu.documentation;
+
+</sect1>
+
+</chapter>
+
+<chapter id="credits">
+<title>Credits and License</title>
+
+<para>
+&lskat;
+</para>
+<para>
+Program copyright 2000-2007 &Martin.Heni; <email>kde@heni-online.de</email>
+</para>
+<para>
+Graphics copyright 2007 Eugene Trounev <email>eugene.trounev@gmail.com</email>
+</para>
+<para>
+Documentation copyright 2000-2007 &Martin.Heni; <email>kde@heni-online.de</email>
+</para>
+<para>
+Documentation converted to &kde; 2.0 by &Mike.McBride;
+&Mike.McBride.mail;
+</para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
+&underFDL;
+&underGPL;
+
+</chapter>
+
+<appendix id="installation">
+<title>Installation</title>
+
+&install.intro.documentation;
+
+
+<sect1 id="Compilation">
+<title>Compilation and Installation</title>
+
+&install.compile.documentation;
+
+</sect1>
+</appendix>
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
+
+
+

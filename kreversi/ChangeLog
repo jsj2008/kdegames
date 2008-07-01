@@ -1,0 +1,546 @@
+2006-09-09  Dmitry Suzdalev <dimsuz@gmail.com>
+	* kreversi: Merged branch kreversi_rewrite into trunk.
+	KReveri is now rewritten to use QGraphicsView framework
+2006-07-03  Inge Wallin  <inge@lysator.liu.se>
+
+	* kreversi.cpp (slotGameOver): Set state back to Ready after the
+	game is finished, and before showing highscore.
+
+2006-07-03  Inge Wallin  <inge@lysator.liu.se>
+
+	* Position.cpp (undoMove): Keep track of score when undoing a
+	move.
+
+	* qreversigameview.h (removeMove): show game status after removing
+	a move.
+	
+2006-07-02  Inge Wallin  <inge@lysator.liu.se>
+
+	* qreversigameview.cpp (moveMade): Print color Red/Blue in
+	addition to White/Black into the game view if non-BW color is
+	chosen in the preferences.
+
+
+	----------------------------------------------------------------
+	New start of ChangeLogging
+	----------------------------------------------------------------
+
+
+2005-04-04  Inge Wallin  <inge@lysator.liu.se>
+
+	Fix bug where hint and 'show legal moves' didn't work together.
+	* board.cpp (showHint): call drawSmallCircle if showLegalMoves is true.
+	(drawSmallCircle): new private method
+	New feature: show last move.
+	* board.cpp (setShowLastMove): new method
+	
+	
+	Refactoring: make showing of legal moves simpler
+	* board.cpp (showLegalMoves): Take bool for on/off instead of Movelist
+	(quitShowLegalMoves): removed
+	(m_legalMovesShowing): new bool member instead of m_legalMoves
+	* kreversi.cpp (misc): don't call showLegalMoves were not necessary
+	Fix a bug with 'show legal moves': old ones were never erased.
+	* board.cpp (showLegalMoves): new method broken out of updateBoard
+	
+	Some code cleaning and documentation
+	* DESIGN: Made documentation up-to-date
+	* qreversigame.{h,cpp} (updateBoard,turn): removed signals
+	* qreversigameview.{cpp} (slotNewGame): renamed into newGame
+	(updateBoard): new method
+	(updateMovelist): new method (empty yet)
+	(misc proxy methods): simplified.
+
+	Move over more view stuff to the gameview.
+	* kreversi.cpp (showMove): Renamed into handleMove, most of it
+	moved to the view
+	(slotStateChange): removed slot
+	(turn(Color), score, stateChange): removed signals
+	(setState): Do the job of slotStateChange.
+	* qreversigameview.cpp (moveMade): do the job of showMove
+
+	More control of the view by signals
+	* kreversi.cpp (showTurn): now catches sig_newGame and sig_update
+	from the game
+	(showTurn): new slot
+	
+	Let the game view be updated by signals from the game instead of
+	by explicit calls.
+	* kreversi.cpp (misc): Don't call updateboard et al.
+	(showColor): Removed
+	* qreversigame.cpp (sig_score): Removed.
+	* qreversigameview.{h,cpp} (slotNewGame, moveMade): new slots
+	
+2005-04-03  Inge Wallin  <inge@lysator.liu.se>
+	
+	Clean up the signals from the game and change some explicit calls
+	to update the view into signal/slots instead.
+	* kreversi.{h, cpp} (showScore): removed
+	* qreversigame.{h,cpp} (sig_newGame, sig_update): new signals
+	(gameOver): signal renamed into sig_gameOver
+	* qreversigameview.{h,cpp} (StatusWidget::setText): new method
+	(createView): New private method.
+	(updateView): new slot
+	(updateStatus): new slot
+	(setHumanColor): new method.
+	
+
+	Move the status info from the toolbar to the gameview.
+	* kreversi.{h,cpp} (StatusWidget): Removed class
+	(createStatusBar): Removed.
+	(m_krgame): renamed into m_game
+	* qreversigameview.{h,cpp} (StatusWidget): Added class
+
+	Move the movelist to the gameview.
+
+	Refactor: Create a new class QReversiGameView that will comprise
+	the entire view.
+	* Unfortunately the details of the change got lost in some stupid
+	mistake of mine.
+	
+2005-04-02  Inge Wallin  <inge@lysator.liu.se>
+
+	Fix bug 102890: The result is not put into the higscore if not all
+	squares are filled at the end of the game
+	* kreversi.cpp (KReversi): call slotNewGame
+
+2005-04-01  Inge Wallin  <inge@lysator.liu.se>
+
+	Fix bug 102297: I am playing in KReversi as "expert" but it saves
+	statistics to the "beginner" records
+	* kreversi.h (m_lowestStrength): Should be uint instead of bool.
+
+2005-03-31  Inge Wallin  <inge@lysator.liu.se>
+
+	Implement wish 102813: Should be able to show last move 
+	* board.{h,cpp} (m_showLastMove, lastMoveShown): new members
+	(setShowLastMove, showLastMove): new methods
+	(updateBoard): show last move.
+	* kreversi.{h,cpp} (showLastMoveAction): new toggleaction
+	(slotShowLastMove): new slot
+	* kreversiui.rc (show_last_move): new action
+	
+	Some consecutive small, but important changes (latest at the top).
+	* Position::undoMove(): new method.
+	* Remove m_lastPosition from class Game.
+	* Rename makeMove() to doMove() and takeBackMove() to undoMove().
+	
+	Big changes in the lower levels of the program.  Mostly
+	simplifications.
+	* Move.h, Move.cpp (SimpleMove): renamed from Move
+	(Move): new class with undo information
+	* Position.h, Position.cpp: allow Move and SimpleMove in various
+	places.
+	* Game.h, Game.cpp: allow Move and SimpleMove in various places
+
+2005-03-30  Inge Wallin  <inge@lysator.liu.se>
+
+	Continue on wish 82900
+	* kreversiui.rc (viewToolBar): new toolbar for the views.
+	* kreversi.{h,cpp} (showLegalMovesAction): new toggleaction
+	(slotShowLegalMOves): new slot
+	(misc): check status of toggle action before showing legal moves
+	NOTE: This change adds a new toolbar.  Before testing you must
+	      make install.
+
+	----------------------------------------------------------------
+
+	Start on wish 82900: Show possible moves in the current position
+	* Move.{h,cpp} (Move): new copy constructor
+	* Move.h (MoveList): new type
+	* qreversigame.h (position): new method.
+	* Position.{h,cpp} (generateMoves): new method
+	* board.{h,cc} (showLegalMoves, quitShowLegalMoves): new methods
+	(setMarks): Show also legal moves.
+	* kreversi.cpp: call showLegalMoves() in various places.
+
+	----------------------------------------------------------------
+
+	Implement wish 82517: show moves of the game in a view
+	* Game.h (Game): Make members protected.
+	(asString): new method
+	* qreversigame.cpp (makeMove): emit new signal sig_move .
+	* kreversi.{h,cpp} (m_movesView): new member
+	(showMove): new slot
+
+2005-03-29  Inge Wallin  <inge@lysator.liu.se>
+
+	Implement wish 82519: Label the board with A-H, 1-8
+	* board.cpp (OFFSET): new macro
+	(m_marksShowing): new member
+	(setMarks): new method
+	(mousePressEvent): take into account offset.
+	(updateBoard): draw markings if m_marksShowing is true
+	(drawOnePiece): take into account offset.
+	(adjustSize): take into account markings
+
+	Some cleaning
+	
+	----------------------------------------------------------------
+
+	Move KReversiGame out to its own file, and remove it.
+	* qreversigame.{h,cpp}: new files.
+	(class): Inherit from Game instead of containing it.
+	(signal score): Rename into sig_score().
+	* Makefile.am: include new files.
+	* board.cpp: Remove class KReversiGame
+	(all methods): Rename to QReversiGame
+	
+	Code cleaning
+	* Game.{h,cpp} (~Game): new method
+
+2005-03-28  Inge Wallin  <inge@lysator.liu.se>
+
+	* kreversi.cpp (KReversi): Fix faulty connect().
+
+
+================================================================
+	              KDE 3.4 released
+================================================================
+
+
+2005-02-18  Inge Wallin  <ingwa@dhcp-254-182.lkpg.cendio.se>
+
+	* version.h (KREVERSI_VERSION): Bumped version to 1.6
+
+2004-10-31  Inge Wallin  <inge@lysator.liu.se>
+
+	Better fix for bug 91055.
+	* kreversi.cpp (slotNewGame): Reimplement dialog using
+	KMessageBox::warningYesNo().  This solves the FIXME in the header.
+
+2004-10-15  Inge Wallin  <inge@lysator.liu.se>
+
+	Fix bug 90472: KReversi: When you interrupt the computers move and
+	then switch sides, the program gets confused
+	* kreversi.cpp (slotSwitchSides): Don't allow the user to switch
+	sides if the computers move is interrupted.
+
+2004-10-11  Inge Wallin  <inge@lysator.liu.se>
+
+	Code cleaning
+	* kreversi.{h,cpp}: Make all members follow the m_ convention.
+	Also added some comments.
+
+	----------------- CVS commit on stuff below --------------------
+
+	Fix bug 91055 - KReversi: If you start a new game when a game is
+	playing, the user is never asked for confirmation.
+	* kreversi.cpp (slotNewGame): Show a dialog that asks for
+	confirmation from the user.
+
+2004-10-09  Inge Wallin  <inge@lysator.liu.se>
+
+	Fix bug 90203: KReversi: It should be visible when the user
+	interrupts the computers thinking.
+	* kreversi.cpp (slotInterrupt): call showTurn().
+	(showTurn): Show "(interrupted)" if it is.
+	NOTE: This fix can't be backported easily since there is a string
+	freeze for BRANCH_3_3.
+	
+	----------------- CVS commit on stuff below --------------------
+
+	Fix a bug that made the score unset at startup.
+	* kreversi.cpp (KReversi): show the score at startup.
+
+	----------------- CVS commit on stuff below --------------------
+
+	Finally make KReversi a proper Model/View program (step I.4 and
+	I.5 from the plan in the TODO file).
+	* board.{h,cpp} (KReversiGame): new class
+	* board.{h,cpp} (Board): new name KReversiBoardView
+	* Lots of minor cleanup
+	* DESIGN: (class diagram): new info
+	
+	----------------- CVS commit on stuff below --------------------
+
+	Some minor cleanup.
+
+2004-10-03  Inge Wallin  <inge@lysator.liu.se>
+
+	* DESIGN: New document
+
+	----------------- CVS commit on stuff below --------------------
+	
+	Simplify saving of the game
+	* Game.{h,cpp} (move(uint)): New method.
+	* kreversi.cpp (saveGame): Use the new method, and don't call
+	loadGame to restore the Game object.
+
+2004-09-29  Inge Wallin  <inge@lysator.liu.se>
+
+	Continue to make KReversi a proper model/view program:
+	Step I.1 of the plan (see TODO): Fix the class Game
+	* Game.h (Game): Convert to store moves instead of positions.
+	* Game.cpp (Game): Code cleanup and convert as above.
+	* Game.{h,cpp}: Follow naming conventions from the rest of the
+	program.
+	* Position.{h,cpp}: Follow naming conventions from the rest of the
+	program.
+	* Position.{h,cpp} (Position::operator=): new method.
+	(Position::makeMove): new method.
+
+	Added myself in the credits in the about window.
+	(Will add myself to the real authors when we have KGame and
+	network play ready. :-) )
+	
+2004-09-27  Inge Wallin  <inge@lysator.liu.se>
+
+	Continue to make KReversi a proper model/view program:
+	* Transfer ownership of Game and Engine to kreversi from Board.
+	board.h, board.cpp, kreversi.h, kreversi.cpp: lots of changes.
+
+	Some other cleanup:
+	* SuperEngine.h (interrupt): renamed to interrupted()
+
+2004-09-26  Inge Wallin  <inge@lysator.liu.se>
+
+	Fix bug 90195: KReversi: Changing the skill level late in a game
+	doesn't count as cheating:
+	* board.h (Board::m_lowestStrength): new member
+	* board.cpp (Board::newGame): set m_lowestStrength
+	* board.cpp (Board::setStrength): update m_lowestStrength and
+	update highscore type.
+
+	Fix Bug 90190: KReversi: Switch sides and then Undo gets the
+	program out of sync.
+	* board.cpp (doUndo): If it is the computers turn to move after an
+	undo, call computerMakeMove().
+	(doUndo): Fix repainting so that it looks nice.
+
+2004-09-25  Inge Wallin  <inge@lysator.liu.se>
+
+	Transfer the rest of the slots for KActions to kreversi.cpp
+	* Board::interrupt()  -> KReversi::slotInterrupt()
+	* Board::doContinue() -> KReversi::slotContinue()
+	
+	Rename some slots for clarity
+	* KReversi::switchSides()  -> KReversi::slotSwitchSides()
+	* KReversi::showSettings() -> KReversi::slotEditSettings()
+
+	Make a trivial function inline:
+	* Board::interrupt()
+
+2004-09-24  Inge Wallin  <inge@lysator.liu.se>
+
+	Start the work to port KReversi to KGame/Kplayer:
+
+	Transfer the slots for most KActions to kreversi.cpp 
+	* Board::undo() -> KReversi::slotUndo()
+	(Board::doUndo()): Do the real work of undoing.
+	* Board->hint() -> KReversi::slotHint()
+	(Board::showHint): do the actual work of showing the hint.
+
+	Rename some slots for clarity
+	* KReversi::newGame  -> KReversi::slotNewGame
+	* KReversi::openGame -> KReversi::slotOpenGame
+	* KReversi::save     -> KReversi::slotSave
+	
+	Make some trivial functions inline:
+	* Board::whoseTurn()
+	* Board::moveNumber()
+	* Board::score(Color)
+	* Board::interrupted()
+	* Board::strength()
+
+2004-09-23 Anne-Marie Mahfouf <annemarie.mahfouf@free.fr>
+
+	Cleaned some previously left lines of code in board.cpp  
+	Change CustomAdditions=false back in prefs.kcfg to fix compilation
+	Tested Inges fix and found it works well.
+	
+2004-09-22  Inge Wallin  <inge@lysator.liu.se>
+
+	Fix bug 89829: "KReversi: When you save a game, the color for
+	Human and Computer is not saved" again.  See the discussion on the
+	KDE bugzilla for details
+	(http://bugs.kde.org/show_bug.cgi?id=89829).
+	* board.cpp (Board::saveGame): Save m_humanColor as HumanColor.  
+	* Remove saving of the side to move since this is implicit
+	anyway.
+	* (Board::loadGame): Fix loading of m_humanColor and
+	m_competitiveGame
+	* Fix emit of signal turn, and the condition to call
+	computerMakeMove().
+	* prefs_addons.h: Removed
+	
+	
+2004-09-18  Anne-Marie Mahfouf  (ChangeLog entry by Inge Wallin)
+
+	Fix bug 89829.  (See above, though)
+	* prefs_addons.h: New file 
+	* board.cpp (saveGame): Some changes
+	
+2004-09-18  Inge Wallin  <inge@lysator.liu.se>
+
+	Some cleaning: remove unused members, add m_ to members and some
+	comments.
+	* Engine.h (Engine::lastYield): removed
+	* Board.h (Board::nopaint): removed
+	* kreversi.{h,cpp} (KReversi::board): renamed into m_board.
+
+2004-09-17  Inge Wallin  <inge@lysator.liu.se>
+
+	Some further cleanup:
+	* board.{h,cpp} (game, engine, human): renamed into m_game,
+	m_engine and m_humanColor.
+	
+2004-09-16  Inge Wallin  <inge@lysator.liu.se>
+
+	Support Casual and Competitive play:
+	* SuperEngine.cpp (SuperEngine::computeMove()): new parameter
+	'competitive'
+	* Engine.cpp (Engine::computeMove()): new parameter 'competitive'
+	* board.cpp (m_competitiveGame): new member
+	(saveGame, loadGame): Save competitive in config file.
+	* kreversi.cpp (slotGameEnded): Only store result in highscore
+	file if the game was competitive all the time.
+	* kreversi.kcfg (CompetitiveGameChoice): new setting
+	* settings.ui: redesigned
+	
+
+2004-08-17  Inge Wallin  <inge@lysator.liu.se>
+
+	Finish the big code cleanup:
+	* board.h, board.cpp: cleaned up
+	* highscores.h, highscores.cpp,
+	* kzoommainwindow.h, kzoommainwindow.cpp:
+	Converted to same coding style as rest of kreversi.
+
+
+2004-08-16  Inge Wallin  <inge@lysator.liu.se>
+
+	Continue the big code cleanup:
+	* Engine.h, Engine.cpp
+	* kreversi.h kreversi.cpp
+
+
+2004-08-15  Inge Wallin  <inge@lysator.liu.se>
+
+	Continue the big code cleanup:
+	* SuperEngine.h, SuperEngine.cpp
+	* Game.h Game.cpp
+
+2004-08-14  Inge Wallin  <inge@lysator.liu.se>
+
+	Start of the big code cleanup:
+	* Move.h, Move.cpp
+	* Score.h, Score.cpp
+	* main.cpp
+	* Position.h, Position.cpp
+
+	Step 2 in the plan to use KGame from libkdegames:
+	* Code cleaning: Add some comments, reduce complexity, improve
+	indentation 
+	* Add m_to_move to class Position.
+
+
+	Step 1 in the plan to use KGame from libkdegames:
+	* Code cleaning: Change "enum Player" into "enum Color", since that
+	is really what it describes.
+
+2004-06-29 (1.5) Nicolas Hadacek <hadacek@kde.org>
+	* use KZoomMainWindow
+
+2004-05-29 (1.4) Nicolas Hadacek <hadacek@kde.org>
+	* fix statusbar + cleanup code
+	* use notify framework for sounds
+
+1999-06-20 Mario Weilguni <mweilguni@kde.org>
+	* fixed bugs with those damned KStdDirs
+	* removed the private wallpapers and use the KDE ones instead
+	* use kimgio
+	* fixed locating toolbar icons
+	* compiles now with --enable-final
+
+1999-06-16 Mario Weilguni <mweilguni@kde.org>
+	* adapted to the upcoming KDE-2
+
+1999-02-01 Mario Weilguni <mweilguni@kde.org>
+	* fixed a warning (egcs)
+
+1.0
+	* I finally decided that it´s stable enough. This is the final
+	version (if no further bugs are detected and I do not have a
+	good idea what to improve)
+
+	* ChangeLog reversed
+	
+0.6.6
+    * [Robert Williams]  Changed Reversi.kdelnk to kreversi.kdelnk
+    * [Robert Williams]  Add -caption "%c" to kreversi.kdelnk
+    * [Robert Williams]  Added kapp->getCaption()
+    * [Robert Williams]  getHelpMenu(true, 0) -> Uses own About dialog
+
+0.6.5	Support for non GNUC++ compilers.
+	
+0.6.4	fixed that get-hit-and-then-doubleclick bug
+
+	fixed a bug that caused the computer to switch sides if no
+	computer move is possible instead of getting another human move
+
+0.6.3	sound fix: when the animation is finished, the correct piece gets
+	redrawn before doing a sound-sync (how could I ever believe 0.6.2
+	would be the last change :-)
+
+0.6.2   animation fixed (hope this will be the last change)
+
+0.6.1   fixed that newly introduced highscore bug
+	computer continues now if a game was saved while thinking
+
+0.6:	better integration into new FSSTND
+	fixes for new kdecore
+	layout management for all dialogs
+	mini-icon and icon
+	locale-strings changed - partial translation required for
+	other languages than english and german
+	removed both the kfixedtopwidget and ktablistbox
+	drawing a border around the reversi board
+	session-management - what an overkill for kreversi :-))
+	you can save (and load) exactly ONE game
+
+
+0.5: added klocale to support translation
+	added german translation
+	fixed a few bugs
+	tried to remove absolute widget placing/sizing
+	removed the date field from the HOF
+	grayscale support
+	fixed those CPU busy bug
+	removed the -finline-functions optimize flag (not portable)
+	ported to new KDE file system standards (well, mostly)
+	fixed segfaulting on exit
+
+0.4: interims release - no changelog
+
+0.3: Sound support (using libmediatool)
+     When switching sides, the Quit -> the computer made on move. FIXED
+     Fixed a few typos
+     Cursor changes when thinking
+	
+0.2.1: times(NULL) does not work with FreeBSD (fixed)
+       fixed a bug (reported by Stephan Kulow) where pixmaps of pieces
+       are not initialized properly (could't reproduce the bug with
+       my system)
+       New "About" dialog showing all (well, most) of the contributors
+       All xpm's have now 8 bits per color component instead of 16.
+       16 bits seems to confuse the XPM loader of Qt.       
+
+0.2:   better pieces
+       animations
+       fixed a small bug: when someone made it in the hall of fame,
+       he was'nt notified of this
+       some improvements in the Hall Of Fame
+
+0.1.2: background color selectable via dialog
+       background pixmaps implemented, selectable via menu
+       background pixmaps are scaled to fit size
+       pieces are drawn at runtime instead of pixmaps
+       some accelerators added
+       toolbar buttons for help and hint added
+
+0.1.1: now pixmaps are installed
+       a kdelnk file is installed
+       version numbering changed
+
+0.1 : First release

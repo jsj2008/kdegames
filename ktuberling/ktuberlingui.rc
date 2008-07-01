@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<gui name="ktuberling" version="3">
+<MenuBar>
+  <Menu name="game"><text>&amp;Game</text>
+    <Action name="game_save_picture" append="save_merge"/>
+  </Menu>
+  <Menu name="playground"><text>&amp;Playground</text>
+    <Action name="lock_aspect_ratio"/>
+    <Separator/>
+    <ActionList name="playgroundList" />
+  </Menu>
+  <Menu name="speech"><text>&amp;Speech</text>
+    <Action name="speech_no_sound"/>
+    <Separator/>
+    <ActionList name="languagesList" />
+  </Menu>
+</MenuBar>
+<ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
+  <Action name="game_new"/>
+  <Action name="game_load"/>
+  <Action name="game_save"/>
+  <Action name="game_print"/>
+  <Separator/>
+  <Action name="edit_undo"/>
+  <Action name="edit_redo"/>
+</ToolBar>
+</gui>

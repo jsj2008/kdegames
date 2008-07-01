@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+
+<kcfgfile name="ksquaresrc"/>
+	<group name="Game Settings">
+		<entry name="NumOfPlayers" type="Int">
+			<label>Number of Players</label>
+			<default>2</default>
+		</entry>
+		<entry name="PlayerNames" type="StringList">
+			<label>Player Names</label>
+		</entry>
+		<entry name="HumanList" type="IntList">
+			<label>Human or AI</label>
+			<default>2,2,2,2</default>
+		</entry>
+		<entry name="BoardWidth" type="Int">
+			<label>Width of board</label>
+			<default>10</default>
+		</entry>
+		<entry name="BoardHeight" type="Int">
+			<label>Height of board</label>
+			<default>7</default>
+		</entry>
+		<entry name="QuickStart" type="Int">
+			<label>Quick start the game</label>
+			<default>0</default>
+		</entry>
+	</group>
+	<group name="AI">
+		<entry name="Difficulty" type="Int">
+			<label>Difficulty</label>
+			<whatsthis>How difficult the AI should be</whatsthis>
+			<default>0</default>
+		</entry>
+	</group>
+	<group name="Display">
+		<entry name="LineColor" type="Color">
+			<label>Line Color</label>
+			<whatsthis></whatsthis>
+			<default>0,0,0</default>
+		</entry>
+		<entry name="IndicatorLineColor" type="Color">
+			<label>Indicator Line Color</label>
+			<whatsthis></whatsthis>
+			<default>255,255,0</default>
+		</entry>
+		<entry name="HighlightColor" type="Color">
+			<label>Highlight Color</label>
+			<whatsthis></whatsthis>
+			<default>220,100,100</default>
+		</entry>
+	</group>
+</kcfg>

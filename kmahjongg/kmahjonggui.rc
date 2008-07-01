@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<gui name="kmahjongg" version="3">
+
+<MenuBar>
+  <Menu name="game"><text>&amp;Game</text>
+    <Action name="game_new_numeric" append="new_merge" />
+  </Menu>
+  <Menu name="move"><text>&amp;Move</text>
+    <Action name="move_shuffle" />
+  </Menu>
+  <Menu name="view"><text>&amp;View</text>
+    <Action name="view_anglecw" />
+    <Action name="view_angleccw" />
+  </Menu>
+</MenuBar>
+
+<ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
+  <Action name="game_new" />
+  <Action name="game_load" />
+  <Action name="game_save" />
+  <Action name="move_undo" />
+  <Action name="move_redo" />
+  <Action name="game_pause" />
+  <Action name="move_hint" />
+</ToolBar>
+
+<State name="inactive">
+  <enable>
+    <Action name="game_new"/>
+    <Action name="game_new_numeric"/>
+    <Action name="game_load"/>
+    <Action name="game_save"/>
+    <Action name="game_highscores"/>
+    <Action name="move_hint"/>
+    <Action name="game_pause"/>
+    <Action name="move_demo"/>
+    <Action name="view_angle"/>
+  </enable>
+  <disable>
+  </disable>
+</State>
+
+<State name="active">
+  <enable>
+    <Action name="move_demo"/>
+  </enable>
+  <disable>
+    <Action name="game_new"/>
+    <Action name="game_new_numeric"/>
+    <Action name="game_load"/>
+    <Action name="game_save"/>
+    <Action name="game_highscores"/>
+    <Action name="move_hint"/>
+    <Action name="game_pause"/>
+    <Action name="move_undo"/>
+    <Action name="move_redo"/>
+    <Action name="view_angle"/>
+  </disable>
+</State>
+
+<State name="paused">
+  <enable>
+    <Action name="game_pause"/>
+  </enable>
+  <disable>
+    <Action name="game_new"/>
+    <Action name="game_new_numeric"/>
+    <Action name="game_load"/>
+    <Action name="game_save"/>
+    <Action name="game_highscores"/>
+    <Action name="move_hint"/>
+    <Action name="move_undo"/>
+    <Action name="move_redo"/>
+    <Action name="move_demo"/>
+    <Action name="view_angle"/>
+  </disable>
+</State>
+
+</gui>

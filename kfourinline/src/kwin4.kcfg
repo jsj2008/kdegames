@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="kwin4rc"/>
+  <include>klocale.h</include>
+  <group name="Parameter">
+    <entry name="port" type="Int">
+      <label>Network connection port</label>
+      <default>7442</default>
+    </entry>
+    <entry name="gamename" type="String">
+      <label>Game name</label>
+    </entry>
+    <entry name="host" type="String">
+      <label>Network connection host</label>
+      <default>localhost</default>
+    </entry>
+    <entry name="level" type="Int">
+      <label>Change the strength of the computer player.</label>
+      <default>3</default>
+      <min>1</min>
+      <max>7</max>
+    </entry>
+
+    <entry name="Name1" type="String">
+      <label>Player 1 name</label>
+      <code>
+        QString playerName1 = i18nc("default name of first player", "Player 1");
+      </code>
+      <default code="true">playerName1</default>
+    </entry>
+    <entry name="Name2" type="String">
+      <label>Player 2 name</label>
+      <code>
+        QString playerName2 = i18nc("default name of second player", "Player 2");
+      </code>
+      <default code="true">playerName2</default>
+    </entry>
+    <entry name="input0mouse" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="input0key" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="input0ai" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="input1mouse" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="input1key" type="Bool">
+      <default>false</default>
+    </entry>
+    <entry name="input1ai" type="Bool">
+      <default>false</default>
+    </entry>
+    
+    <entry name="startcolourred" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="startcolouryellow" type="Bool">
+      <default>false</default>
+    </entry>
+
+    <entry name="learning" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="ailock" type="Bool">
+      <default>false</default>
+    </entry>
+  </group>
+</kcfg>
