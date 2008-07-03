@@ -9,10 +9,15 @@ include(MacroLibrary)
 include(MacroOptionalAddSubdirectory)
 include(GGZ)
 
+if(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
+	set(OPENGL_SUPPORT true)
+endif(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
+
 macro_log_feature(GGZCONFIG_FOUND "ggz-client-libs" "GGZ configuration program"	"http://www.ggzgamingzone.org/" FALSE "" "Needed to support registering KDE games with the GGZ Gaming Zone for online gaming.")
 
 macro_optional_find_package(OpenGL)
-macro_log_feature(OPENGL_FOUND "OpenGL" "API for developing portable, interactive 2D and 3Dgraphics applications" "http://mesa3d.sourceforge.net" FALSE "" "KSudoku will not be built without OpenGL.")
+macro_log_feature(OPENGL_FOUND "OpenGL" "API for developing portable, interactive 2D and 3Dgraphics applications" "http://mesa3d.sourceforge.net" FALSE "" "Kubrick will not be built and KSudoku will not have Roxdoku support without OpenGL.")
+macro_log_feature(QT_QTOPENGL_FOUND "QtOpenGL" "Qt module that make it easy to use OpenGL in Qt apps" "http://doc.trolltech.com/latest/qtopengl.html" FALSE "" "Kubrick will not be built and KSudoku will not have Roxdoku support without QtOpenGL.")
 
 add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 include_directories ( ${QDBUS_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
@@ -64,10 +69,10 @@ macro_optional_add_subdirectory(ksirk)
 macro_optional_add_subdirectory(kspaceduel)
 macro_optional_add_subdirectory(ksquares)
 macro_optional_add_subdirectory(ktuberling)
-if(OPENGL_FOUND)
-  macro_optional_add_subdirectory(ksudoku)
+macro_optional_add_subdirectory(ksudoku)
+if(OPENGL_SUPPORT)
   macro_optional_add_subdirectory(kubrick)
-endif(OPENGL_FOUND)
+endif(OPENGL_SUPPORT)
 add_subdirectory( cmake )
 
 
