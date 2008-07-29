@@ -7,7 +7,10 @@ find_package(KDE4 REQUIRED)
 include(KDE4Defaults)
 include(MacroLibrary)
 include(MacroOptionalAddSubdirectory)
+
+# Integration with the GGZ Gaming Zone
 include(GGZ)
+set(GGZ_REGISTRYNAME "kdegames")
 
 macro_log_feature(GGZCONFIG_FOUND "ggz-client-libs" "GGZ configuration program"	"http://www.ggzgamingzone.org/" FALSE "" "Needed to support registering KDE games with the GGZ Gaming Zone for online gaming.")
 

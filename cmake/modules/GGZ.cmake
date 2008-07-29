@@ -1,12 +1,14 @@
 # Installation of GGZ game modules and GGZ library checks
-# Josef Spillner <josef@ggzgamingzone.org> 2006, 2007
+# Josef Spillner <josef@ggzgamingzone.org> 2006 - 2008
 # see install_pam_service for some comments on DESTDIR etc.
 
 ###########################################################
 # Documentation
 # - call register_ggz_module(module.dsc) in your game's CMakeLists.txt
 # - set -DGGZ_NOREGISTRY=/usr/share/ggz/modules/kdegames when building binary packages
+#   (mostly obsolete now)
 # - set -DGGZ_FORCEREGISTRY=1 to force registration in out-of-prefix installations
+# - set GGZ_REGISTRYNAME in top-level CMakeLists.txt to package name
 
 ###########################################################
 # Check for existence of 'ggz-config' tool
@@ -65,8 +67,13 @@ if(SKIP_GGZCONFIG)
     MESSAGE(STATUS "GGZ: Warning: KDE games will not be found by GGZ clients.")
 else(SKIP_GGZCONFIG)
     macro(register_ggz_module MODFILE)
+        if(GGZ_REGISTRYNAME)
+            set(REGARG "--registry=${GGZ_REGISTRYNAME}")
+        else(GGZ_REGISTRYNAME)
+            set(REGARG "")
+        endif(GGZ_REGISTRYNAME)
         install(CODE "
-            exec_program(${GGZCONFIG_EXECUTABLE} ARGS --install -D --force ${NOREG} --modfile=${CMAKE_CURRENT_SOURCE_DIR}/${MODFILE})
+            exec_program(${GGZCONFIG_EXECUTABLE} ARGS --install -D --force ${NOREG} ${REGARG} --modfile=${CMAKE_CURRENT_SOURCE_DIR}/${MODFILE})
         ")
     endmacro(register_ggz_module)
 endif(SKIP_GGZCONFIG)
