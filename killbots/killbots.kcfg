@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd"
+>
+	<kcfgfile/>
+	<group name="General">
+		<entry name="MiddleClickAction" type="Enum">
+			<choices name="ClickAction">
+				<choice name="Nothing"/>
+				<choice name="Step"/>
+				<choice name="RepeatedStep"/>
+				<choice name="Teleport"/>
+				<choice name="TeleportSafely"/>
+				<choice name="TeleportSafelyIfPossible"/>
+				<choice name="WaitOutRound"/>
+			</choices>
+			<default>RepeatedStep</default>
+			<tooltip>The action performed on a middle-click</tooltip>
+			<whatsthis>Selects the action performed when middle-clicking on the main game area. If a middle mouse button is not available, this action can be performed by left- and right-clicking simultaneously or by left-clicking while holding the control key.</whatsthis>
+		</entry>
+		<entry name="RightClickAction" type="Enum">
+			<choices name="ClickAction"/>
+			<default>TeleportSafelyIfPossible</default>
+			<tooltip>The action performed on a right-click</tooltip>
+			<whatsthis>Selects the action performed when right-clicking on the main game area.</whatsthis>
+		</entry>.
+		<entry name="AnimationSpeed" type="Int">
+			<min>0</min>
+			<max>10</max>
+			<default>5</default>
+			<tooltip>The speed used to display animations</tooltip>
+			<whatsthis>Adjusts the speed at which the in game animations are displayed.</whatsthis>
+		</entry>
+		<entry name="PreventUnsafeMoves" type="Bool">
+			<default>true</default>
+			<tooltip>Prevent the player from making fatal moves</tooltip>
+			<whatsthis>If checked, the game will ignore any move that would result in the immediate death of the hero (other than random teleports and waiting out the round).</whatsthis>
+		</entry>
+		<entry name="Ruleset" type="String">
+			<default>default.desktop</default>
+			<tooltip>The selected set of game rules</tooltip>
+			<whatsthis>Selects the set of game rules to be used in the next game.</whatsthis>
+		</entry>
+		<entry name="Theme" type="String">
+			<default>themes/default.desktop</default>
+			<tooltip>The selected game theme</tooltip>
+			<whatsthis>Selects the theme used to display all in game elements.</whatsthis>
+		</entry>
+	</group>
+</kcfg>
