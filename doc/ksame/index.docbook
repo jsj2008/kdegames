@@ -138,7 +138,7 @@ Otherwise you are presented a dialog in which you can choose a specific board.
 <keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Show High Scores...</guimenuitem>
+<guimenuitem>Show High Scores</guimenuitem>
 </menuchoice></term>
 <listitem><para>Displays the high score table.</para></listitem>
 </varlistentry>
