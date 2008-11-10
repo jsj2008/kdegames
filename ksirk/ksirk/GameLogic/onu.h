@@ -197,6 +197,7 @@ public:
 
   inline void setZoomArena(double newZoom) {m_zoomArena = newZoom;}
 
+  inline GameAutomaton* automaton() {return m_automaton;}
 private:
   /**
     * All data that have to be stored about the font to display countries names
@@ -307,13 +308,14 @@ private:
     */
     QTimer * m_timerFast;
     int bo;
+    
   /**
     * This SVG renderer stores the SVG file of the map, renders it at the
     * desired zoom factor and the result is used to build the map image.
     */
-  QSvgRenderer m_renderer;
+//   QSvgRenderer m_renderer;
 
-  KGameSvgDocument m_svgDom;
+//   KGameSvgDocument m_svgDom;
 
   /**
    * Build the map from it's stored image and the countries names

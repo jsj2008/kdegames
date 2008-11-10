@@ -27,9 +27,14 @@
 #include <kgame/kgamepropertyarray.h>
 #include <kgame/kgameproperty.h>
 #include <kgame/kmessageio.h>
+#include <KGameSvgDocument>
+
+#include <KPixmapCache>
 
 #include <QPointF>
 #include <QString>
+#include <QSvgRenderer>
+#include <QMap>
 
 #include <iostream>
 
@@ -166,6 +171,12 @@ public:
     STARTING_GAME // when displaying the new game ui
   };
 
+  enum NetworkGameType {
+    None,
+    Socket,
+    Jabber
+  };
+  
   GameAutomaton();
   
   virtual ~GameAutomaton();
@@ -228,6 +239,7 @@ public:
     * @return the number of players playing from the network.
     */
   inline unsigned int networkPlayersNumber() {return m_networkPlayersNumber;}
+  inline void setNetworkPlayersNumber(unsigned int nb) {m_networkPlayersNumber = nb;}
   
   /** Retrives the game window. This one still contains too much game code 
     * that shouldn't be in a GUI class. */
@@ -307,7 +319,7 @@ public:
     * will contain the port on which we will wait for connections.
     * @param newPlayersNumber Will contain the number players of the new game.
     */
-  bool setupPlayersNumberAndSkin();
+  bool setupPlayersNumberAndSkin(NetworkGameType netGameType);
   
     /**
      * Create an IO device like Mouse or Keyboard for the given player
@@ -370,8 +382,25 @@ public:
     */
   inline bool isDefenseAuto() {return m_defenseAuto;}
 
-  bool finishSetupPlayersNumberAndSkin(const QString& skin, bool networkGame, uint newPlayersNumber);
+  bool finishSetupPlayersNumberAndSkin(const QString& skin, NetworkGameType networkGame, uint newPlayersNumber);
 
+  inline int port() const {return m_port;}
+
+  void askForJabberGames();
+
+  bool startingGame() const;
+
+  KPixmapCache& pixmapCache() {return m_pixmapCache;}
+  QSvgRenderer& rendererFor(const QString& skinName);
+  KGameSvgDocument& svgDomFor(const QString& skinName);
+
+  inline NetworkGameType networkGameType() {return m_netGameType;}
+
+  bool joinJabberGame(const QString& nick);
+
+Q_SIGNALS:
+  void newJabberGame(const QString&, int, const QString&);
+    
 public Q_SLOTS:
   /** Reacts to the current state eventualy processing one queued event */
   GameState run();
@@ -451,7 +480,7 @@ protected:
   void setGoalFor(Player* player);
   
 private:
-  GameAutomaton(const GameAutomaton& /*ga*/) : KGame() {};
+  GameAutomaton(const GameAutomaton& /*ga*/) : KGame(), m_pixmapCache("GameAutomaton") {};
 
   void countriesDistribution();
 
@@ -525,6 +554,16 @@ private:
 
   // Save Defense country
   Country * defCountry;
+
+  int m_port;
+  
+  bool m_startingGame;
+
+  KPixmapCache m_pixmapCache;
+  QMap<QString, QSvgRenderer*> m_renderers;
+  QMap<QString, KGameSvgDocument> m_svgDoms;
+
+  NetworkGameType m_netGameType;
 };
 
 QDataStream& operator>>(QDataStream& s, GameAutomaton::GameState& state);

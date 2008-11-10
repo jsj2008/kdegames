@@ -19,7 +19,8 @@
 /*  begin                : mer jui 11 22:27:28 EDT 2001   */
 
 // application specific includes
-#include "kgamewin.h" 
+#include "kgamewin.h"
+#include "mainMenu.h"
 #include "ksirkConfigDialog.h"
 #include "ksirksettings.h"
 #include "MessageBubble.h"
@@ -43,6 +44,9 @@
 #include "Dialogs/kwaitedplayersetupdialog.h"
 #include "Dialogs/restartOrExitDialogImpl.h"
 #include "Dialogs/newGameDialogImpl.h"
+#include "Dialogs/jabbergameui.h"
+#include "im.h"
+#include "xmpp_tasks.h"
 
 
 //include files for QT
@@ -53,6 +57,9 @@
 #include <QString>
 #include <QVBoxLayout>
 #include <QMovie>
+#include <QUuid>
+#include <QHostInfo>
+
 // include files for KDE
 #include <kiconloader.h>
 #include <kmessagebox.h>
@@ -77,9 +84,10 @@
 #include <KAction>
 #include <KSvgRenderer>
 #include <KDialog>
+#include <KAboutData>
 
 
-#include <assert.h>
+#include <sys/utsname.h>
 
 
 namespace Ksirk
@@ -127,7 +135,11 @@ KGameWindow::KGameWindow(QWidget* parent) :
   m_rightarrow(0),
   m_newGameDialog(0),
   m_stateBeforeNewGame(GameAutomaton::INVALID),
-  m_stackWidgetBeforeNewGame(-1)
+  m_stackWidgetBeforeNewGame(-1),
+  m_jabberClient(new JabberClient()),
+  m_advertizedHostName(QHostInfo::localHostName()),
+  m_jabberGameWidget(0),
+  m_presents()
   {
   kDebug() << "KGameWindow constructor begin";
 
@@ -244,6 +256,55 @@ KGameWindow::KGameWindow(QWidget* parent) :
 
   m_timer.setSingleShot(true);
   connect(&m_timer,SIGNAL(timeout()),this,SLOT(evenementTimer()));
+
+  struct utsname utsBuf;
+
+  kDebug() << "Connecting Jabber signals";
+  QObject::connect ( m_jabberClient, SIGNAL ( csDisconnected () ), this, SLOT ( slotCSDisconnected () ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( csError ( int ) ), this, SLOT ( slotCSError ( int ) ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( tlsWarning ( QCA::TLS::IdentityResult, QCA::Validity ) ), this, SLOT ( slotHandleTLSWarning ( QCA::TLS::IdentityResult, QCA::Validity ) ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( connected () ), this, SLOT ( slotConnected () ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( error ( JabberClient::ErrorCode ) ), this, SLOT ( slotClientError ( JabberClient::ErrorCode ) ) );
+  
+//   QObject::connect ( m_jabberClient, SIGNAL ( subscription ( const XMPP::Jid &, const QString & ) ), this, SLOT ( slotSubscription ( const XMPP::Jid &, const QString & ) ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( rosterRequestFinished ( bool ) ), this, SLOT ( slotRosterRequestFinished ( bool ) ) );
+//   QObject::connect ( m_jabberClient, SIGNAL ( newContact ( const XMPP::RosterItem & ) ), this, SLOT ( slotContactUpdated ( const XMPP::RosterItem & ) ) );
+//   QObject::connect ( m_jabberClient, SIGNAL ( contactUpdated ( const XMPP::RosterItem & ) ), this, SLOT ( slotContactUpdated ( const XMPP::RosterItem & ) ) );
+//   QObject::connect ( m_jabberClient, SIGNAL ( contactDeleted ( const XMPP::RosterItem & ) ), this, SLOT ( slotContactDeleted ( const XMPP::RosterItem & ) ) );
+//   QObject::connect ( m_jabberClient, SIGNAL ( resourceAvailable ( const XMPP::Jid &, const XMPP::Resource & ) ), this, SLOT ( slotResourceAvailable ( const XMPP::Jid &, const XMPP::Resource & ) ) );
+//   QObject::connect ( m_jabberClient, SIGNAL ( resourceUnavailable ( const XMPP::Jid &, const XMPP::Resource & ) ), this, SLOT ( slotResourceUnavailable ( const XMPP::Jid &, const XMPP::Resource & ) ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( messageReceived ( const XMPP::Message & ) ), this, SLOT ( slotReceivedMessage ( const XMPP::Message & ) ) );
+//   QObject::connect ( m_jabberClient, SIGNAL ( incomingFileTransfer () ), this, SLOT ( slotIncomingFileTransfer () ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( groupChatJoined ( const XMPP::Jid & ) ), this, SLOT ( slotGroupChatJoined ( const XMPP::Jid & ) ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( groupChatLeft ( const XMPP::Jid & ) ), this, SLOT ( slotGroupChatLeft ( const XMPP::Jid & ) ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( groupChatPresence ( const XMPP::Jid &, const XMPP::Status & ) ), this, SLOT ( slotGroupChatPresence ( const XMPP::Jid &, const XMPP::Status & ) ) );
+  
+  QObject::connect ( m_jabberClient, SIGNAL ( groupChatError ( const XMPP::Jid &, int, const QString & ) ), this, SLOT ( slotGroupChatError ( const XMPP::Jid &, int, const QString & ) ) );
+  QObject::connect ( m_jabberClient, SIGNAL ( debugMessage ( const QString & ) ), this, SLOT ( slotClientDebugMessage ( const QString & ) ) );
+  
+  m_jabberClient->setUseXMPP09 ( true );
+//     m_jabberClient->setUseSSL ( true );
+  m_jabberClient->setAllowPlainTextPassword ( true );
+
+  uname (&utsBuf);
+  m_jabberClient->setClientName ("KsirK");
+  m_jabberClient->setClientVersion (KGlobal::mainComponent().aboutData()->version ());
+  m_jabberClient->setOSName (QString ("%1 %2").arg (utsBuf.sysname, 1).arg (utsBuf.release, 2));
+  
+  // Set caps node information
+  m_jabberClient->setCapsNode("http://ksirk.kde.org/jabber/caps");
+  m_jabberClient->setCapsVersion(KGlobal::mainComponent().aboutData()->version());
+  
+  // Set Disco Identity information
+  DiscoItem::Identity identity;
+  identity.category = "client";
+  identity.type = "pc";
+  identity.name = "KsirK";
+  m_jabberClient->setDiscoIdentity(identity);
+
+  m_initialPresence = XMPP::Status ( "", "", 5, true );
+
+  connect (this, SIGNAL(newJabberGame(const QString&, int, const QString&)), m_automaton, SIGNAL(newJabberGame(const QString&, int, const QString&)));
 }
 
 KGameWindow::~KGameWindow()
@@ -285,32 +346,67 @@ void KGameWindow::initActions()
   KStandardAction::preferences( this, SLOT( optionsConfigure() ), actionCollection() );
 
   // specific ksirk action
-  QString imageFileName = m_dirs-> findResource("appdata", m_automaton->skin() + '/' + CM_NEWNETGAME);
-//   kDebug() << "Trying to load button image file: " << imageFileName;
+  QString imageFileName = m_dirs-> findResource("appdata", "jabber.png");
+  //   kDebug() << "Trying to load button image file: " << imageFileName;
+  if (imageFileName.isNull())
+  {
+    KMessageBox::error(0, i18n("Cannot load button image %1<br>Program cannot continue",QString("jabber.png")), i18n("Error !"));
+    exit(2);
+  }
+  m_jabberAction = new QAction(QIcon(QPixmap(imageFileName)), i18n("Play over Jabber"), this);
+  m_jabberAction-> setText(i18n("Play KsirK over the Jabber Network"));
+  m_jabberAction-> setIconText("Jabber");
+  m_jabberAction->setShortcut(Qt::CTRL+Qt::Key_J);
+  m_jabberAction->setStatusTip(i18n("Allow to connect to a KsirK Jabber Multi User Gaming Room to create new games or to join present games"));
+  connect(m_jabberAction,SIGNAL(triggered(bool)),this,SLOT(slotJabberGame()));
+  kDebug() << "Adding action game_jabber";
+  actionCollection()->addAction("game_jabber", m_jabberAction);
+  
+  // specific ksirk action
+  imageFileName = m_dirs-> findResource("appdata", m_automaton->skin() + '/' + CM_NEWNETGAME);
+  //   kDebug() << "Trying to load button image file: " << imageFileName;
+  if (imageFileName.isNull())
+  {
+    KMessageBox::error(0, i18n("Cannot load button image %1<br>Program cannot continue",QString(CM_NEWNETGAME)), i18n("Error !"));
+    exit(2);
+  }
+  KAction* newSocketAction = new KAction(KIcon(QPixmap(imageFileName)), i18n("New Standard TCP/IP Network Game"), this);
+  newSocketAction->setIconText("New TCP/IP");
+  newSocketAction->setShortcut(Qt::CTRL+Qt::Key_T);
+  newSocketAction->setStatusTip(i18n("Create a new standard TCP/IP network game"));
+  connect(newSocketAction,SIGNAL(triggered(bool)),this,SLOT(slotNewSocketGame()));
+  kDebug() << "Adding action game_new_socket";
+  actionCollection()->addAction("game_new_socket", newSocketAction);
+  
+                                     
+  // specific ksirk action
+  imageFileName = m_dirs-> findResource("appdata", m_automaton->skin() + '/' + CM_NEWNETGAME);
+  //   kDebug() << "Trying to load button image file: " << imageFileName;
   if (imageFileName.isNull())
   {
     KMessageBox::error(0, i18n("Cannot load button image %1<br>Program cannot continue",QString(CM_NEWNETGAME)), i18n("Error !"));
     exit(2);
   }
   KAction* joinAction = new KAction(KIcon(QPixmap(imageFileName)),
-        i18n("Join"), this);
-  joinAction->setShortcut(Qt::CTRL+Qt::Key_J);
-  joinAction->setStatusTip(i18n("Join network game"));
+        i18n("Join a Standard TCP/IP Network Game"), this);
+  joinAction->setIconText("Join TCP/IP");
+  joinAction->setShortcut(Qt::CTRL+Qt::SHIFT+Qt::Key_J);
+  joinAction->setStatusTip(i18n("Join a standard TCP/IP network game"));
   connect(joinAction,SIGNAL(triggered(bool)),this,SLOT(slotJoinNetworkGame()));
-   kDebug() << "Adding action game_join";
-  actionCollection()->addAction("game_join", joinAction);
+   kDebug() << "Adding action game_join_socket";
+  actionCollection()->addAction("game_join_socket", joinAction);
 
   m_goalAction = new KAction(KIcon(), i18n("Goal"), this);
-  m_goalAction-> setText(i18n("Display the current player goal"));
+  m_goalAction-> setText(i18n("Display the Current Player's Goal"));
   m_goalAction-> setIconText("  ");
   m_goalAction->setShortcut(Qt::CTRL+Qt::Key_G);
-  m_goalAction->setStatusTip(i18n("Display the current player goal"));
+  m_goalAction->setStatusTip(i18n("Display the current player's goal"));
   connect(m_goalAction,SIGNAL(triggered(bool)),this,SLOT(slotShowGoal()));
   kDebug() << "Adding action game_goal";
   actionCollection()->addAction("game_goal", m_goalAction);
-
+  
   KAction* contextualHelpAction = new KAction(KIcon(),
-        i18n("Contextual help"), this);
+        i18n("Contextual Help"), this);
   contextualHelpAction->setShortcut(Qt::CTRL+Qt::Key_F1);
   connect(contextualHelpAction,SIGNAL(triggered(bool)),this,SLOT(slotContextualHelp()));
   actionCollection()->addAction("help_contextual", contextualHelpAction);
@@ -386,32 +482,6 @@ void KGameWindow::loadDices()
 QPixmap KGameWindow::buildDice(DiceColor color, const QString& id)
 {
   kDebug();
-//   QString stop1Color, stop2Color;
-//   if (color == Red)
-//   {
-//     stop1Color = "#f07f7f";
-//     stop2Color = "#620000";
-//   }
-//   else
-//   {
-//     stop1Color = "#707fff";
-//     stop2Color = "#000062";
-//   }
-//   QDomNode stop1Element = m_theWorld->svgDom()->elementById("stop1LinearGradientDice");
-//   m_theWorld->svgDom()->setCurrentNode(stop1Element);
-//   m_theWorld->svgDom()->setStyleProperty("style", QString("stop-color:")+stop1Color+";stop-opacity:1");
-// 
-//   QDomNode stop2Element = m_theWorld->svgDom()->elementById("stop2LinearGradientDice");
-//   m_theWorld->svgDom()->setCurrentNode(stop2Element);
-//   m_theWorld->svgDom()->setStyleProperty("style", QString("stop-color:")+stop2Color+";stop-opacity:1");
-// 
-//   kDebug() << "after stops " << stop1Color << ", " << stop2Color;
-// 
-//   QByteArray svg = m_theWorld->svgDom()->toByteArray();
-//   kDebug() << svg;
-//   KSvgRenderer renderer;
-//   renderer.load(svg);
-//   kDebug() << "after loading";
 
   QSize size(32,32);
   QImage image(size, QImage::Format_ARGB32_Premultiplied);
@@ -442,9 +512,9 @@ void KGameWindow::newSkin(const QString& onuFileName)
   kDebug() << onuFileName;
   clear();
 
-  if (centralWidget() != 0)
+  if (m_centralWidget != 0)
   {
-     dynamic_cast <QStackedWidget*>(centralWidget())->setCurrentIndex(-1);
+    m_centralWidget->setCurrentIndex(-1);
   }
 
 // NOTE:I wanted to recreate the automaton here. But it isn't possible as this
@@ -537,7 +607,7 @@ void KGameWindow::newSkin(const QString& onuFileName)
   bool firstCall = false;
   if (m_mainMenu == 0)
   {
-    m_mainMenu = new mainMenu(this, width, height, m_automaton);
+    m_mainMenu = new mainMenu(m_automaton, this);
     firstCall = true;
   }
   else
@@ -548,7 +618,7 @@ void KGameWindow::newSkin(const QString& onuFileName)
   if (m_newGameDialog == 0)
   {
     m_newGameDialog = new NewGameDialogImpl(this);
-    connect(m_newGameDialog,SIGNAL(newGameOK(unsigned int, const QString&, bool, bool)), this, SLOT(slotNewGameOK(unsigned int, const QString&, bool, bool)));
+    connect(m_newGameDialog,SIGNAL(newGameOK(unsigned int, const QString&, unsigned int, bool)), this, SLOT(slotNewGameOK(unsigned int, const QString&, unsigned int, bool)));
     connect(m_newGameDialog,SIGNAL(newGameKO()), this, SLOT(slotNewGameKO()));
   }
   else
@@ -563,7 +633,6 @@ void KGameWindow::newSkin(const QString& onuFileName)
   m_frame->setCacheMode( QGraphicsView::CacheBackground );
   m_frame->setIcon();
 
-  kDebug() << "create the arena if it doesn't exist";
   if (m_arena != 0)
   {
     m_centralWidget->removeWidget(m_arena);
@@ -574,21 +643,33 @@ void KGameWindow::newSkin(const QString& onuFileName)
   m_arena->setMaximumHeight(height);
   m_arena->setCacheMode( QGraphicsView::CacheBackground );
 
+  kDebug() << "create the Jabber widget if it doesn't exist";
+  if (m_jabberGameWidget == 0)
+  {
+    m_jabberGameWidget = new KsirkJabberGameWidget(m_automaton, this);
+  }
+  else
+  {
+    m_centralWidget->removeWidget(m_jabberGameWidget);
+  }
+  
   kDebug() << "put the menu, map and arena in the central widget";
   m_centralWidget->addWidget(m_mainMenu);
   m_centralWidget->addWidget(m_frame);
   m_centralWidget->addWidget(m_arena);
   m_centralWidget->addWidget(m_newGameDialog);
+  m_centralWidget->addWidget(m_jabberGameWidget);
   //m_centralWidget->addWidget(m_splitter);m_centralWidget
   if (firstCall)
   {
-    m_centralWidget->setCurrentIndex(0);
+    kDebug() << "first call: showing menu";
+    m_centralWidget->setCurrentIndex(MAINMENU_INDEX);
     m_currentDisplayedWidget = mainMenuType;
     m_bottomDock->hide();
   }
   else
   {
-    m_centralWidget->setCurrentIndex(1);
+    m_centralWidget->setCurrentIndex(MAP_INDEX);
     m_currentDisplayedWidget = mapType;
     m_bottomDock->show();
   }
@@ -1418,14 +1499,14 @@ void KGameWindow::setBarFlagButton(const Player* player)
   m_frame->setFocus();
 }
 
-bool KGameWindow::setupPlayers()
+bool KGameWindow::setupPlayers(GameAutomaton::NetworkGameType socket)
 {
   kDebug();
   
   // Number of players
   m_networkGame = false;
   m_newPlayersNumber = 0;
-  m_automaton->setupPlayersNumberAndSkin();
+  m_automaton->setupPlayersNumberAndSkin(socket);
   return false;
 }
 
@@ -1452,7 +1533,7 @@ bool KGameWindow::finishSetupPlayers()
   QString mes = "";
   QString nationName;
   for (unsigned int i = 0; 
-       i < m_newPlayersNumber - m_automaton->networkPlayersNumber();
+  i < m_newPlayersNumber - m_automaton->networkPlayersNumber();
        i++)
   {
     QString nomEntre = "";
@@ -2802,7 +2883,7 @@ void KGameWindow::cancelShiftSource()
   }
 }
 
-bool KGameWindow::actionNewGame()
+bool KGameWindow::actionNewGame(GameAutomaton::NetworkGameType socket)
 {
 //   kDebug() << "KGameWindow::actionNewGame()";
   if  ( ( m_automaton->playerList()->count() == 0 ) ||
@@ -2822,7 +2903,7 @@ bool KGameWindow::actionNewGame()
     m_automaton->setGameStatus(KGame::End);
     m_automaton->state(GameLogic::GameAutomaton::INIT);
     m_automaton->savedState(GameLogic::GameAutomaton::INVALID);
-    setupPlayers();
+    setupPlayers(socket);
 //     return (setupPlayers());
   }
   return false;
@@ -3201,19 +3282,21 @@ void KGameWindow::showArena()
     m_arena->initFightArena(m_firstCountry,m_secondCountry,m_backGnd_arena);
   }
   kDebug() << "before setCurrentIndex";
-  dynamic_cast <QStackedWidget*>(centralWidget())->setCurrentIndex(2);
+  m_centralWidget->setCurrentIndex(ARENA_INDEX);
 }
 
 
 void KGameWindow::showMap()
 {
-  dynamic_cast <QStackedWidget*>(centralWidget())->setCurrentIndex(1);
+  kDebug();
+  m_centralWidget->setCurrentIndex(MAP_INDEX);
   m_currentDisplayedWidget = mapType;
 }
 
 void KGameWindow::showMainMenu()
 {
-  dynamic_cast <QStackedWidget*>(centralWidget())->setCurrentIndex(0);
+  kDebug();
+  m_centralWidget->setCurrentIndex(MAINMENU_INDEX);
   m_currentDisplayedWidget = mainMenuType;
 }
 
@@ -3393,14 +3476,102 @@ void KGameWindow::setupPopupMessage()
 }
 
 bool KGameWindow::newGameDialog(unsigned int maxPlayers,
-                   const QString& skin)
+                   const QString& skin, bool networkGame)
 {
   m_stateBeforeNewGame = m_automaton->state();
   m_automaton->state(GameAutomaton::STARTING_GAME);
-  m_newGameDialog->init(m_automaton, maxPlayers, skin);
+  m_newGameDialog->init(m_automaton, maxPlayers, skin, networkGame);
   m_stackWidgetBeforeNewGame = m_centralWidget->currentIndex();
-  m_centralWidget->setCurrentIndex(3);
+  m_centralWidget->setCurrentIndex(NEWGAME_INDEX);
   return false;
+}
+
+/* Set presence (usually called by dialog widget). */
+void KGameWindow::setPresence ( const XMPP::Status &status )
+{
+  kDebug() << "Status: " << status.show () << ", Reason: " << status.status ();
+  
+  // fetch input status
+  XMPP::Status newStatus = status;
+  
+  // TODO: Check if Caps is enabled
+  // Send entity capabilities
+  if( m_jabberClient )
+  {
+    newStatus.setCapsNode( m_jabberClient->capsNode() );
+    newStatus.setCapsVersion( m_jabberClient->capsVersion() );
+    newStatus.setCapsExt( m_jabberClient->capsExt() );
+  }
+  
+  // make sure the status gets the correct priority
+  newStatus.setPriority ( 5 );
+  
+/*  XMPP::Jid jid ( this->contactId() );
+  XMPP::Resource newResource ( resource (), newStatus );
+  
+  // update our resource in the resource pool
+  resourcePool()->addResource ( jid, newResource );
+  
+  // make sure that we only consider our own resource locally
+  resourcePool()->lockToResource ( jid, newResource );*/
+  
+  /*
+  * Unless we are in the connecting status, send a presence packet to the server
+  */
+  if(status.show () != QString("connecting") )
+  {
+    /*
+    * Make sure we are actually connected before sending out a packet.
+    */
+    if (true/*isConnected()*/)
+    {
+      kDebug() << "Sending new presence to the server.";
+      
+      XMPP::JT_Presence * task = new XMPP::JT_Presence ( m_jabberClient->rootTask ());
+      
+      task->pres ( newStatus );
+      task->go ( true );
+    }
+    else
+    {
+      kDebug() << "We were not connected, presence update aborted.";
+    }
+  }
+  
+}
+
+void KGameWindow::askForJabberGames()
+{
+  if (m_jabberClient && m_jabberClient->isConnected())
+  {
+    XMPP::Message message(m_groupchatRoom+"@"+m_groupchatHost);
+    message.setType("groupchat");
+    message.setId(QUuid::createUuid().toString().remove("{").remove("}").remove("-"));
+    QString body("Who propose online KsirK games here?");
+    message.setBody(body);
+    kDebug() << "Sending message: <<" << body << ">> to" << (m_groupchatRoom+"@"+m_groupchatHost);
+    m_jabberClient->sendMessage(message);
+  }
+}
+
+void KGameWindow::sendGameInfoToJabber()
+{
+  kDebug();
+  if (m_jabberClient
+    && m_jabberClient->isConnected()
+    && m_automaton->startingGame())
+  {
+    kDebug() << "Sending 'I'm starting a game with ...'";
+    XMPP::Message message(m_groupchatRoom+"@"+m_groupchatHost);
+    message.setType("groupchat");
+    message.setId(QUuid::createUuid().toString().remove("{").remove("}").remove("-"));
+    QString body;
+    QTextStream qts(&body);
+    qts <<"I'm starting a game with skin '" << m_automaton->skin() << "' and '" << m_automaton->nbPlayers() << "' players";
+    message.setBody(body);
+    kDebug() << "Sending message: <<" << body << ">> to" << (m_groupchatRoom+"@"+m_groupchatHost);
+    m_jabberClient->sendMessage(message);
+  }
 }
 
 } // closing namespace Ksirk

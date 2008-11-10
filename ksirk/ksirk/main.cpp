@@ -54,8 +54,7 @@ int main(int argc, char *argv[])
 
     KApplication app;
     KGlobal::locale()->insertCatalog("libkdegames");
-
-
+    
     if (app.isSessionRestored())
     {
         RESTORE(Ksirk::KGameWindow);

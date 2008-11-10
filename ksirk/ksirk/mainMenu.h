@@ -21,66 +21,33 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 
-#include "KsirkGlobalDefinitions.h"
-#include "GameLogic/onu.h"
-#include "GameLogic/country.h"
-#include "GameLogic/gameautomaton.h"
-#include "Sprites/backgnd.h"
+#include "ui_mainMenu.h"
 
-#include <stdlib.h>
-#include <QGraphicsView>
-#include <QPixmap>
-#include <QGridLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <kstandardgameaction.h>
-#include <KAction>
+#include "KsirkGlobalDefinitions.h"
+
+#include <QWidget>
 
 
 namespace Ksirk
 {
-
   namespace GameLogic
   {
     class GameAutomaton;
   }
-
-  /**
-     * The mainMenu class is the widget displayed in the main window
-     */
-
-  class mainMenu : public QWidget
-  {
-    Q_OBJECT
-
-  public:
-    mainMenu(QWidget* parent, unsigned int mapW, unsigned int mapH, GameLogic::GameAutomaton* automaton);
-
-    ~mainMenu();
-
-  public slots:
-  /**
-    * The slots associated to the buttons
-    */
-  void slotMainNewGame();
-
-  private:
-    unsigned int m_mapW;
-    unsigned int m_mapH;
-
-    QWidget * w_parent;
-
-    GameLogic::GameAutomaton* m_automaton;
-    QPixmap* m_bgImage;
-
-    QGridLayout * mainLayout;
-
-    QPushButton * pbNewGame;
-    QPushButton * pbJoin;
-    QPushButton * pbLoad;
-    QPushButton * pbQuit;
-  };
-
 }
+
+/**
+  * The mainMenu class is the widget displayed in the main window
+  */
+class mainMenu : public QWidget, public Ui::MainMenu
+{
+  Q_OBJECT
+
+public:
+  mainMenu(Ksirk::GameLogic::GameAutomaton* automaton, QWidget* parent = 0);
+
+  ~mainMenu() {}
+};
+
 
 #endif
