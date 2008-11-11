@@ -14,6 +14,10 @@ set(GGZ_REGISTRYNAME "kdegames")
 
 macro_log_feature(GGZCONFIG_FOUND "ggz-client-libs" "GGZ configuration program"	"http://www.ggzgamingzone.org/" FALSE "" "Needed to support registering KDE games with the GGZ Gaming Zone for online gaming.")
 
+macro_optional_find_package(QCA2)
+macro_log_feature(QCA2_FOUND "QCA2" "Qt Cryptographic Architecture" "http://delta.affinix.com/qca" FALSE "2.0.0" "Needed to build Ksirk Jabber support's GroupWise and Jabberprotocols.")
+
+
 macro_optional_find_package(OpenGL)
 macro_log_feature(OPENGL_FOUND "OpenGL" "API for developing portable, interactive 2D and 3Dgraphics applications" "http://mesa3d.sourceforge.net" FALSE "" "Kubrick will not be built and KSudoku will not have Roxdoku support without OpenGL.")
 macro_log_feature(QT_QTOPENGL_FOUND "QtOpenGL" "Qt module that make it easy to use OpenGL in Qt apps" "http://doc.trolltech.com/latest/qtopengl.html" FALSE "" "Kubrick will not be built and KSudoku will not have Roxdoku support without QtOpenGL.")
@@ -69,7 +73,9 @@ macro_optional_add_subdirectory(kpat)
 macro_optional_add_subdirectory(kreversi)
 macro_optional_add_subdirectory(ksame)
 macro_optional_add_subdirectory(kshisen)
-macro_optional_add_subdirectory(ksirk)
+if (QCA2_FOUND)
+  macro_optional_add_subdirectory(ksirk)
+endif (QCA2_FOUND)
 macro_optional_add_subdirectory(kspaceduel)
 macro_optional_add_subdirectory(ksquares)
 macro_optional_add_subdirectory(ktuberling)
