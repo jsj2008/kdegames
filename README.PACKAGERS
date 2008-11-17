@@ -1,0 +1,13 @@
+KDEGames, as a project, want to make the packager's job as easy as possible and so we came up with the idea of categorising our games into a number of 'packages'. These packages are logical groupings of games so that without having to review all the games themselves, the packagers can easily know which games are well suited to a default installation, which would be appropriate as desktop games etc. And so the categories we came up with were as follows:
+
+MINIMAL
+    This group contains only the very minimal games that any user would expect to have on their desktop. This means, e.g., KMines, KPat, KMahjongg etc. This should probaby not contain more than about 5 games.
+
+EXTENDED
+    This group will be all the high quality games which we would expect to have a large user base. e.g. games like KSudoku, KBattleShip, KBreakout etc. Those games which are quite specific to a certain user base or which would not qualify as casual desktop games would not be included in this category
+
+EXTRA
+    These would be the games in extra gear which we consider to be useful additions to the distro.
+
+FRIENDS
+    This would simply be a mention of those 'games' outside kdegames which we consider to be games. This would be things like StepGame, Blinken etc.
