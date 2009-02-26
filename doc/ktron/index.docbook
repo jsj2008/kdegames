@@ -1,0 +1,641 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY kappname "&ktron;">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % English "INCLUDE">
+]>
+
+<book lang="&language;">
+<bookinfo>
+<title>The &kappname; Handbook</title>
+
+<authorgroup>
+<author>
+<firstname>Fabian</firstname>
+<surname>Dal Santo</surname>
+<affiliation>
+<address>&Fabian.DalSanto.mail;</address>
+</affiliation>
+</author>
+
+<author>
+<firstname>Stas</firstname>
+<surname>Verberkt</surname>
+<affiliation>
+<address>&Stas.Verberkt.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer">
+<firstname>Lauri</firstname>
+<surname>Watts</surname>
+<affiliation>
+<address>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib>Reviewer</contrib>
+</othercredit>
+<!-- TRANS:ROLES_OF_TRANSLATORS-->
+</authorgroup>
+
+<copyright>
+<year>1999</year>
+<year>2000</year>
+<holder>&Matthias.Kiefer;</holder>
+</copyright>
+
+<copyright>
+<year>2001</year>
+<holder>&Fabian.Dal.Santo;</holder>
+</copyright>
+
+<copyright>
+<year>2009</year>
+<holder>&Stas.Verberkt;</holder>
+</copyright>
+
+<legalnotice>&FDLNotice;</legalnotice>
+
+<date>2009-01-22</date>
+<releaseinfo>2.0</releaseinfo>
+
+<abstract>
+<para>
+&kappname; is a simple <quote>Tron</quote> clone for &kde;, which you can
+play alone or against a friend.
+</para>
+</abstract>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>kdegames</keyword>
+<keyword>KTron</keyword>
+<keyword>game</keyword>
+<keyword>tron</keyword>
+<keyword>KSnake</keyword>
+<keyword>snake</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title>Introduction</title>
+
+<para>
+&kappname; is a simple Tron-Clone for the
+<ulink url="http://www.kde.org">K Desktop Environment</ulink>. You can play
+&kappname; against the computer or a friend.
+The aim of the game is to live longer than your opponent. To do that,
+avoid running into a wall, your own tail and that of your opponent.
+</para>
+
+<para>
+&ksnake; is a simple Snake-like game for the <ulink url="http://www.kde.org">K
+Desktop Environment</ulink>. The aim of &ksnake; is to survive as long as
+possible and eat as many fruits as you can.
+</para>
+
+<para>
+You can switch between these games using the game type selector in the configuration dialog.
+</para>
+
+</chapter>
+
+<chapter id="playing-ktron">
+<title>Playing &kappname;</title>
+
+<sect1 id="playing-ktron-rules">
+<title>Rules</title>
+
+<para>
+Once a round is started, the players do not stop moving forward (unless the game
+is paused).  All you have to do is avoid crashing by changing your players
+direction. Additionally you can try to hinder your opponent.  For this it is
+possible to increase the velocity by pressing your accelerator key.
+</para>
+
+<para>
+A round starts when all human players press a direction key. The initial moving
+direction is then in this direction.
+</para>
+
+<para>
+If you want to interrupt playing, select
+<guimenuitem>Pause</guimenuitem> from the <guimenu>Game</guimenu> menu
+or hit the keyboard shortcut (see section <link linkend="keys">Default 
+Shortcuts</link>).  Additionally the game is paused when the game loses the
+keyboard focus, &eg; when switching to an other window.
+</para>
+
+<para>To continue the game, select the menu item
+<guimenuitem>Pause</guimenuitem> again, or the keyboard shortcut.  The
+game will also continue if the human players press one of their direction keys.
+But be careful, your player switches to this direction immediately.
+</para>
+
+
+<para>A game consists of several rounds, and ends if a player has at least
+nine points, and additionally two more points than the opponent. The current
+score is always displayed in the status bar.
+</para>
+
+<para>
+You can change the difficulty level of the game using the game menu item or
+the select box on the status bar. The difficulty influences the speed of the
+game and the computer player.
+</para>
+</sect1>
+
+<sect1 id="computerplayer">
+<title>The Computer Player</title>
+
+<para>
+You can play against a computer. The difficulty level of the game influences the 
+intelligence of the computer player.
+</para>
+<para>
+At low levels the computer doesn't care about the opponent and just moves
+around. At higher skill levels the computer tries to hinder the opponent when he
+comes near.
+</para>
+</sect1>
+
+<sect1 id="using-keyboard">
+<title>Using the Keyboard</title>
+
+<para>
+Each player has five keys. Four keys for changing the direction and one to
+accelerate.
+</para>
+
+<para>
+The direction keys do not have to be held down. Simply press them once to
+change
+the direction of your player.
+</para>
+
+<para>
+Acceleration only occurs while the acceleration key remains depressed.  When you
+release the acceleration key, velocity returns to normal.
+</para>
+
+<note><para>
+You can alter the keys using the shortcuts option in the <link
+linkend="settings-menu"><guimenu>Settings</guimenu>
+Menu</link>.
+</para></note>
+</sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title>Playing &ksnake;</title>
+
+<sect1 id="playing-snake-rules">
+<title>Rules</title>
+
+<para>
+Once the game is started, the player does not stop moving forward (unless the
+game is paused). All you have to do is avoid crashing by changing your
+direction. A game starts when you press a direction key. The initial moving
+direction is then in this direction.
+</para>
+
+<para>
+If you want to pause playing, select <guimenu>Pause</guimenu> from the <guimenuitem>Game</guimenuitem> menu or hit the
+keyboard shortcut (see section <link linkend="keys">Default 
+Shortcuts</link>). Additionally the game is
+paused when the game loses the keyboard focus, &eg; when switching to an other
+window.
+</para>
+
+<para>
+To continue the game, select the menu item <guimenuitem>Pause</guimenuitem> or hit the keyboard shortcut
+again. The game will also continue if you press one of the direction keys. But
+be careful, your player switches to this direction immediately.
+</para>
+
+<para>
+In the game there will always be a piece of fruit on the map. If you collect it
+your score will increase with 5 points. The current score is always displayed in
+the status bar.
+</para>
+
+<para>
+When you are moving through the map there will appear obstacles. Hitting them
+will also result in a crash. However, every time an obstacle appears and you
+survive you'll be rewarded 2 points
+</para>
+
+<para>
+You can change the difficulty level of the game using the game menu item or the
+select box on the status bar. The difficulty influences the speed of the game.
+</para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title>Using the keyboard</title>
+
+<para>
+Each player has four keys. These are used for changing the direction.
+The direction keys do not have to be held down. Simply press them once to change
+the direction of your player.
+</para>
+
+<note><para>
+You can alter the keys using the shortcuts option in the <link
+linkend="settings-menu"><guimenu>Settings</guimenu>
+Menu</link>.
+</para></note>
+</sect1>
+
+</chapter>
+
+<chapter id="command">
+<title>Command Reference</title>
+
+<para>The following sections briefly describe each menubar option.</para>
+
+<sect1 id="game-menu">
+<title>The <guimenu>Game</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>New</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Starts a new game.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycap>P</keycap>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Pause</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggles whether the game is paused.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Show High Scores</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Displays the high score dialog
+(for &ksnake;).</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Quits.</action></para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+
+<sect1 id="settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Shows or hides the Statusbar.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Difficulty</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Lets you alter the difficulty level of the
+game.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Shortcuts...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Displays a standard &kde; shortcuts configurator.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure &kappname;...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens a <link linkend="configuration">comprehensive dialog</link>
+to configure various options.</action></para></listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="help">
+<title>The <guimenu>Help</guimenu> Menu</title>
+
+&help.menu.documentation;
+
+</sect1>
+
+<sect1 id="keys">
+<title>Default Shortcuts</title>
+
+<para>The following tables show you the default shortcuts.</para>
+
+
+<table>
+<title>Player 1 Shortcuts</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Key Combo</entry>
+<entry>Action</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry><keycap>Up Arrow</keycap></entry>
+<entry>Up</entry>
+</row>
+<row>
+<entry><keycap>Down Arrow</keycap></entry>
+<entry>Down</entry>
+</row>
+<row>
+<entry><keycap>Right Arrow</keycap></entry>
+<entry>Right</entry>
+</row>
+<row>
+<entry><keycap>Left Arrow</keycap></entry>
+<entry>Left</entry>
+</row>
+<row>
+<entry><keycap>0</keycap></entry>
+<entry>Accelerate</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title>Player 2 Shortcuts</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Key Combo</entry>
+<entry>Action</entry></row></thead>
+<tbody>
+<row>
+<entry><keycap>R</keycap></entry>
+<entry>Up</entry>
+</row>
+<row>
+<entry><keycap>F</keycap></entry>
+<entry>Down</entry>
+</row>
+<row>
+<entry><keycap>G</keycap></entry>
+<entry>Right</entry>
+</row>
+<row>
+<entry><keycap>D</keycap></entry>
+<entry>Left</entry>
+</row>
+<row>
+<entry><keycap>A</keycap></entry>
+<entry>Accelerate</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title>General Shortcuts</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Key Combo</entry>
+<entry>Action</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry><keycap>P</keycap></entry>
+<entry>Pause/Resume Game</entry>
+</row>
+<row>
+<entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry>
+<entry>High Scores</entry>
+</row>
+<row>
+<entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry>
+<entry>New Game</entry>
+</row>
+<row>
+<entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry>
+<entry>Quit &kappname;</entry>
+</row>
+<row>
+<entry><keycap>F1</keycap></entry>
+<entry>Help Contents</entry>
+</row>
+<row>
+<entry><keycombo
+action="simul">&Shift;<keycap>F1</keycap></keycombo></entry>
+<entry>What's This Help</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para>
+These shortcuts can be changed by selecting <menuchoice>
+<guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem>
+</menuchoice> from the menubar.
+</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+
+<title>The Configuration Dialog</title>
+
+<para>Selecting the <guimenuitem>Configure &kappname;...</guimenuitem> option
+in the <guimenu>Settings</guimenu> menu will open a further dialog which lets
+you tweak &kappname;'s behavior.</para>
+
+<para>This dialog is divided into two pages.</para>
+
+<sect1 id="configuration-general">
+<title>General Configuration</title>
+
+<screenshot>
+<screeninfo>Configure &kappname; - General</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase>General Configuration</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term><guilabel>Game type</guilabel></term>
+<listitem><para>This will let you change the game type. There are three options:
+
+<variablelist>
+<varlistentry>
+<term>&kappname;: Player vs Player</term><listitem><para> a
+&kappname; game between two human players</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>&kappname;: Player vs Computer</term>
+<listitem><para> a &kappname; game between a human player and the
+computer</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>&ksnake;: Single player</term><listitem><para> 
+a single player &ksnake; game</para></listitem>
+</varlistentry>
+</variablelist>
+
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Disable acceleration</guilabel></term>
+<listitem><para>Checking this box will disable the acceleration feature - 
+pressing the acceleration key will have no effect, both vehicles will always
+travel with constant velocity.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Player Names</guilabel></term>
+<listitem><para>Specify custom names to use for the players to override the
+use of default ones.</para>
+<para>
+The default name for player one is the name of the current logged in
+user.
+</para></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-theme">
+<title>Theme Configuration</title>
+
+<screenshot>
+<screeninfo>Configure &kappname; - Theme</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase>Theme Configuration</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<para>
+This page will allow you to change the theme &kappname; uses.
+</para>
+</sect1>
+</chapter>
+
+<!-- credits chapter done --> 
+<chapter id="credits">
+<title>Credits and License</title>
+
+<para>
+&kappname; 
+</para>
+
+<para>Program Copyright 1998-2000 &Matthias.Kiefer;
+&Matthias.Kiefer.mail;
+</para>
+
+<para>Program Copyright 2008-2009 &Stas.Verberkt;
+&Stas.Verberkt.mail;
+</para>
+
+<para>
+Parts of the code are from xtron-1.1 by Rhett D. Jacobs
+<email>rhett@hotel.canberra.edu.au&gt;</email>
+</para>
+
+<para>
+Documentation Copyright 1999 &Matthias.Kiefer;
+&Matthias.Kiefer.mail;
+</para>
+
+<para>Documentation updated for &kde; 2.0 by &Fabian.Dal.Santo;
+&Fabian.DalSanto.mail;</para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+&underFDL;
+&underGPL;
+</chapter>
+
+<!-- appendix finished -->
+
+<appendix id="installation">
+<title>Installation</title>
+
+<sect1 id="getting-ktron">
+<title>How to obtain &kappname;</title>
+
+&install.intro.documentation;
+
+</sect1>
+
+<sect1 id="requirements">
+<title>Requirements</title>
+
+<para>
+In order to successfully compile &kappname;, you need &kde; 4. All
+required libraries as well as &kappname; itself can be found on &kde-ftp;.</para>
+</sect1>
+
+<sect1 id="compilation">
+<title>Compilation and Installation</title>
+
+&install.compile.documentation;
+
+</sect1>
+</appendix>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+
