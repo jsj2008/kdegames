@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name="ktronrc"/>
+  <group name="General">
+    <entry name="Theme" type="String">
+      <label>The graphical theme to be used.</label>
+      <default>themes/default.desktop</default>
+    </entry>
+  </group>
+  <group name="Game">
+    <entry name="AcceleratorBlocked" type="Bool">
+      <label>Whether to disable acceleration.</label>
+      <default>false</default>
+    </entry>
+    <entry name="Difficulty" type="Int">
+      <label>The difficulty level.</label>
+      <default>30</default>
+    </entry>
+    <entry name="NamePlayer1" type="String" key="Name_Pl1">
+      <label>The name of player 1.</label>
+    </entry>
+    <entry name="NamePlayer2" type="String" key="Name_Pl2">
+      <label>The name of player 2.</label>
+    </entry>
+    <entry key="GameType" type="Enum">
+      <label>Type of the game</label>
+      <choices>
+        <choice name="PlayerVSComputer"/>
+        <choice name="PlayerVSPlayer"/>
+        <choice name="Snake"/>
+      </choices>
+      <default>PlayerVSComputer</default>
+    </entry>
+  </group>
+</kcfg>
