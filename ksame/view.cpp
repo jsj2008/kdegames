@@ -22,7 +22,6 @@
  ********************************************************************/
 #include "view.h"
 
-#include <KStandardDirs>
 
 #include <QResizeEvent>
 
