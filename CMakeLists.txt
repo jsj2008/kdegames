@@ -43,7 +43,6 @@ else(WIN32)
     set (KDE4_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
 endif(WIN32)
 
-macro_optional_add_subdirectory(doc)
 add_subdirectory(libkdegames)
 add_subdirectory(libkmahjongg)
 
@@ -87,5 +86,5 @@ if(OPENGL_SUPPORT)
 endif(OPENGL_SUPPORT)
 
 add_subdirectory(cmake)
-
+macro_optional_add_subdirectory(doc)
 macro_display_feature_log()
