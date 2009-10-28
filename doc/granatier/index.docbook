@@ -1,0 +1,392 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY granatier "<application>Granatier</application>">
+  <!ENTITY kappname "&granatier;">
+  
+  <!ENTITY kappversion "0.8"><!-- Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY docversion "0.8"><!-- Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2009-10-11"><!-- Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames">  <!-- do not change this! -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
+]>
+
+<book lang="&language;">
+  <bookinfo>
+    <title>&granatier; Handbook</title>
+    
+    <authorgroup>
+      <author>
+        <personname>
+          <firstname>Mathias</firstname>
+          <surname>Kraus</surname>
+        </personname>
+        <email>k.hias@gmx.de</email>
+      </author>
+    <!-- TRANS:ROLES_OF_TRANSLATORS -->
+    </authorgroup>
+    
+    <date>&docupdate;</date>
+    <releaseinfo>&docversion;</releaseinfo>
+    
+    <abstract>
+      <para>This documentation describes the game of &granatier; version &kappversion;</para>
+    </abstract>
+    
+    <keywordset>
+      <keyword>KDE</keyword> <!-- do not change this! -->
+      <keyword>kdegames</keyword> <!-- do not change this! -->
+      <keyword>game</keyword> <!-- do not change this! -->
+      <keyword>Granatier</keyword><!--Application name goes here-->
+      <!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+      <keyword>arcade</keyword>
+      <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+      <keyword>multiplayer</keyword>
+      <!--All other relevant keywords-->
+      <keyword>bomberman</keyword>
+      <keyword>clanbomber</keyword>
+    </keywordset>
+  </bookinfo>
+
+  <chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
+    <note><title>Gametype:</title><para>Arcade</para></note>
+    <note><title>Number of possible players:</title><para>Multiplayer</para></note>
+    <para>
+      &granatier; is a clone of the classic <trademark><application>Bomberman</application></trademark> game, inspired by the work of the <application>Clanbomber</application> clone.
+    </para>
+    <para>
+      The object of the game is to run through an arena, using bombs to clear out blocks and eliminate your opponents. Several bonuses and handicaps are hidden underneath the blocks &ndash; these can either help or hinder your progress.
+    </para>
+    <screenshot>
+      <screeninfo>A &granatier; screenshot</screeninfo>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="granatier.png" format="PNG"/>
+        </imageobject>
+        <textobject>
+          <phrase>A &granatier; screenshot</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+  </chapter>
+  
+  <chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+    <note><title>Objective:</title><para>Eliminate all Opponents.</para></note>
+    <para>
+      Each player is provided with five keys that they use to move their character and lay bombs.  For example, the default keys for Player 1 are the Up, Down, Left and Right arrow keys to move respectively in those directions, and the &Enter; key to lay a bomb.  Please refer to the <link linkend="config_player">Player Configuration</link> Section to find shortcut keys for other players, as well as how to configure them.
+    </para>
+    <para>
+      The purpose of laying bombs, aside from attacking other opponents, is to destroy the many blocks scattered throughout the arena in order to clear a path or uncover hidden bonuses.  Among the many bonuses that can be uncovered are those that make you move faster or increase your bomb blast range; the more bonuses of this type you collect, the easier it is to eliminate your opponents and win the round.  But be warned that just as many handicaps exist that can turn the tide against you, including those that slow you down or invert your moving keys. 
+    </para>
+    <para> 
+      For each won round, the player is awarded a point.  The first player to win a predefined number of points (the default is 3), wins the game!
+    </para>
+  </chapter>
+  
+  <chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
+    <sect1 id="test">
+    <title>The Items</title>
+    <sect2>
+      <title>The Arena</title>
+      <para>
+       The players are in an arena which consists of:
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="arena_wall.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Arena Wall</phrase> </textobject>
+        </inlinemediaobject>
+        The Wall &ndash; this defines the outline of the arena map and cannot be destroyed.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="arena_ground.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Arena Ground</phrase> </textobject>
+        </inlinemediaobject>
+        The Ground &ndash; this can be walked on safely.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="arena_ice.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Arena Ice</phrase> </textobject>
+        </inlinemediaobject>
+        The Ice &ndash; this will make the ground slippery. The speed increases on the ice and it is not possible to completly stop moving.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="arena_block.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Arena Block</phrase> </textobject>
+        </inlinemediaobject>
+        The Block &ndash; this can be destroyed with a bomb, and may contain a bonus (or a handicap).
+      </para>
+      <para>
+        If there is none of the above items, there is a hole at the ground and moving into it will result in falling into the deep and die. The same applies also if there is no wall at the edge of the arena and the player moves outside of the arena.
+      </para>
+    </sect2>
+    <sect2>
+      <title>The Bonuses</title>
+      <para>
+       Bonuses are helpful for reaching the game goal and effects exists permanent - even after a handicap disappears. Currently there are following bonuses:
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_speed.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Bonus Speed</phrase> </textobject>
+        </inlinemediaobject>
+        Speed &ndash; increases your speed slightly.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_bomb.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Bonus Bomb</phrase> </textobject>
+        </inlinemediaobject>
+        Bomb &ndash; adds an extra bomb to your arsenal, allowing you to lay more than one bomb at a time.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_power.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Bonus Power</phrase> </textobject>
+        </inlinemediaobject>
+        Power &ndash; increases the power of your bombs, extending their bomb blast range.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_shield.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Bonus Shield</phrase> </textobject>
+        </inlinemediaobject>
+        Shield &ndash; makes invincible for one bomb blast.
+      </para>
+    </sect2>
+    <sect2>
+      <title>The Handicaps</title>
+      <para>
+       Handicaps are the opposite of bonuses and hinder the player. The good thing is that effects get lost after some time (other than bonuses) and the player can play in is usual behavior (including bonuses) again. Currently there are following handicaps:
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_bad_slow.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Handicap Slow</phrase> </textobject>
+        </inlinemediaobject>
+        Slow &ndash; makes you move very slowly.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_bad_hyperactive.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Handicap Hyperactive</phrase> </textobject>
+        </inlinemediaobject>
+        Hyperactive &ndash; makes you move a little TOO fast.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_bad_mirror.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Handicap Mirror</phrase> </textobject>
+        </inlinemediaobject>
+        Mirror &ndash; inverts your moving keys, so that up becomes down and left becomes right.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_bad_scatty.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Handicap Scatty</phrase> </textobject>
+        </inlinemediaobject>
+        Scatty &ndash; forces you to continuously lay bombs without control.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_bad_restrain.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Handicap Restrain</phrase> </textobject>
+        </inlinemediaobject>
+        Restrain &ndash; prevents you to lay bombs.
+      </para>
+    </sect2>
+    <sect2>
+      <title>The Neutral Bonuses (Please help me with a better name)</title>
+      <para>
+      This type of bonuses are neither good nor bad, it mostly depends on the environment. Currently there are following neutral bonuses:
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject> <imagedata fileref="bonus_neutral_pandora.png" format="PNG" /> </imageobject>
+          <textobject> <phrase>Bonus Neutral Pandora</phrase> </textobject>
+        </inlinemediaobject>
+        Pandora &ndash; this contains either a bonus or a handicap.
+      </para>
+    </sect2>
+    </sect1>
+  </chapter>
+
+  <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
+    <para>
+      To open the Configuration Dialogue, select <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &granatier;...</guimenuitem></menuchoice>
+    </para>
+    <sect1 id="config_general">
+      <title>General</title>
+      <para>
+        You can change the points which are needed to win the game and the time for a round. After the time is over, the sudden death mode will start.
+      </para>
+      <screenshot>
+        <screeninfo>A &granatier; Config screenshot</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="config_general.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>A &granatier; Config screenshot</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </sect1>
+    <sect1 id="config_theme">
+      <title>Theme</title>
+      <para>
+        To select the Theme you want to play, go to the Theme section. The Theme is loaded by clicking on <guibutton>OK</guibutton> or <guibutton>Apply</guibutton>. The current game will be ended and a new one started. You can click on the <guibutton>Defaults</guibutton> button to restore the default Theme.
+      </para>
+      <screenshot>
+        <screeninfo>A &granatier; Config screenshot</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="config_theme.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>A &granatier; Config screenshot</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </sect1>
+    <sect1 id="config_arena">
+      <title>Arena</title>
+      <para>
+        To select the Arena you want to play, go to the Arena section. The Arena is loaded by clicking on <guibutton>OK</guibutton> or <guibutton>Apply</guibutton>. The current game will be ended and a new one started. You can click on the <guibutton>Defaults</guibutton> button to restore the default Arena.
+      </para>
+      <para>
+        If you have Clanbomber installed, you can import the arenas from Clanbomber by clicking on <guibutton>Import Clanbomber Arenas</guibutton>. &granatier; is looking in <filename class="directory">~/.clanbomber/maps</filename>, <filename class="directory">/usr/share/games/clanbomber/maps</filename> and at several other places for arenas. If your arenas are not imported, send me an email to add that path to the search path.
+      </para>
+      <screenshot>
+        <screeninfo>A &granatier; Config screenshot</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="config_arena.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>A &granatier; Config screenshot</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </sect1>
+    <sect1 id="config_player">
+      <title>Player</title>
+      <para>
+        To select the Player you want to play, go to the Player section and select the Players with the checkboxes. To change the name of the Player, double click on the Player and type the name you want. The Shortcuts can be changed by clicking on the button for the action you want to change and then pressing the key you want to use. The changes are loaded by clicking on <guibutton>OK</guibutton> or <guibutton>Apply</guibutton>. The current game will be ended and a new one started. You can click on the <guibutton>Defaults</guibutton> button to restore the default Shortcuts.
+      </para>
+      <screenshot>
+        <screeninfo>A &granatier; Config screenshot</screeninfo>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="config_player.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>A &granatier; Config screenshot</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </sect1>
+  </chapter>
+
+  <chapter id="create_arena"><title>Create a custom Arena</title> <!-- do not change this! -->
+    <para>
+      An Arena in &granatier; consists of two files, the <filename>myarena.desktop</filename> and the <filename>myarena.xml</filename>.
+    </para>
+
+    <para>
+      The .desktop file contains the metadata like the arena name or the author of the arena and consists of the following entries.
+      <programlisting>
+[Arena]
+Name=My Arena
+Description=This is my first Arena
+Type=XML
+FileName=myarena.xml
+Author=Joe User
+AuthorEmail=joe.user@foo.org
+      </programlisting>
+      You can choose whatever name you want, but FileName must be the name of the .xml file.
+    </para>
+    <para>
+      The .xml file contains the actual arena map.
+      <programlisting>
+&lt;?xml version="1.0"?&gt;
+&lt;Arena rowCount="13" colCount="17"&gt;
+  &lt;Row&gt;    ==== ====    &lt;/Row&gt;
+  &lt;Row&gt;  ===+++++++===  &lt;/Row&gt;
+  &lt;Row&gt;  =+++++_+++++=  &lt;/Row&gt;
+  &lt;Row&gt; ==+++=_p_=+++== &lt;/Row&gt;
+  &lt;Row&gt;==++===_-_===++==&lt;/Row&gt;
+  &lt;Row&gt;=+++=++_-_++=+++=&lt;/Row&gt;
+  &lt;Row&gt; +++++-- --+++++ &lt;/Row&gt;
+  &lt;Row&gt;=+++=++_-_++=+++=&lt;/Row&gt;
+  &lt;Row&gt;==++===_-_===++==&lt;/Row&gt;
+  &lt;Row&gt; ==+++=_p_=+++== &lt;/Row&gt;
+  &lt;Row&gt;  =+++++_+++++=  &lt;/Row&gt;
+  &lt;Row&gt;  ===+++++++===  &lt;/Row&gt;
+  &lt;Row&gt;    ==== ====    &lt;/Row&gt;
+&lt;/Arena&gt;
+      </programlisting>
+      There is no limit for rowCount and colCount, so you can choose the size of the arena by yourself. The following symbols are used for the arena map.
+      <programlisting>
+'=' a wall item
+' ' a hole item
+'_' a ground item
+'+' a block item
+'x' will randomly create a block or a ground item
+'-' an ice item
+'p' a player position
+      </programlisting>
+    </para>
+  </chapter>
+
+  <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
+    <para>
+      &granatier;  <!-- do not change this! -->
+    </para>
+    <!-- List all the copyright holders here-->
+    <para>
+      Program copyright 2009 Mathias Kraus <email>k.hias@gmx.de</email>
+    </para>
+    <para>
+      Graphics copyright 2009 Mathias Kraus <email>k.hias@gmx.de</email>
+    </para>
+    <para>
+      Graphics copyright 2009 Arturo Silva <email>jasilva28@gmail.com</email>
+    </para>
+    <para>
+      Documentation copyright 2009 Mathias Kraus <email>k.hias@gmx.de</email>
+    </para>
+
+  <!-- !!!do not change ANYTHING after this line!!!! -->
+  <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+  &underFDL;
+  &underGPL;
+
+  </chapter>
+
+  &documentation.index; 
+</book>
+
+<!--
+Local Variables:
+mode: xml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+ 
+vim:tabstop=2:shiftwidth=2:expandtab
+kate: space-indent on; indent-width 2; tab-width 2; indent-mode none;
+-->
