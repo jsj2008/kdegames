@@ -48,6 +48,7 @@ add_subdirectory(libkmahjongg)
 
 macro_optional_add_subdirectory(bomber)
 macro_optional_add_subdirectory(bovo)
+macro_optional_add_subdirectory(granatier)
 macro_optional_add_subdirectory(lskat)
 macro_optional_add_subdirectory(kapman)
 macro_optional_add_subdirectory(katomic)
