@@ -86,6 +86,7 @@ macro_optional_add_subdirectory(ktron)
 if(OPENGL_SUPPORT)
     macro_optional_add_subdirectory(kubrick)
 endif(OPENGL_SUPPORT)
+macro_optional_add_subdirectory(palapeli)
 
 add_subdirectory(cmake)
 macro_optional_add_subdirectory(doc)
