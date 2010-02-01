@@ -190,8 +190,7 @@ void KSame::MainWindow::showHighScoreDialog()
 void KSame::MainWindow::setMarked( int markedStones )
 {
 	qint32 markedScore = KSame::Board::calculateScore( markedStones );
-	KLocalizedString markedText = ki18n("Marked: %1 (%2 Points)");
-	m_statusBar->changeItem( markedText.subs( markedStones, 3 ).subs( markedScore, 3 ).toString(), 3);
+	m_statusBar->changeItem( i18n("Marked: %1 (%2 Points)", markedStones, markedScore ), 3);
 }
 
 void KSame::MainWindow::setScore( quint32 score )
