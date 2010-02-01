@@ -206,7 +206,7 @@ void KSame::MainWindow::setScore( quint32 score )
 		QString count = QString( " (%1)" ).arg( list.join( "," ) );
 		m_statusBar->changeItem( i18n( "%1 Colors%2", m_board->colors(), count ), 1 );
 	}
-	m_statusBar->changeItem( ki18n( "Score: %1" ).subs( score, 6 ).toString(), 4 );
+	m_statusBar->changeItem( i18n( "Score: %1", score ), 4 );
 	m_undoAction->setEnabled( m_board->canUndo() );
 	m_restartAction->setEnabled( m_board->changed() );
 }
