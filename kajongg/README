@@ -1,0 +1,93 @@
+Kajongg - the classical Mah Jongg for four players. If you are looking for the Mah Jongg solitaire please use the application KMahjongg.
+
+Kajongg is covered by the GNU GPL2 license - see COPYING.
+
+NEW: The game server part now runs on servers without the need
+to install KDE. It should also be possible to eliminate the
+neeed of Qt4 but since Debian Stable offers Qt4 I see no
+need for that.
+
+Kajongg can be used in two different ways: Scoring a manual
+game where you play as always and use Kajongg for the computation
+of scores and for bookkeeping. Or you can use Kajongg to play
+against any combination of other human players or computer players.
+
+Kajongg comes with a ruleset for classical chinese as played in Germany.
+You can change the ruleset at your will and also define whole new
+rulesets. The rules for a game are saved in the database, so every
+game could be played with different rules. Changing a ruleset
+does not affect existing games.
+
+You can always get the current source code:
+
+svn co svn://anonsvn.kde.org/home/kde/trunk/kdereview/kajongg
+
+If you want to know more, please visit the Kajongg homepage at
+[url]http://www.kde-apps.org/content/show.php/kajongg?content=103206[/url]
+
+
+If you want to send me bug reports, please either use the kajongg
+menu commmand Help / Report Bug or mail me directly to the Mail
+Address given in that bug reporting dialog. I will not follow links
+to pages I do not trust like upload pages, shortlink services or
+similar.
+
+[b][u]Changelog[/b][/u]
+
+please read the separate file Changelog
+
+
+
+[b][u]Requirements[/b][/u]
+
+Kajongg is a true KDE4 application and therefore requires the KDE4 libraries
+KDE4 as well as the Qt4 libraries. However you can of course also use it
+in a GNOME environment.
+
+Kajongg needs: (debian packages)
+
+- the KDE4 games library (libkdegames5)
+- Python 2.6 or higher (python)
+- QT4.5 or higher (libqt4-core, libqt4-gui, libqt4-svg, libqt4-sql, libqt4-sql-sqlite)
+- the python bindings for QT4  (python-qt4, python-qt4-sql, python-sip4-dev)
+- the python bindings for KDE4 (python-kde4)
+- sqlite3 (libsqlite3-0)
+- twisted 8.2.0 or higher (python-twisted)
+
+
+
+[b][u]Installing Kajongg[/b][/u]
+
+use the .deb package or the .rpm package. If they do
+not work for you, you can download kajongg-x-y-z.tar.gz and then do:
+
+tar xfz kajongg-x-y-z.tar.gz
+cd kajongg-x-y-z
+./setup.py install
+
+
+
+[b][u]Translations[/b][/u]
+
+The basic installation contains all languages for whom there
+is a translated name in kajongg.desktop.
+Here you can check if there is a translation for you:
+[url]http://l10n.kde.org/stats/gui/trunk-kde4/po/kajongg.po/[/url]
+
+You can download wanted translations like this:
+svn co svn://anonsvn.kde.org/home/kde/trunk/l10n-kde4/XX/messages/kdereview/kajongg.po
+where XX is the wanted language
+
+Install this file in the right directory. This could be one
+of those, or somewhere else depending on your distribution:
+
+$HOME/.kde/share/locale/XX/LC_MESSAGES/kajongg.mo
+/usr/share/locale/de/LC_MESSAGES/kajongg.mo
+/usr/share/locale-langpack/de/LC_MESSAGES/kajongg.mo
+
+When unsure, you can ask the system for the directory with all translations:
+
+kde4-config --install locale # returns /usr/share/locale on my system
+
+If your language is missing or not fully translated, feel free
+to translate it!
