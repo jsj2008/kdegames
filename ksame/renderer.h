@@ -24,7 +24,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <KSvgRenderer>
+#include <QSvgRenderer>
 
 
 #include <QObject>
@@ -79,7 +79,7 @@ namespace KSame
 
 		private:
 			// The SVG Renderer
-			KSvgRenderer m_svgRenderer;
+			QSvgRenderer m_svgRenderer;
 			// Elements' sizes
 			QSize        m_backgroundSize;
 			QSize        m_elementSize;
