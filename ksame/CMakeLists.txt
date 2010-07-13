@@ -6,11 +6,10 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkdegames/highscore  )
 ########### next target ###############
 
 set(ksame_SRCS 
+    board.cpp
     main.cpp 
     mainwindow.cpp
-    board.cpp
     view.cpp
-    renderer.cpp
    )
 
 kde4_add_app_icon(ksame_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-ksame.png")
@@ -25,8 +24,11 @@ install(TARGETS ksame  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 install( FILES ksame.desktop      DESTINATION ${XDG_APPS_INSTALL_DIR} )
 install( FILES ksameui.rc         DESTINATION ${DATA_INSTALL_DIR}/ksame )
-install( FILES default_theme.svgz DESTINATION ${DATA_INSTALL_DIR}/ksame/pics/ )
-install( FILES old_theme.svgz	  DESTINATION ${DATA_INSTALL_DIR}/ksame/pics/ )
+install( FILES
+    default_theme.desktop
+    default_theme.svgz
+    old_theme.svgz
+    DESTINATION ${DATA_INSTALL_DIR}/ksame/pics/ )
 
 kde4_install_icons( ${ICON_INSTALL_DIR} )
 

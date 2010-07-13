@@ -3,6 +3,7 @@
  * Copyright (C) 1997,1998  Marcus Kreutzberger <kreutzbe@informatik.mu-luebeck.de>
  * Copyright (C) 2006 Henrique Pinto <henrique.pinto@kdemail.net>
  * Copyright (C) 2006 Stephan Kulow <coolo@kde.org>
+ * Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
  * 
  * This file is part of the KDE project
  *
@@ -31,8 +32,9 @@
 
 
 KSame::Stone::Stone( KSame::Board *board, int x, int y, QGraphicsItem *parent )
-	: QGraphicsPixmapItem( parent, board ), m_x( x ), m_y( y ), m_board( board )
+	: KGameRenderedItem( &board->m_renderer, "stone", parent ), m_x( x ), m_y( y ), m_board( board )
 {
+	board->addItem(this);
 	setAcceptsHoverEvents( true );
 	setAcceptedMouseButtons( Qt::LeftButton );
 }
@@ -73,20 +75,16 @@ KSame::GameState::GameState( KSame::Board *board )
 
 KSame::Board::Board( QObject *parent )
 	: QGraphicsScene( parent ),
-	  m_renderer( KStandardDirs::locate( "appdata", "pics/default_theme.svgz" ), QSize(), QSize( 64, 64 ), this ),
+	  m_renderer( QLatin1String( "pics/default_theme.desktop" ) ),
 	  m_width( 0 ), m_height( 0 ), m_colorCount( 0 ), m_boardNumber( 0 ),
-	  m_score( 0 ), m_changed( false ), m_boardData( 0 )
+	  m_score( 0 ), m_changed( false ),
+	  m_boardData( 0 )
 {
-	m_elementsSize = QSize( 64, 64 );
+	m_renderer.setFrameSuffix(QLatin1String("%1"));
 	m_gameOverOverlay = new QGraphicsPixmapItem;
 	addItem( m_gameOverOverlay );
 	m_gameOverOverlay->setZValue( 20000 );
 	m_gameOverOverlay->hide();
-}
-
-void KSame::Board::drawBackground( QPainter *painter, const QRectF& )
-{
-	painter->drawPixmap( 0, 0, m_renderer.renderBackground() );
 }
 
 void KSame::Board::newGame( quint32 boardNumber, quint8 width, quint8 height, quint8 colorCount )
@@ -111,15 +109,14 @@ void KSame::Board::resize( const QSize& size )
 {
 	kDebug() << "New Size:" << size;
 
-	setSceneRect( 0, 0, size.width(), size.height() );
-	m_renderer.setBackgroundSize( size );
+	setSceneRect(QRectF(QPointF(), size));
+	setBackgroundBrush(m_renderer.spritePixmap("background", size));
 
 	if ( m_changed && isGameOver() )
 	{
 		generateGameOverPixmap( won() );
 	}
 
-	m_renderer.setElementSize( m_elementsSize );
 	createItems();
 }
 
@@ -153,27 +150,15 @@ void KSame::Board::createItems()
 	if ( !m_width || !m_height )
 		return;
 
-	if ( sceneRect().height()/m_height < sceneRect().width()/m_width )
-	{
-		m_elementsSize = QSize( static_cast<int>( sceneRect().height()/m_height ),
-		                        static_cast<int>( sceneRect().height()/m_height ) );
-	}
-	else
-	{
-		m_elementsSize = QSize( static_cast<int>( sceneRect().width()/m_width ),
-		                        static_cast<int>( sceneRect().width()/m_width ) );
-	}
-	m_renderer.setElementSize( m_elementsSize );
-
+	const int elementsSize1 = sceneRect().width() / m_width;
+	const int elementsSize2 = sceneRect().height() / m_height;
+	const int elementsSize = qMin(elementsSize1, elementsSize2);
 
 	/* Remove current items, if any */
-	foreach( KSame::Stone *item, m_stones )
-	{
-		removeItem( item );
-		delete item;
-	}
-
+	qDeleteAll(m_stones);
 	m_stones.resize( m_width * m_height );
+	qDeleteAll(m_highlighters);
+	m_highlighters.resize( m_width * m_height );
 
 	/* Create an item for each stone in the board */
 	for ( int i = 0; i < m_width; ++i )
@@ -181,11 +166,19 @@ void KSame::Board::createItems()
 		for ( int j = 0; j < m_height; ++j )
 		{
 			int index = map( i, j );
-			KSame::Stone *item = new KSame::Stone( this, i, j );
-			if ( m_boardData[ index ] )
-				item->setPixmap( m_renderer.renderElement( QString( "stone%1" ).arg( m_boardData[ index ] ) ) );
-			item->setPos( i*m_elementsSize.width(), ( m_height - 1 - j )*m_elementsSize.height() );
-			m_stones[ index ] = item;
+			const QPoint pos(i * elementsSize, (m_height - 1 - j) * elementsSize);
+			KGameRenderedItem *item;
+			//create stone
+			item = m_stones[index] = new KSame::Stone( this, i, j );
+			item->setRenderSize(QSize(elementsSize, elementsSize));
+			item->setFrame(m_boardData[index]);
+			item->setPos(pos);
+			//create highlighter for stone (hidden by default)
+			item = m_highlighters[index] = new KGameRenderedItem(&m_renderer, "stone_highlighted");
+			addItem(item);
+			item->setRenderSize(QSize(elementsSize, elementsSize));
+			item->setPos(pos);
+			item->hide();
 		}
 	}
 }
@@ -201,9 +194,7 @@ void KSame::Board::mark( int x, int y )
 		m_markedStones.clear();
 
 	foreach( const KSame::Coordinate &s, m_markedStones )
-	{
-		m_stones[ map( s.first, s.second ) ]->setPixmap( m_renderer.renderHighlightedElement( QString( "stone%1" ).arg( color ) ) );
-	}
+		m_highlighters[map(s.first, s.second)]->show();
 
 	emit newCountOfMarkedStones( m_markedStones.count() );
 }
@@ -233,11 +224,7 @@ void KSame::Board::markHelper( int x, int y, quint8 color )
 void KSame::Board::unmark()
 {
 	foreach( const KSame::Coordinate &s, m_markedStones )
-	{
-		int index = map( s.first, s.second );
-		QString elementId = QString( "stone%1" ).arg( m_boardData[ index ] == 0? "_removed" : QString::number( m_boardData[ index ] ) );
-		m_stones[ index ]->setPixmap( m_renderer.renderElement( elementId ) );
-	}
+		m_highlighters[map(s.first, s.second)]->hide();
 	m_markedStones.clear();
 	emit newCountOfMarkedStones( m_markedStones.count() );
 }
@@ -257,6 +244,7 @@ void KSame::Board::removeMarked()
 	foreach( const KSame::Coordinate &s, m_markedStones )
 	{
 		m_boardData[ map( s.first, s.second ) ] = 0;
+		m_highlighters[map(s.first, s.second)]->hide();
 	}
 
 	// Gravity

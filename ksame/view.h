@@ -23,7 +23,6 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include "renderer.h"
 #include "board.h"
 
 #include <QGraphicsView>

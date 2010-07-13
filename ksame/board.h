@@ -2,6 +2,7 @@
  *
  * Copyright (C) 1997,1998  Marcus Kreutzberger <kreutzbe@informatik.mu-luebeck.de>
  * Copyright (C) 2006 Henrique Pinto <henrique.pinto@kdemail.net>
+ * Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
  * 
  * This file is part of the KDE project
  *
@@ -24,22 +25,16 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "renderer.h"
-
-#include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QSize>
-#include <QVector>
-#include <QGraphicsPixmapItem>
 #include <QStack>
-#include <QPair>
-
+#include <KGameRenderedItem>
+#include <KGameRenderer>
 
 namespace KSame
 {
 	class Board;
 
-	class Stone: public QGraphicsPixmapItem
+	class Stone: public KGameRenderedItem
 	{
 		public:
 			Stone( KSame::Board *board, int x, int y, QGraphicsItem *parent = 0 );
@@ -110,8 +105,6 @@ namespace KSame
 			void scoreChanged( quint32 newScore );
 
 		protected:
-			virtual void drawBackground( QPainter *painter, const QRectF& rect );
-
 			void mark( int x, int y );
 			void unmark();
 			void removeMarked();
@@ -124,7 +117,7 @@ namespace KSame
 			int  map( int x, int y ) const;
 			bool validPosition( int x, int y ) const;
 
-			KSame::Renderer m_renderer;
+			KGameRenderer m_renderer;
 
 			quint8  m_width;
 			quint8  m_height;
@@ -133,11 +126,11 @@ namespace KSame
 			quint32 m_score;
 			bool    m_changed;
 
-			QVector<quint8>          m_boardData;
-			QVector<KSame::Stone*>   m_stones;
-			QSize                    m_elementsSize;
-			QList<KSame::Coordinate> m_markedStones;
-			QStack<KSame::GameState> m_undoList;
+			QVector<quint8>             m_boardData;
+			QVector<KSame::Stone*>      m_stones;
+			QVector<KGameRenderedItem*> m_highlighters;
+			QList<KSame::Coordinate>    m_markedStones;
+			QStack<KSame::GameState>    m_undoList;
 
 			QGraphicsPixmapItem *m_gameOverOverlay;
 	};
