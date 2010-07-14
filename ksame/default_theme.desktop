@@ -1,7 +1,9 @@
 [KGameTheme]
 VersionFormat=1
 Name=KSame Default Theme
+Name[x-test]=xxKSame Default Themexx
 Description=KSame Default Theme
+Description[x-test]=xxKSame Default Themexx
 FileName=default_theme.svgz
 Author=Michał Bartecki
 AuthorEmail=mkbart@gmail.com
