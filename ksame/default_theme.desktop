@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=KSame Default Theme
 Name[de]=Standard
+Name[en_GB]=KSame Default Theme
 Name[es]=Tema predeterminado para KSame
 Name[pt]=Tema Predefinido do KSame
 Name[pt_BR]=Tema padrão do KSame
@@ -12,6 +13,7 @@ Name[zh_CN]=KSame 默认主题
 Name[zh_TW]=KSame 預設主題
 Description=KSame Default Theme
 Description[de]=Das Standard-Design von KSame.
+Description[en_GB]=KSame Default Theme
 Description[es]=Tema predeterminado para KSame
 Description[pt]=Tema Predefinido do KSame
 Description[pt_BR]=Tema padrão do KSame
