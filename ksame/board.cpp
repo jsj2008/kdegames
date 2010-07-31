@@ -32,7 +32,7 @@
 
 
 KSame::Stone::Stone( KSame::Board *board, int x, int y, QGraphicsItem *parent )
-	: KGameRenderedItem( &board->m_renderer, "stone", parent ), m_x( x ), m_y( y ), m_board( board )
+	: KGameRenderedObjectItem( &board->m_renderer, "stone", parent ), m_x( x ), m_y( y ), m_board( board )
 {
 	board->addItem(this);
 	setAcceptsHoverEvents( true );
@@ -167,14 +167,14 @@ void KSame::Board::createItems()
 		{
 			int index = map( i, j );
 			const QPoint pos(i * elementsSize, (m_height - 1 - j) * elementsSize);
-			KGameRenderedItem *item;
+			KGameRenderedObjectItem *item;
 			//create stone
 			item = m_stones[index] = new KSame::Stone( this, i, j );
 			item->setRenderSize(QSize(elementsSize, elementsSize));
 			item->setFrame(m_boardData[index]);
 			item->setPos(pos);
 			//create highlighter for stone (hidden by default)
-			item = m_highlighters[index] = new KGameRenderedItem(&m_renderer, "stone_highlighted");
+			item = m_highlighters[index] = new KGameRenderedObjectItem(&m_renderer, "stone_highlighted");
 			addItem(item);
 			item->setRenderSize(QSize(elementsSize, elementsSize));
 			item->setPos(pos);

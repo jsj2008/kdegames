@@ -27,14 +27,14 @@
 
 #include <QGraphicsScene>
 #include <QStack>
-#include <KGameRenderedItem>
+#include <KGameRenderedObjectItem>
 #include <KGameRenderer>
 
 namespace KSame
 {
 	class Board;
 
-	class Stone: public KGameRenderedItem
+	class Stone: public KGameRenderedObjectItem
 	{
 		public:
 			Stone( KSame::Board *board, int x, int y, QGraphicsItem *parent = 0 );
@@ -128,7 +128,7 @@ namespace KSame
 
 			QVector<quint8>             m_boardData;
 			QVector<KSame::Stone*>      m_stones;
-			QVector<KGameRenderedItem*> m_highlighters;
+			QVector<KGameRenderedObjectItem*> m_highlighters;
 			QList<KSame::Coordinate>    m_markedStones;
 			QStack<KSame::GameState>    m_undoList;
 
