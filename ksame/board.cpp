@@ -81,6 +81,7 @@ KSame::Board::Board( QObject *parent )
 	  m_boardData( 0 )
 {
 	m_renderer.setFrameSuffix(QLatin1String("%1"));
+	m_renderer.setFrameBaseIndex(1);
 	m_gameOverOverlay = new QGraphicsPixmapItem;
 	addItem( m_gameOverOverlay );
 	m_gameOverOverlay->setZValue( 20000 );
