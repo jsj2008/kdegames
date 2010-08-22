@@ -15,7 +15,7 @@ set(ksame_SRCS
 kde4_add_app_icon(ksame_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-ksame.png")
 kde4_add_executable(ksame ${ksame_SRCS})
 
-target_link_libraries(ksame  ${KDE4_KIO_LIBS} kdegames ${KDE4_KNOTIFYCONFIG_LIBS})
+target_link_libraries(ksame ${KDE4_KDEUI_LIBS} kdegames)
 
 install(TARGETS ksame  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
