@@ -89,9 +89,9 @@ void KSame::MainWindow::setupActions()
 	m_undoAction = KStandardGameAction::undo(this, SLOT( undo() ), actionCollection());
 
 	m_randomBoardAction = new KToggleAction(i18n("&Random Board"), actionCollection());
-    actionCollection()->addAction("random_board", m_randomBoardAction);
+    actionCollection()->addAction( QLatin1String( "random_board" ), m_randomBoardAction);
 	m_showNumberRemainingAction = new KToggleAction(i18n("&Show Number Remaining"), actionCollection());
-	actionCollection()->addAction("showNumberRemaining", m_showNumberRemainingAction);
+	actionCollection()->addAction( QLatin1String( "showNumberRemaining" ), m_showNumberRemainingAction);
 	connect(m_showNumberRemainingAction, SIGNAL(triggered(bool) ), SLOT(showNumberRemainingToggled()));
 
 	setupGUI( QSize( 576, 384 ) );
