@@ -183,7 +183,7 @@ void KSame::MainWindow::undo()
 void KSame::MainWindow::showHighScoreDialog()
 {
 	KScoreDialog d( KScoreDialog::Name | KScoreDialog::Score, this );
-	d.addField( KScoreDialog::Custom1, i18n( "Board" ), "Board" );
+	d.addField( KScoreDialog::Custom1, i18n( "Board" ), QLatin1String( "Board" ) );
 	d.exec();
 }
 
@@ -200,9 +200,9 @@ void KSame::MainWindow::setScore( quint32 score )
 		QStringList list;
 		for( int i = 1; i <= m_board->colors(); i++)
 		{
-			list << QString( "%1" ).arg( m_board->count( i ) );
+			list << QString::fromLatin1(  "%1" ).arg( m_board->count( i ) );
 		}
-		QString count = QString( " (%1)" ).arg( list.join( QLatin1String(  "," ) ) );
+		QString count = QString::fromLatin1(  " (%1)" ).arg( list.join( QLatin1String(  "," ) ) );
 		m_statusBar->changeItem( i18n( "%1 Colors%2", m_board->colors(), count ), 1 );
 	}
 	m_statusBar->changeItem( i18n( "Score: %1", score ), 4 );
@@ -214,7 +214,7 @@ void KSame::MainWindow::gameover()
 {
 	m_undoAction->setEnabled( m_board->canUndo() );
 	KScoreDialog d( KScoreDialog::Name | KScoreDialog::Score, this );
-	d.addField( KScoreDialog::Custom1, i18n( "Board" ), "Board" );
+	d.addField( KScoreDialog::Custom1, i18n( "Board" ), QLatin1String( "Board" ) );
 
 	KScoreDialog::FieldInfo scoreInfo;
 	scoreInfo[ KScoreDialog::Score ].setNum( m_board->score() );

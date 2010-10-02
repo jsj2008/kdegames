@@ -4,7 +4,7 @@
  * Copyright (C) 2006 Henrique Pinto <henrique.pinto@kdemail.net>
  * Copyright (C) 2006 Stephan Kulow <coolo@kde.org>
  * Copyright 2010 Stefan Majewsky <majewsky@gmx.net>
- * 
+ *
  * This file is part of the KDE project
  *
  * This program is free software; you can redistribute it and/or modify
@@ -32,7 +32,7 @@
 
 
 KSame::Stone::Stone( KSame::Board *board, int x, int y, QGraphicsItem *parent )
-	: KGameRenderedObjectItem( &board->m_renderer, "stone", parent ), m_x( x ), m_y( y ), m_board( board )
+	: KGameRenderedObjectItem( &board->m_renderer, QLatin1String( "stone" ), parent ), m_x( x ), m_y( y ), m_board( board )
 {
 	board->addItem(this);
 	setAcceptsHoverEvents( true );
@@ -111,7 +111,7 @@ void KSame::Board::resize( const QSize& size )
 	kDebug() << "New Size:" << size;
 
 	setSceneRect(QRectF(QPointF(), size));
-	setBackgroundBrush(m_renderer.spritePixmap("background", size));
+	setBackgroundBrush(m_renderer.spritePixmap(QLatin1String( "background" ), size));
 
 	if ( m_changed && isGameOver() )
 	{
@@ -175,7 +175,7 @@ void KSame::Board::createItems()
 			item->setFrame(m_boardData[index]);
 			item->setPos(pos);
 			//create highlighter for stone (hidden by default)
-			item = m_highlighters[index] = new KGameRenderedObjectItem(&m_renderer, "stone_highlighted");
+			item = m_highlighters[index] = new KGameRenderedObjectItem(&m_renderer, QLatin1String( "stone_highlighted" ));
 			addItem(item);
 			item->setRenderSize(QSize(elementsSize, elementsSize));
 			item->setPos(pos);
