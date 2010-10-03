@@ -22,10 +22,7 @@ macro_log_feature(OPENGL_FOUND "OpenGL" "API for developing portable, interactiv
 macro_log_feature(QT_QTOPENGL_FOUND "QtOpenGL" "Qt module that make it easy to use OpenGL in Qt apps" "http://doc.trolltech.com/latest/qtopengl.html" FALSE "" "Kubrick will not be built and KSudoku will not have Roxdoku support without QtOpenGL.")
 
 macro_optional_find_package(PythonInterp)
-if(${PYTHONINTERP_VERSION})
-    macro_ensure_version_range("2.6.0" ${PYTHONINTERP_VERSION} "3.0.0" PYTHON_KAJONGG)
-endif(${PYTHONINTERP_VERSION})
-macro_log_feature(PYTHON_KAJONGG "Python" "Programming language that lets you work more quickly and integrate your systems more effectively." "http://python.org" FALSE "" "Kajongg will not be built without the python interpreter (version 2.6 < 3.0).")
+macro_log_feature(PYTHONINTERP_FOUND "Python" "Programming language that lets you work more quickly and integrate your systems more effectively." "http://python.org" FALSE "" "Kajongg will not be built without the python interpreter (version 2.6 < 3.0).")
 
 if(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
     set(OPENGL_SUPPORT true)
@@ -93,9 +90,9 @@ if(OPENGL_SUPPORT)
     macro_optional_add_subdirectory(kubrick)
 endif(OPENGL_SUPPORT)
 macro_optional_add_subdirectory(palapeli)
-if(PYTHON_KAJONGG)
+if(PYTHONINTERP_FOUND)
     macro_optional_add_subdirectory(kajongg)
-endif(PYTHON_KAJONGG)
+endif(PYTHONINTERP_FOUND)
 
 add_subdirectory(cmake)
 macro_optional_add_subdirectory(doc)
