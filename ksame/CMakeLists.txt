@@ -22,7 +22,7 @@ install(TARGETS ksame  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES ksame.desktop      DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS ksame.desktop      DESTINATION ${XDG_APPS_INSTALL_DIR} )
 install( FILES ksameui.rc         DESTINATION ${DATA_INSTALL_DIR}/ksame )
 install( FILES
     default_theme.desktop
