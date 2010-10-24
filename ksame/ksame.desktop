@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=SameGame
 Name[af]=Samegame
+Name[ast]=MesmuXuegu
 Name[be]=Гульня Same
 Name[bn]=সেইমগেম
 Name[br]=Heñvelded
@@ -68,6 +69,7 @@ Type=Application
 X-DocPath=ksame/index.html
 GenericName=Board Game
 GenericName[af]=Bord Speletjie
+GenericName[ast]=Xuegu de tableru
 GenericName[be]=Настольная гульня
 GenericName[bn]=ছককেন্দ্রিক খেলা
 GenericName[br]=Ur c'hoari taolenn

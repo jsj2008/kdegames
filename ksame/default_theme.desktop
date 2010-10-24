@@ -1,6 +1,7 @@
 [KGameTheme]
 VersionFormat=1
 Name=KSame Default Theme
+Name[ast]=Tema predefiníu pa KBreakOut
 Name[ca]=Tema predeterminat del KSame
 Name[de]=Standard
 Name[en_GB]=KSame Default Theme
@@ -17,6 +18,7 @@ Name[x-test]=xxKSame Default Themexx
 Name[zh_CN]=KSame 默认主题
 Name[zh_TW]=KSame 預設主題
 Description=KSame Default Theme
+Description[ast]=Tema predefiníu pa KBreakOut
 Description[ca]=Tema predeterminat del KSame
 Description[de]=Das Standard-Design von KSame.
 Description[en_GB]=KSame Default Theme
