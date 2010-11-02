@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gui name="klickety"
+     version="1"
+     xmlns="http://www.kde.org/standards/kxmlgui/1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
+                         http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
+
+    <MenuBar>
+        <Menu name="game">
+            <Action name="game_new_numeric" append="new_merge" />
+        </Menu>
+        <Menu name="move">
+            <Action name="move_undo_all" />
+            <Action name="move_redo_all" />
+        </Menu>
+    </MenuBar>
+    <ToolBar name="mainToolBar">
+        <text>Main Toolbar</text>
+        <Action name="game_new"/>
+        <Separator/>
+        <Action name="game_pause"/>
+        <Separator/>
+        <Action name="move_undo" />
+        <Action name="move_redo" />
+        <Separator/>
+        <Action name="game_quit"/>
+    </ToolBar>
+
+</gui>
