@@ -31,9 +31,6 @@ This is a compilation of more than 20 various casual desktop games.
     Play backgammon against a local human player, via a game server or
     against GNU Backgammon (not included)
 
-* kbattleship
-    Sink battleship of your opponents, with built-in game server.
-
 * kblackbox
     Find the balls hidden in the black box by shooting laser beams!
 
@@ -76,6 +73,12 @@ This is a compilation of more than 20 various casual desktop games.
 * kshisen
     Patience game where you take away all pieces.
 
+* ksnake
+    Don't bite yourself, eat apples!
+
+* ksnakeduel
+    Like ksnake, but without fruits.
+
 * kspaceduel
     Two player game with shooting spaceships flying around a sun.
 
@@ -100,6 +103,9 @@ This is a compilation of more than 20 various casual desktop games.
 
 * lskat
     Lieutnant skat.
+
+* naval battle
+    Sink ships of your opponents, with built-in game server.
 
 Debugging
 ---------
