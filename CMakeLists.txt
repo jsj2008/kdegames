@@ -24,6 +24,9 @@ macro_log_feature(QT_QTOPENGL_FOUND "QtOpenGL" "Qt module that make it easy to u
 macro_optional_find_package(PythonInterp)
 macro_log_feature(PYTHONINTERP_FOUND "Python" "Programming language that lets you work more quickly and integrate your systems more effectively." "http://python.org" FALSE "" "Kajongg will not be built without the python interpreter (version 2.6 < 3.0).")
 
+macro_optional_find_package(OpenAL)
+macro_log_feature(OPENAL_FOUND "OpenAL" "OpenAL (Open Audio Library) is a free software cross-platform audio API." "http://connect.creativelabs.com/openal" FALSE "" "KGoldrunner and Granatier need OpenAL for sound output. If OpenAL cannot be provided on some platform or distribution, please email the KDE Games list <kde-games-devel at kde dot org>.")
+
 if(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
     set(OPENGL_SUPPORT true)
 endif(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
@@ -51,7 +54,9 @@ add_subdirectory(libkmahjongg)
 
 macro_optional_add_subdirectory(bomber)
 macro_optional_add_subdirectory(bovo)
-macro_optional_add_subdirectory(granatier)
+if(OPENAL_FOUND)
+    macro_optional_add_subdirectory(granatier)
+endif(OPENAL_FOUND)
 macro_optional_add_subdirectory(lskat)
 macro_optional_add_subdirectory(kapman)
 macro_optional_add_subdirectory(katomic)
