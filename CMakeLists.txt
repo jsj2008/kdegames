@@ -32,6 +32,7 @@ if(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
 endif(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
 
 add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
+add_definitions (-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 include_directories ( ${QDBUS_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 # add the includes for libkdegames and the fwd headers, available for all the applications
 include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/includes)
