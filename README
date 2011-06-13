@@ -9,14 +9,17 @@ About kdegames
 --------------
 This is a compilation of more than 20 various casual desktop games.
 
+* bomber
+    Arcade bombing game.
+
 * bovo
-    Five-in-a-row Board Game.
-    
+    Five-in-a-row board game.
+
 * cmake
-    CMake modules needed to build KDE Games.
+    CMake modules needed to build KDE games.
 
 * doc
-    XML based documentation for the programs.
+    XML-based documentation for the games.
 
 * granatier
     Walk through an arena, lay bombs and kill your enemies.
@@ -24,27 +27,50 @@ This is a compilation of more than 20 various casual desktop games.
 * kajongg
     The classical game of Mah Jongg for four players.
 
+* kapman
+    Pacman clone.
+
 * katomic
     Build complex atoms with a minimal amount of moves.
 
-* kbackgammon
-    Play backgammon against a local human player, via a game server or
-    against GNU Backgammon (not included)
+* kbattleship (naval battle)
+    Sink ships of your opponents, with built-in game server.
 
 * kblackbox
     Find the balls hidden in the black box by shooting laser beams!
 
+* kblocks
+    A falling blocks game.
+
 * kbounce
     Claim areas and don't get disturbed.
 
+* kbreakout
+    A breakout like game.
+
+* kdiamond
+    A three-in-a-row game.
+
+* kfourinline
+    Two player four-in-a-row game.
+
 * kgoldrunner
     A game of action and puzzle-solving.
+
+* kigo
+    Go board game.
+
+* killbots
+    A game of killer robots and teleportation.
 
 * kiriki
     Yahtzee-like Dice Game.
 
 * kjumpingcube
     A tactical game for number-crunchers.
+
+klickety
+    Collect pieces of the same color.
 
 * klines
     Place 5 equal pieces together, but wait, there are 3 new ones.
@@ -55,8 +81,14 @@ This is a compilation of more than 20 various casual desktop games.
 * kmines
     The classical mine sweeper.
 
+* knetwalk
+    A game for system administrators.
+
 * kolf
     A mini golf game.
+
+* kollision
+    Collision game.
 
 * konquest
     Conquer the planets of your enemy.
@@ -67,32 +99,29 @@ This is a compilation of more than 20 various casual desktop games.
 * kreversi
     The old reversi board game, also known as Othello.
 
-* ksame
-    Collect pieces of the same color.
-
 * kshisen
     Patience game where you take away all pieces.
 
-* ksnake
-    Don't bite yourself, eat apples!
-
-* ksnakeduel
-    Like ksnake, but without fruits.
+* ksirk
+    Risk game for KDE.
 
 * kspaceduel
     Two player game with shooting spaceships flying around a sun.
 
 * ksquares
     Connect the dots to create squares.
-    
+
 * ksudoku
     Sudoku game and more.
+
+* ktron (ksnakeduel)
+    Like ksnake, but without fruits.
 
 * ktuberling
     Kids game: make your own potato (NO french fries!)
 
-* kwin4
-    Place 4 pieces in a row.
+* kubrick
+    A game based on Rubik's Cube
 
 * libkdegames
     KDE game library used by many of these programs, contains also images
@@ -104,8 +133,8 @@ This is a compilation of more than 20 various casual desktop games.
 * lskat
     Lieutnant skat.
 
-* naval battle
-    Sink ships of your opponents, with built-in game server.
+* palapeli
+    Jigsaw puzzle game.
 
 Debugging
 ---------
