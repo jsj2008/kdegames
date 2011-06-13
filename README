@@ -37,7 +37,7 @@ This is a compilation of more than 20 various casual desktop games.
     Sink ships of your opponents, with built-in game server.
 
 * kblackbox
-    Find the balls hidden in the black box by shooting laser beams!
+    Find the balls hidden in the black box by shooting laser beams.
 
 * kblocks
     A falling blocks game.
@@ -46,7 +46,7 @@ This is a compilation of more than 20 various casual desktop games.
     Claim areas and don't get disturbed.
 
 * kbreakout
-    A breakout like game.
+    A Breakout-like game.
 
 * kdiamond
     A three-in-a-row game.
@@ -64,16 +64,16 @@ This is a compilation of more than 20 various casual desktop games.
     A game of killer robots and teleportation.
 
 * kiriki
-    Yahtzee-like Dice Game.
+    Yahtzee-like dice game.
 
 * kjumpingcube
-    A tactical game for number-crunchers.
+    A tactical game for number crunchers.
 
 klickety
     Collect pieces of the same color.
 
 * klines
-    Place 5 equal pieces together, but wait, there are 3 new ones.
+    Place five equal pieces together, but wait, there are 3 new ones.
 
 * kmahjongg
     A tile laying patience.
@@ -121,10 +121,10 @@ klickety
     Kids game: make your own potato (NO french fries!)
 
 * kubrick
-    A game based on Rubik's Cube
+    A game based on Rubik's Cube.
 
 * libkdegames
-    KDE game library used by many of these programs, contains also images
+    KDE game library used by many of these games, contains also images
     of card decks.
 
 * libkmahjongg
@@ -139,16 +139,17 @@ klickety
 Debugging
 ---------
 You can use -DCMAKE_BUILD_TYPE=debugfull with the cmake command script, if you
-want to have debug code in your KDE apps and libs. We recommend to do this, 
-since this is alpha software and this makes debugging things a whole lot 
+want to have debug code in your KDE apps and libs. We recommend to do this,
+since this is alpha software and this makes debugging things a whole lot
 easier.
 
 Additional Games
 ----------------
-There are additional games and game-related applications and libraries that are 
+There are additional games, game-related applications and libraries that are
 not yet mature enough to be included in the KDE Games module or are being
-developed by other teams. Most of them can be found on the KDE playground,
-but some are hosted elsewhere, including some game servers.
+developed by other teams. Most of them can be found on the KDE Playground
+or in the KDE Extragear, but some are hosted elsewhere, including some game
+servers.
 For a complete list, see the INDEX file in playground/games.
 
 More Info
@@ -157,9 +158,8 @@ Please direct any bug reports to our bug list by visiting
 http://bugs.kde.org.
 
 Discussions related to the KDE Games module or the games in playground
-are welcome in the KDE Games mailing list (kde-games-devel@kde.org).
+are welcome on the KDE Games mailing list (kde-games-devel@kde.org).
 Game-related news can be found on http://games.kde.org.
 
 General KDE discussions should go to the KDE mailing list (kde@kde.org).
-
 
