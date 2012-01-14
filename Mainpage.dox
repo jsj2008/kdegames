@@ -7,3 +7,5 @@
  *   <i>The KDE games library</i>
  *
 */
+// DOXYGEN_NAME=kdegames
+// DOXYGEN_ENABLE=YES
