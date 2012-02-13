@@ -8,12 +8,6 @@ include(KDE4Defaults)
 include(MacroLibrary)
 include(MacroOptionalAddSubdirectory)
 
-# Integration with the GGZ Gaming Zone
-include(GGZ)
-set(GGZ_REGISTRYNAME "kdegames")
-
-macro_log_feature(GGZCONFIG_FOUND "ggz-client-libs" "GGZ configuration program"	"http://www.ggzgamingzone.org/" FALSE "" "Needed to support registering KDE games with the GGZ Gaming Zone for online gaming.")
-
 macro_optional_find_package(QCA2)
 macro_log_feature(QCA2_FOUND "QCA2" "Qt Cryptographic Architecture" "http://delta.affinix.com/qca" FALSE "2.0.0" "Needed to build Ksirk Jabber support's GroupWise and Jabberprotocols.")
 
