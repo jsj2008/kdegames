@@ -19,7 +19,10 @@ macro_optional_find_package(PythonInterp)
 macro_log_feature(PYTHONINTERP_FOUND "Python" "Programming language that lets you work more quickly and integrate your systems more effectively." "http://python.org" FALSE "" "Kajongg will not be built without the python interpreter (version 2.6 < 3.0).")
 
 macro_optional_find_package(OpenAL)
-macro_log_feature(OPENAL_FOUND "OpenAL" "OpenAL (Open Audio Library) is a free software cross-platform audio API." "http://connect.creativelabs.com/openal" FALSE "" "KGoldrunner and Granatier need OpenAL for sound output. If OpenAL cannot be provided on some platform or distribution, please email the KDE Games list <kde-games-devel at kde dot org>.")
+macro_log_feature(OPENAL_FOUND "OpenAL" "OpenAL (Open Audio Library) is a free software cross-platform audio API." "http://connect.creativelabs.com/openal" FALSE "" "Phonon is used as a fallback, but low-latency sound output is only available with OpenAL/SndFile.")
+
+macro_optional_find_package(SndFile)
+macro_log_feature(SNDFILE_FOUND "SndFile" "libsndfile is a C library written by Erik de Castro Lopo for reading and writing audio files." "http://www.mega-nerd.com/libsndfile/" TRUE "" "Phonon is used as a fallback, but low-latency sound output is only available with OpenAL/SndFile.")
 
 if(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
     set(OPENGL_SUPPORT true)
