@@ -35,18 +35,6 @@ include_directories ( ${QDBUS_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_D
 include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/audio ${CMAKE_SOURCE_DIR}/libkdegames/includes)
 set(HIGHSCORE_DIRECTORY "" CACHE STRING "Where to install system-wide highscores e.g. /var/games")
 
-if(WIN32)
-    # detect oxygen icon dir at configure time based on KDEDIRS - there may be different package installation locations
-    execute_process(COMMAND "${KDE4_KDECONFIG_EXECUTABLE}" --path icon OUTPUT_VARIABLE _dir ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
-    file(TO_CMAKE_PATH "${_dir}" __dir)
-    find_path(KDE4_ICON_DIR oxygen PATHS
-        ${__dir}
-    )
-    message(STATUS "using oxygen application icons from ${KDE4_ICON_DIR}")
-else(WIN32)
-    set (KDE4_ICON_DIR  ${CMAKE_INSTALL_PREFIX}/share/icons)
-endif(WIN32)
-
 add_subdirectory(libkdegames)
 add_subdirectory(libkmahjongg)
 
