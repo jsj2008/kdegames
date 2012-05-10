@@ -1,6 +1,7 @@
 project(kdegames)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+set(COMPILING_KDEGAMES 1)
 
 # search packages used by KDE
 find_package(KDE4 4.3.80 REQUIRED)
