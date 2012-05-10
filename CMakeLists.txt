@@ -86,6 +86,5 @@ if(PYTHONINTERP_FOUND)
     macro_optional_add_subdirectory(kajongg)
 endif(PYTHONINTERP_FOUND)
 
-add_subdirectory(cmake)
 macro_optional_add_subdirectory(doc)
 macro_display_feature_log()
