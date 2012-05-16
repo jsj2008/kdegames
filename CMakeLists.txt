@@ -33,7 +33,7 @@ add_definitions (${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 add_definitions (-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 include_directories ( ${QDBUS_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
 # add the includes for libkdegames and the fwd headers, available for all the applications
-include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/audio ${CMAKE_SOURCE_DIR}/libkdegames/includes)
+include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_BINARY_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/audio ${CMAKE_SOURCE_DIR}/libkdegames/includes)
 set(HIGHSCORE_DIRECTORY "" CACHE STRING "Where to install system-wide highscores e.g. /var/games")
 
 add_subdirectory(libkdegames)
